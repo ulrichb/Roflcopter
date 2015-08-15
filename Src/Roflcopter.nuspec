@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ReSharper.Roflcopter</id>
+    <version>$Version$</version>
+    <title>Roflcopter</title>
+    <authors>ulrichb</authors>
+    <!--<projectUrl></projectUrl>-->
+    <!--<licenseUrl></licenseUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ROFL ROFL ROFL ROFL ROFL ROFL LOL ROFL ROFL ROFL </description>
+    <tags>rofl lol</tags>
+    <dependencies>
+      <dependency id="Wave" version="$DependencyVer$" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Roflcopter.Plugin\$BinDirInclude$\$Configuration$\Roflcopter.Plugin.*" target="dotFiles" />
+  </files>
+</package>
