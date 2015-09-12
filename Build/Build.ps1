@@ -2,7 +2,7 @@
 Param(
   [Parameter()] [string] $NugetExecutable = "Shared\.nuget\nuget.exe",
   [Parameter()] [string] $Configuration = "Debug",
-  [Parameter()] [string] $Version = "0.1.0.0",
+  [Parameter()] [string] $Version = "0.2.0.0",
   [Parameter()] [string] $NugetPushKey
 )
 
@@ -24,6 +24,7 @@ $NuspecPath = "Src\Roflcopter.nuspec"
 $PackageBaseVersion = StripLastPartFromVersion $Version
 $NugetPackProperties = @(
     "Version=$PackageBaseVersion.91;Configuration=$Configuration;DependencyVer=[2.0];BinDirInclude=bin.R91"
+    "Version=$PackageBaseVersion.92;Configuration=$Configuration;DependencyVer=[3.0];BinDirInclude=bin.R92"
 )
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
