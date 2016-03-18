@@ -13,7 +13,7 @@ Set-StrictMode -Version 2.0; $ErrorActionPreference = "Stop"; $ConfirmPreference
 $BuildOutputPath = "Build\Output"
 $SolutionFilePath = "Roflcopter.sln"
 $AssemblyVersionFilePath = "Src\Roflcopter.Plugin\Properties\AssemblyInfo.cs"
-$MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild.exe"
+$MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 # $NUnitExecutable = "nunit-console-x86.exe"
 # $NUnitTestAssemblyPaths = @(
 #   "Src\Roflcopter.Plugin.Tests\bin.R82\$Configuration\Roflcopter.Plugin.Tests.dll"
@@ -21,10 +21,8 @@ $MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\12.0\Bin\MSBuild.exe"
 # $NUnitFrameworkVersion = "net-4.5"
 # $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.nuspec"
-$PackageBaseVersion = StripLastPartFromVersion $Version
 $NugetPackProperties = @(
-    "Version=$PackageBaseVersion.91;Configuration=$Configuration;DependencyVer=[2.0];BinDirInclude=bin.R91"
-    "Version=$PackageBaseVersion.92;Configuration=$Configuration;DependencyVer=[3.0];BinDirInclude=bin.R92"
+    "Version=$(CalcNuGetPackageVersion 92);Configuration=$Configuration;DependencyVer=[3.0];BinDirInclude=bin"
 )
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 

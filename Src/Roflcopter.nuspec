@@ -9,6 +9,7 @@
     <!--<licenseUrl></licenseUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ROFL ROFL ROFL ROFL ROFL ROFL LOL ROFL ROFL ROFL </description>
+    <releaseNotes>$ReleaseNotes$</releaseNotes>
     <tags>rofl lol</tags>
     <dependencies>
       <dependency id="Wave" version="$DependencyVer$" />
