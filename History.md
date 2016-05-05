@@ -1,3 +1,6 @@
+### 0.4 ###
+- ReSharper 2016.1 support
+
 ### 0.3 ###
 - ReSharper 10.0 support
 
