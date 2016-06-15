@@ -3,6 +3,8 @@ Param(
   [Parameter()] [string] $NugetExecutable = "Shared\.nuget\nuget.exe",
   [Parameter()] [string] $Configuration = "Release",
   [Parameter()] [string] $Version = "0.4.0.0",
+#  [Parameter()] [string] $BranchName,
+#  [Parameter()] [string] $CoverageBadgeUploadToken,
   [Parameter()] [string] $NugetPushKey
 )
 
