@@ -1,8 +1,8 @@
 [CmdletBinding()]
 Param(
   [Parameter()] [string] $NugetExecutable = "Shared\.nuget\nuget.exe",
-  [Parameter()] [string] $Configuration = "Release",
-  [Parameter()] [string] $Version = "0.4.0.0",
+  [Parameter()] [string] $Configuration = "Debug",
+  [Parameter()] [string] $Version = "0.0.1.0-dev",
 #  [Parameter()] [string] $BranchName,
 #  [Parameter()] [string] $CoverageBadgeUploadToken,
   [Parameter()] [string] $NugetPushKey
@@ -24,7 +24,7 @@ $MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 # $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.nuspec"
 $NugetPackProperties = @(
-    "Version=$(CalcNuGetPackageVersion 20161);Configuration=$Configuration;DependencyVer=[5.0];BinDirInclude=bin"
+    "Version=$(CalcNuGetPackageVersion 20162);Configuration=$Configuration;DependencyVer=[6.0];BinDirInclude=bin"
 )
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
