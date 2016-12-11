@@ -24,7 +24,7 @@ $MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 # $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.nuspec"
 $NugetPackProperties = @(
-    "Version=$(CalcNuGetPackageVersion 20162);Configuration=$Configuration;DependencyVer=[6.0];BinDirInclude=bin"
+    "Version=$(CalcNuGetPackageVersion 20163);Configuration=$Configuration;DependencyVer=[7.0];BinDirInclude=bin"
 )
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
