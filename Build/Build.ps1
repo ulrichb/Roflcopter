@@ -24,15 +24,15 @@ $MSBuildPath = (Get-ChildItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio\
 # $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.nuspec"
 $NugetPackProperties = @(
-    "Version=$(CalcNuGetPackageVersion 20163);Configuration=$Configuration;DependencyVer=[7.0];BinDirInclude=bin"
+    "Version=$(CalcNuGetPackageVersion 20171);Configuration=$Configuration;DependencyVer=[8.0];BinDirInclude=bin"
 )
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
 Clean
 PackageRestore
 Build
-# Test
 NugetPack
+# Test
 
 if ($NugetPushKey) {
     NugetPush
