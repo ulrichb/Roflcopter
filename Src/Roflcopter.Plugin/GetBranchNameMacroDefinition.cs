@@ -9,9 +9,6 @@ namespace Roflcopter.Plugin
         private const string ShortDescription = "Current branch name, stripped by {#0:an optional regex}";
         private const string LongDescription = "Returns the current Git branch name (using Git's HEAD file)";
 
-        public override ParameterInfo[] Parameters
-        {
-            get { return new[] {new ParameterInfo(ParameterType.String)}; }
-        }
+        public override ParameterInfo[] Parameters => new[] { new ParameterInfo(ParameterType.String) };
     }
 }

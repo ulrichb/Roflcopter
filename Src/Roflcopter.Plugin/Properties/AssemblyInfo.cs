@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 
 [assembly: AssemblyTitle(AssemblyConsts.Title)]
@@ -9,9 +8,9 @@ using System.Reflection;
 internal static class AssemblyConsts
 {
     public const string Title =
-        "Roflcopter ReSharper Plugin"
+            "Roflcopter ReSharper Plugin"
 #if DEBUG
-        + " (Debug Build)"
+            + " (Debug Build)"
 #endif
         ;
 }

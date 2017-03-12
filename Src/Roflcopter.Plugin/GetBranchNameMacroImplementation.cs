@@ -9,7 +9,7 @@ using JetBrains.Util;
 
 namespace Roflcopter.Plugin
 {
-    [MacroImplementation(Definition = typeof (GetBranchNameMacroDefinition))]
+    [MacroImplementation(Definition = typeof(GetBranchNameMacroDefinition))]
     public class GetBranchNameMacroImplementation : SimpleMacroImplementation
     {
         [CanBeNull]
