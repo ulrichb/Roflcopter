@@ -20,12 +20,13 @@ namespace Roflcopter.Plugin
             _argument = arguments.OptionalFirstOrDefault();
         }
 
+        [CanBeNull]
         public override HotspotItems GetLookupItems(IHotspotContext context)
         {
             return MacroUtil.SimpleEvaluateResult(Evaluate(context));
         }
 
-        private string Evaluate([NotNull] IHotspotContext context)
+        private string Evaluate(IHotspotContext context)
         {
             var solutionDirectory = context.SessionContext.Solution.SolutionFilePath.Directory;
 
@@ -63,7 +64,7 @@ namespace Roflcopter.Plugin
         }
 
         [CanBeNull]
-        private static FileSystemPath FindGitDirectory([NotNull] FileSystemPath dir)
+        private static FileSystemPath FindGitDirectory(FileSystemPath dir)
         {
             do
             {
