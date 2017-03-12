@@ -15,7 +15,7 @@ Set-StrictMode -Version 2.0; $ErrorActionPreference = "Stop"; $ConfirmPreference
 $BuildOutputPath = "Build\Output"
 $SolutionFilePath = "Roflcopter.sln"
 $AssemblyVersionFilePath = "Src\Roflcopter.Plugin\Properties\AssemblyInfo.cs"
-$MSBuildPath = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
+$MSBuildPath = (Get-ChildItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\*\MSBuild\15.0\Bin\MSBuild.exe").FullName
 # $NUnitExecutable = "nunit-console-x86.exe"
 # $NUnitTestAssemblyPaths = @(
 #   "Src\Roflcopter.Plugin.Tests\bin.R82\$Configuration\Roflcopter.Plugin.Tests.dll"
