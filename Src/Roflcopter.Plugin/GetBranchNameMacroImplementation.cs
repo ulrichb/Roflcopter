@@ -13,11 +13,11 @@ namespace Roflcopter.Plugin
     public class GetBranchNameMacroImplementation : SimpleMacroImplementation
     {
         [CanBeNull]
-        private readonly IMacroParameterValueNew _argument;
+        private readonly IMacroParameterValueNew _stripingRegexArgument;
 
         public GetBranchNameMacroImplementation([Optional] MacroParameterValueCollection arguments)
         {
-            _argument = arguments.OptionalFirstOrDefault();
+            _stripingRegexArgument = arguments.OptionalFirstOrDefault();
         }
 
         [CanBeNull]
@@ -33,34 +33,31 @@ namespace Roflcopter.Plugin
             var findGitHeadFile = FindGitDirectory(solutionDirectory);
 
             if (findGitHeadFile == null)
-            {
                 return "<cannot find .git directory>";
-            }
 
             var headFile = findGitHeadFile.Combine("HEAD");
 
             if (!headFile.ExistsFile)
-            {
                 return "<cannot find .git/HEAD file>";
-            }
 
             var headFileContent = File.ReadAllLines(headFile.FullPath).DefaultIfEmpty("").First();
 
             if (string.IsNullOrWhiteSpace(headFileContent))
-            {
                 return "<.git/HEAD file is empty>";
-            }
 
-            var strippedHeadFileContent = Regex.Replace(headFileContent, @"^ref: refs/heads/", "");
+            var headFileRef = Regex.Replace(headFileContent, @"^ref: refs/heads/", "");
 
-            var strippingRegex = _argument != null ? _argument.GetValue() : "";
+            return ApplyStripingRegexArgument(headFileRef);
+        }
+
+        private string ApplyStripingRegexArgument(string headFileRef)
+        {
+            var strippingRegex = _stripingRegexArgument != null ? _stripingRegexArgument.GetValue() : "";
 
             if (!string.IsNullOrWhiteSpace(strippingRegex))
-            {
-                strippedHeadFileContent = Regex.Replace(strippedHeadFileContent, strippingRegex, "");
-            }
+                return Regex.Replace(headFileRef, strippingRegex, "");
 
-            return strippedHeadFileContent;
+            return headFileRef;
         }
 
         [CanBeNull]
