@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="*" Exclude="*.csproj*" />
+    <None Include="Build\*" />
+    <None Include="Doc\**\*" />
+    <None Include="Shared\Build\**\*" />
+  </ItemGroup>
+
+</Project>
