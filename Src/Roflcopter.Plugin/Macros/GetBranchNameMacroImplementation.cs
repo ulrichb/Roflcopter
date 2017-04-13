@@ -7,7 +7,7 @@ using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Macros;
 using JetBrains.Util;
 
-namespace Roflcopter.Plugin
+namespace Roflcopter.Plugin.Macros
 {
     [MacroImplementation(Definition = typeof(GetBranchNameMacroDefinition))]
     public class GetBranchNameMacroImplementation : SimpleMacroImplementation

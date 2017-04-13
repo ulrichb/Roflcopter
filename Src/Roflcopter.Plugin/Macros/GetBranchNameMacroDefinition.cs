@@ -1,6 +1,6 @@
 ﻿using JetBrains.ReSharper.Feature.Services.LiveTemplates.Macros;
 
-namespace Roflcopter.Plugin
+namespace Roflcopter.Plugin.Macros
 {
     [MacroDefinition(Name, ShortDescription = ShortDescription, LongDescription = LongDescription)]
     public class GetBranchNameMacroDefinition : SimpleMacroDefinition
