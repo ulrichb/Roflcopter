@@ -1,15 +1,10 @@
 ﻿<Project>
-  <PropertyGroup>
-    <ReSharperVersionIdentifier>20171</ReSharperVersionIdentifier>
-
-    <!-- This is a workaround for https://github.com/dotnet/sdk/issues/980: -->
-    <!-- <BaseIntermediateOutputPath>obj\R$(ReSharperVersionIdentifier)\</BaseIntermediateOutputPath> -->
-  </PropertyGroup>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
+    <ReSharperVersionIdentifier>20171</ReSharperVersionIdentifier>
+
     <TargetFramework>net45</TargetFramework>
-    <RootNamespace>Roflcopter.Plugin</RootNamespace>
     <EnableDefaultItems>false</EnableDefaultItems>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -41,4 +36,5 @@
     <ReSharperInstallationsDirectoryInstancePart>ExpRS$(ReSharperVersionIdentifier)</ReSharperInstallationsDirectoryInstancePart>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\Shared\Build\CopyToReSharperInstallationsDirectory.targets" />
+
 </Project>
