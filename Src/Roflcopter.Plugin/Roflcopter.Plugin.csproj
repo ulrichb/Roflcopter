@@ -30,6 +30,10 @@
     <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.1.20170407.131329" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>

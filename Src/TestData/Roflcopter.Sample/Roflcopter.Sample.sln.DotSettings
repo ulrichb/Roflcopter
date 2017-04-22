@@ -9,4 +9,8 @@
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/Field/=Branch/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/Field/=Branch/Expression/@EntryValue">getBranchName("^feature/")</s:String>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/Field/=Branch/Order/@EntryValue">0</s:Int64>
+	<s:String x:Key="/Default/PatternsAndTemplates/Todo/TodoItemsCount/Definitions/@EntryValue">Todo&#xD;
+Bug&#xD;
+&#xD;
+Invalid</s:String>
 </wpf:ResourceDictionary>

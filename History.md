@@ -1,6 +1,9 @@
+### vNext ###
+- Add "To-do items count" (see options page)
+
 ### 0.7.0 ###
-- ReSharper 2017.1 support
 - Added provider for "Copy Fully-qualified name" which returns <TypeShortName>.<MemberShortName>
+- ReSharper 2017.1 support
 
 ### 0.6.0 ###
 - ReSharper 2016.3 support
