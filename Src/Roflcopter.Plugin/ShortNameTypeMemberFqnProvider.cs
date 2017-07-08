@@ -6,11 +6,12 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Features.Environment.CopyFqn;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.DataContext;
+using JetBrains.UI.Avalon.TreeListView;
 
 namespace Roflcopter.Plugin
 {
     /// <summary>
-    /// A provider for <see cref="CopyFqnAction"/> which returns [type(shortname)].[member(shortname)].
+    /// A provider for <see cref="CopyFqnAction"/> which returns <c>[type name].[member]</c>.
     /// </summary>
     [SolutionComponent]
     public class ShortNameTypeMemberFqnProvider : IFqnProvider
@@ -33,7 +34,11 @@ namespace Roflcopter.Plugin
                 var containingType = typeMember.GetContainingType();
 
                 if (containingType != null)
-                    yield return new PresentableFqn($"{containingType.ShortName}.{typeMember.ShortName}");
+                {
+                    var containingTypePath = containingType.PathName(x => x.ShortName, x => x.GetContainingType());
+
+                    yield return new PresentableFqn($"{containingTypePath}.{typeMember.ShortName}");
+                }
             }
         }
 
