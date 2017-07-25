@@ -8,7 +8,7 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.DataContext;
 using JetBrains.UI.Avalon.TreeListView;
 
-namespace Roflcopter.Plugin
+namespace Roflcopter.Plugin.CopyFqnProviders
 {
     /// <summary>
     /// A provider for <see cref="CopyFqnAction"/> which returns <c>[type name].[member]</c>.
