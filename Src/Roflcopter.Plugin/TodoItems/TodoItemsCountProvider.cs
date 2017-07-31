@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application;
 using JetBrains.Application.Settings;
@@ -110,10 +110,14 @@ namespace Roflcopter.Plugin.TodoItems
 
             var definitionsText = store.GetValue((TodoItemsCountSettings s) => s.Definitions);
 
-            return definitionsText
-                .SplitByNewLine(options: StringSplitOptions.RemoveEmptyEntries)
-                .Select(x => new TodoItemsCountDefinition(x))
-                .ToList();
+            var matches = Regex.Matches(definitionsText, @"^\s*(?<Title>.+?)\s*(\[(?<Condition>.*)\]\s*)?$", RegexOptions.Multiline);
+
+            var result = from Match match in matches
+                         let title = match.Groups["Title"].Value
+                         let condition = match.Groups["Condition"]
+                         select new TodoItemsCountDefinition(title, condition.Success ? condition.Value : null);
+
+            return result.ToList();
         }
     }
 }

@@ -18,7 +18,12 @@ namespace Roflcopter.Plugin.TodoItems
             var enabledOption = AddBoolOption((TodoItemsCountSettings s) => s.IsEnabled, "Enabled");
 
             AddText("Definitions:");
-            var definitionsOption = AddStringOption((TodoItemsCountSettings s) => s.Definitions, "", acceptsReturn: true);
+            var definitionsOption = AddStringOption(
+                (TodoItemsCountSettings s) => s.Definitions, "",
+                acceptsReturn: true,
+                toolTipText: "Syntax: <To-do Title>[<Optional text-matching>]");
+
+
             enabledOption.CheckedProperty.FlowInto(lifetime, definitionsOption.GetIsEnabledProperty(), x => x);
 
             FinishPage();
