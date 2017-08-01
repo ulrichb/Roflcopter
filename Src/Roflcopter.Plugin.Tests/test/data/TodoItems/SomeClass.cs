@@ -1,4 +1,4 @@
-﻿namespace Roflcopter.Sample
+﻿namespace Roflcopter.Sample.TodoItems
 {
     public class SomeClass
     {

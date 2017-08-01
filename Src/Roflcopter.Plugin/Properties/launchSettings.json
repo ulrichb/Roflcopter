@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "ImplicitNullability.Plugin": {
+    "Roflcopter.Plugin": {
       "commandName": "Executable",
       "executablePath": "$(DevEnvDir)devenv.exe",
-      "commandLineArgs": "/RootSuffix ExpRS$(ReSharperVersionIdentifier) /ReSharper.Internal $(SolutionDir)Src\\TestData\\Roflcopter.Sample\\Roflcopter.Sample.sln"
+      "commandLineArgs": "/RootSuffix ExpRS$(ReSharperVersionIdentifier) /ReSharper.Internal $(SolutionDir)Src\\Roflcopter.Plugin.Tests\\test\\data\\Roflcopter.Sample.sln"
     }
   }
 }
