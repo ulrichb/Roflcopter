@@ -23,22 +23,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**" />
+    <Compile Include="**\*.cs" Exclude="obj\**;test\data\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.1.*" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.1.*" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="WindowsBase" />
+    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.csproj" />
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-
-  <PropertyGroup>
-    <ReSharperInstallationsDirectoryInstancePart>ExpRS$(ReSharperVersionIdentifier)</ReSharperInstallationsDirectoryInstancePart>
-  </PropertyGroup>
-  <Import Project="$(SolutionDir)\Shared\Build\CopyToReSharperInstallationsDirectory.targets" />
 
 </Project>
