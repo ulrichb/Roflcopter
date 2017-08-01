@@ -7,3 +7,5 @@ ReSharper.Roflcopter extension
  * "To-do items count" in To-Do Explorer window (see corresponding options page)
 
  * Provider for "Copy Fully-qualified name" which returns <TypeShortName>.<MemberShortName>
+
+ * "Mismatch between type and file name" warning

@@ -1,0 +1,9 @@
+﻿namespace Roflcopter.Sample.MismatchedFileNames
+{
+    public class |SingleClassWithWrongNameX|(0)
+    {
+    }
+}
+
+---------------------------------------------------------
+(0): ReSharper Warning: Type doesn't match file name 'SingleClassWithWrongName.cs'
