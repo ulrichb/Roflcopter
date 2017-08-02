@@ -1,4 +1,4 @@
-### vNext ###
+### 0.8.0 ###
 - Added "To-do items count" (see options page)
 - Added "Mismatch between type and file name" warning
 
