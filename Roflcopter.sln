@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin", "Src\Ro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.csproj", "{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Sample", "Src\Roflcopter.Plugin.Tests\test\data\Roflcopter.Sample.csproj", "{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9E2BBE59-1972-45B2-836B-802479CFEB6D} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 		{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
+		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 	EndGlobalSection
 EndGlobal
