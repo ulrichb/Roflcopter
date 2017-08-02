@@ -7,8 +7,16 @@ using JetBrains.UI.ActionsRevised;
 
 namespace Roflcopter.Plugin.TodoItems
 {
-    [Action(nameof(TodoItemsCountDummyAction), Id = 944208914)]
-    public class TodoItemsCountDummyAction : IExecutableAction, IInsertLast<TodoExplorerActionBarActionGroup>
+    [ActionGroup(nameof(TodoItemsCountDummyActionGroup), ActionGroupInsertStyles.Separated, Id = 944208910)]
+    public class TodoItemsCountDummyActionGroup : IAction, IInsertLast<TodoExplorerActionBarActionGroup>
+    {
+        public TodoItemsCountDummyActionGroup(TodoItemsCountDummyAction _)
+        {
+        }
+    }
+
+    [Action(nameof(TodoItemsCountDummyAction), Id = 944208920)]
+    public class TodoItemsCountDummyAction : IExecutableAction
     {
         public bool Update(IDataContext context, ActionPresentation presentation, [CanBeNull] DelegateUpdate nextUpdate)
         {
