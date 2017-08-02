@@ -15,6 +15,6 @@ namespace Roflcopter.Plugin.TodoItems
         [CanBeNull]
         public string Condition { get; }
 
-        public override string ToString() => Name;
+        public override string ToString() => Name + (Condition == null ? "" : $"[{Condition}]");
     }
 }

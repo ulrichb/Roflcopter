@@ -19,7 +19,7 @@ namespace Roflcopter.Plugin.TodoItems
             if (todoItemsCounts == null)
                 presentation.Text = null;
             else
-                presentation.Text = string.Join(", ", todoItemsCounts.Select(x => x.Definition + ": " + x.Count));
+                presentation.Text = string.Join(", ", todoItemsCounts.Select(x => $"{x.Definition}: {x.Count}"));
 
             return false;
         }
