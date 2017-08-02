@@ -45,7 +45,7 @@ namespace Roflcopter.Plugin.Macros
             if (string.IsNullOrWhiteSpace(headFileContent))
                 return "<.git/HEAD file is empty>";
 
-            var headFileRef = Regex.Replace(headFileContent, @"^ref: refs/heads/", "");
+            var headFileRef = Regex.Replace(headFileContent, "^ref: refs/heads/", "");
 
             return ApplyStripingRegexArgument(headFileRef);
         }
