@@ -1,11 +1,9 @@
-﻿<Project>
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <ReSharperVersionIdentifier>20171</ReSharperVersionIdentifier>
 
     <TargetFramework>net45</TargetFramework>
-    <EnableDefaultItems>false</EnableDefaultItems>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <DebugType>full</DebugType> <!-- necessary for OpenCover -->
@@ -22,7 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**;test\data\**" />
+    <Compile Remove="test\data\**" />
+    <None Remove="test\data\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +31,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.csproj" />
   </ItemGroup>
-
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
 </Project>
