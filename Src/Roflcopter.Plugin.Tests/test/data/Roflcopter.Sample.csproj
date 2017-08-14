@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AssertionMessages\InvalidAssertionMessageHighlightingTests\*ErrorSamples*.cs" />
+    <None Include="AssertionMessages\InvalidAssertionMessageHighlightingTests\*ErrorSamples*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="11.*" />
   </ItemGroup>
 
