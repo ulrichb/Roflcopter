@@ -15,21 +15,18 @@ using Roflcopter.Plugin.MismatchedFileNames;
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {
-    /// <summary>
-    /// Xml Doc highlighting for types / type members with specific accessibility.
-    /// </summary>
     [ConfigurableSeverityHighlighting(
         SeverityId,
         CSharpLanguage.Name,
         OverlapResolve = OverlapResolveKind.NONE,
         ToolTipFormatString = Message)]
-        public class MismatchedFileNameHighlighting : SimpleTreeNodeHighlightingBase<ITypeDeclaration>
+    public class MismatchedFileNameHighlighting : SimpleTreeNodeHighlightingBase<ITypeDeclaration>
     {
         public const string SeverityId = "MismatchedFileName";
         public const string Title = "Mismatch between type and file name";
         private const string Message = "Type doesn't match file name '{0}'";
 
-        public const string Description = Title;    
+        public const string Description = Title;
 
         public MismatchedFileNameHighlighting(ITypeDeclaration declaration, string fileName)
             : base(declaration, string.Format(Message, fileName))
