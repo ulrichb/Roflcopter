@@ -8,7 +8,7 @@
         {
         }
 
-        public class NestedCass
+        public class NestedClass
         {
             public string Property { get; set; }
         }
