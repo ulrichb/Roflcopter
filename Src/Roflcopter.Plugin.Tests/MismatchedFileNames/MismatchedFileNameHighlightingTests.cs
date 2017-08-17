@@ -19,15 +19,27 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
             highlighting is MismatchedFileNameHighlighting;
 
         [Test]
-        public void TestSingleClass() => DoNamedTest2();
+        public void SingleClass() => DoNamedTest();
 
         [Test]
-        public void TestSingleClassWithWrongName() => DoNamedTest2();
+        public void SingleClassWithWrongName() => DoNamedTest();
 
         [Test]
-        public void TestTwoClasses() => DoNamedTest2();
+        public void MultipleClasses() => DoNamedTest();
 
         [Test]
-        public void TestClassAndEnum() => DoNamedTest2();
+        public void ClassAndEnum() => DoNamedTest();
+
+        [Test]
+        public void ClassAndInterfacePair() => DoNamedTest();
+
+        [Test]
+        public void ClassAndInterfacePairWithWrongName() => DoNamedTest();
+
+        [Test]
+        public void InterfaceAndClassPair() => DoNamedTest();
+
+        [Test]
+        public void InterfaceAndClassPairWithWrongName() => DoNamedTest();
     }
 }

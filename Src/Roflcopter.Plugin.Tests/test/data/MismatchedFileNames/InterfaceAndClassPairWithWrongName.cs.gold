@@ -1,0 +1,13 @@
+﻿namespace Roflcopter.Sample.MismatchedFileNames
+{
+    public interface IInterfaceAndClassPairWithWrongNameX
+    {
+    }
+
+    public class |InterfaceAndClassPairWithWrongNameX|(0)
+    {
+    }
+}
+
+---------------------------------------------------------
+(0): ReSharper Warning: Type doesn't match file name 'InterfaceAndClassPairWithWrongName.cs'

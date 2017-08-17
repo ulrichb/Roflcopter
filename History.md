@@ -1,5 +1,6 @@
 ### vNext ###
 - Added "Assertion message is invalid" warning
+- "Mismatch between type and file name" now accepts "interface + class pairs" (pattern: `class SomeType` + `interface ISomeType`)
 
 ### 0.8.0 ###
 - Added "To-do items count" (see options page)
