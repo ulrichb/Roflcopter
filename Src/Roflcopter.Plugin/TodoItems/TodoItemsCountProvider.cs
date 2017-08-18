@@ -41,7 +41,13 @@ namespace Roflcopter.Plugin.TodoItems
             _settingsCache = solutionSettingsCache;
             _settingsStore = settingsStore;
 
-            _multiplexingTodoManager.FilesWereUpdated.Advise(_lifetime, _ => UpdatingTodoItemsCounts());
+            _multiplexingTodoManager.FilesWereUpdated.Advise(_lifetime, files =>
+            {
+                // Check for invalid changed files, else we'll get "not valid" exceptions in the 'AllItems' access
+                // later (at least as observed during unit test shut down):
+                if (files.WhereNotNull().All(x => x.IsValid()))
+                    UpdatingTodoItemsCounts();
+            });
 
             _settingsStore.AdviseChange(_lifetime, KeyExposed, () =>
             {

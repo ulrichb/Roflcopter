@@ -1,6 +1,6 @@
 ﻿namespace Roflcopter.Sample.TodoItems
 {
-    public class SomeClass
+    public class Sample
     {
         public string Property { get; set; }
 
@@ -15,11 +15,6 @@
 
             // BUG 1
             // BUG 2
-        }
-
-        public class NestedCass
-        {
-            public string Property { get; set; }
         }
     }
 }

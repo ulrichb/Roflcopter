@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.TodoItems;
@@ -10,6 +11,7 @@ namespace Roflcopter.Plugin.TodoItems
     [OptionsPage(
         "TodoItemsCountOptionsPage", "To-do Items Count", typeof(PsiSymbolsThemedIcons.Macro),
         ParentId = TodoExplorerOptionsPage.PID)]
+    [ExcludeFromCodeCoverage /* manually tested UI */]
     public class TodoItemsCountOptionsPage : SimpleOptionsPage
     {
         public TodoItemsCountOptionsPage([NotNull] Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :

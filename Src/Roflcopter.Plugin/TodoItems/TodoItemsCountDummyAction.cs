@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.ActionManagement;
 using JetBrains.Annotations;
@@ -8,6 +9,7 @@ using JetBrains.UI.ActionsRevised;
 namespace Roflcopter.Plugin.TodoItems
 {
     [ActionGroup(nameof(TodoItemsCountDummyActionGroup), ActionGroupInsertStyles.Separated, Id = 944208910)]
+    [ExcludeFromCodeCoverage /* manually tested UI */]
     public class TodoItemsCountDummyActionGroup : IAction, IInsertLast<TodoExplorerActionBarActionGroup>
     {
         public TodoItemsCountDummyActionGroup(TodoItemsCountDummyAction _)
@@ -20,9 +22,9 @@ namespace Roflcopter.Plugin.TodoItems
     {
         public bool Update(IDataContext context, ActionPresentation presentation, [CanBeNull] DelegateUpdate nextUpdate)
         {
-            var todoItemsCountProvider = context.GetComponent<TodoItemsCountProvider>();
+            var todoItemsCountProvider = context.TryGetComponent<TodoItemsCountProvider>();
 
-            var todoItemsCounts = todoItemsCountProvider.TodoItemsCounts;
+            var todoItemsCounts = todoItemsCountProvider?.TodoItemsCounts;
 
             if (todoItemsCounts == null)
                 presentation.Text = null;
@@ -32,6 +34,7 @@ namespace Roflcopter.Plugin.TodoItems
             return false;
         }
 
+        [ExcludeFromCodeCoverage /* nothing to test */]
         public void Execute(IDataContext context, [CanBeNull] DelegateExecute nextExecute)
         {
         }

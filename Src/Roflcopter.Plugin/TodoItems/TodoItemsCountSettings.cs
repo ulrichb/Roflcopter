@@ -9,7 +9,7 @@ namespace Roflcopter.Plugin.TodoItems
     public class TodoItemsCountSettings
     {
         [SettingsEntry(true, "Is enabled")]
-        public bool IsEnabled { get; set; }
+        public readonly bool IsEnabled;
 
         [SettingsEntry("Bug\nTodo", "Definitions")]
         public readonly string Definitions;
