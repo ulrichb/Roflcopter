@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
-using JetBrains.Application;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
 using JetBrains.DataFlow;
@@ -24,24 +23,24 @@ namespace Roflcopter.Plugin.TodoItems
         [CanBeNull]
         private volatile IReadOnlyList<TodoItemsCount> _todoItemsCounts;
 
-        private readonly Lifetime _lifetime;
         private readonly MultiplexingTodoManager _multiplexingTodoManager;
         private readonly ISettingsStore _settingsStore;
         private readonly ISettingsCache _settingsCache;
+
+        [NotNull]
+        private volatile Lifetime _currentSettingsCacheLifeTime;
 
         public TodoItemsCountProvider(
             Lifetime lifetime,
             MultiplexingTodoManager multiplexingTodoManager,
             SolutionSettingsCache solutionSettingsCache,
-            ISettingsStore settingsStore,
-            IShellLocks shellLocks)
+            ISettingsStore settingsStore)
         {
-            _lifetime = lifetime;
             _multiplexingTodoManager = multiplexingTodoManager;
             _settingsCache = solutionSettingsCache;
             _settingsStore = settingsStore;
 
-            _multiplexingTodoManager.FilesWereUpdated.Advise(_lifetime, files =>
+            _multiplexingTodoManager.FilesWereUpdated.Advise(lifetime, files =>
             {
                 // Check for invalid changed files, else we'll get "not valid" exceptions in the 'AllItems' access
                 // later (at least as observed during unit test shut down):
@@ -49,12 +48,17 @@ namespace Roflcopter.Plugin.TodoItems
                     UpdatingTodoItemsCounts();
             });
 
-            _settingsStore.AdviseChange(_lifetime, KeyExposed, () =>
+            var settingsCacheGetDataSequentialLifeTime = new SequentialLifetimes(lifetime);
+            _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
+
+            _settingsStore.AdviseChange(lifetime, KeyExposed, () =>
             {
-                // Using the Dispatcher here to solve the issue, that the ISettingsStore.AdviseChange() comes too early (our
-                // settings cache has still the old value):
-                shellLocks.Dispatcher.BeginInvoke(nameof(TodoItemsCountProvider), () =>
-                    shellLocks.ReentrancyGuard.Execute(nameof(TodoItemsCountProvider), () => UpdatingTodoItemsCounts()));
+                // We use the following lifetime to solve the issue that this 'ISettingsStore.AdviseChange()' callback
+                // arrives earlier than the one used in the cache. => The cache has still the old value when accessed
+                // in 'UpdatingTodoItemsCounts()'. => Terminate the cache lifetime explicitly.
+                _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
+
+                UpdatingTodoItemsCounts();
             });
         }
 
@@ -98,7 +102,7 @@ namespace Roflcopter.Plugin.TodoItems
         [CanBeNull]
         private IReadOnlyCollection<TodoItemsCountDefinition> GetTodoItemsCountDefinitions()
         {
-            return _settingsCache.GetData(_lifetime, this);
+            return _settingsCache.GetData(_currentSettingsCacheLifeTime, this);
         }
 
         public SettingsKey KeyExposed => _settingsStore.Schema.GetKey<TodoItemsCountSettings>();
