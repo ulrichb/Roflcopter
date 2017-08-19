@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.1.*" />
+    <PackageReference Include="System.ValueTuple" Version="4.*" />
   </ItemGroup>
 
   <ItemGroup>

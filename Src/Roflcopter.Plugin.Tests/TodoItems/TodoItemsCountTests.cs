@@ -24,10 +24,10 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             Test((sut, _) =>
             {
                 Assert.That(sut.TodoItemsCounts, Is.Not.Null);
-                Assert.That(sut.TodoItemsCounts.Select(x => new { Definition = x.Definition.ToString(), x.Count }), Is.EqualTo(new[]
+                Assert.That(sut.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
-                    new { Definition = "Bug", Count = 2 },
-                    new { Definition = "Todo", Count = 5 },
+                    ("Bug", 2),
+                    ("Todo", 5),
                 }));
             });
         }
@@ -41,10 +41,10 @@ namespace Roflcopter.Plugin.Tests.TodoItems
                 RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, definitionText));
 
                 Assert.That(sut.TodoItemsCounts, Is.Not.Null);
-                Assert.That(sut.TodoItemsCounts.Select(x => new { Definition = x.Definition.ToString(), x.Count }), Is.EqualTo(new[]
+                Assert.That(sut.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
-                    new { Definition = "Todo", Count = 5 },
-                    new { Definition = "Todo[Important]", Count = 3 },
+                    ("Todo", 5),
+                    ("Todo[Important]", 3),
                 }));
             });
         }
