@@ -61,6 +61,17 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         }
 
         [Test]
+        public void TodoItemsCountsWithEmptyDefinitions()
+        {
+            Test((sut, settings) =>
+            {
+                settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "");
+
+                Assert.That(sut.TodoItemsCounts, Is.Null);
+            });
+        }
+
+        [Test]
         public void TodoItemsCountDummyAction()
         {
             Test((_, __) =>

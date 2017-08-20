@@ -45,7 +45,7 @@ namespace Roflcopter.Plugin.TodoItems
                 // Check for invalid changed files, else we'll get "not valid" exceptions in the 'AllItems' access
                 // later (at least as observed during unit test shut down):
                 if (files.WhereNotNull().All(x => x.IsValid()))
-                    UpdatingTodoItemsCounts();
+                    UpdateTodoItemsCounts();
             });
 
             var settingsCacheGetDataSequentialLifeTime = new SequentialLifetimes(lifetime);
@@ -55,25 +55,25 @@ namespace Roflcopter.Plugin.TodoItems
             {
                 // We use the following lifetime to solve the issue that this 'ISettingsStore.AdviseChange()' callback
                 // arrives earlier than the one used in the cache. => The cache has still the old value when accessed
-                // in 'UpdatingTodoItemsCounts()'. => Terminate the cache lifetime explicitly.
+                // in 'UpdateTodoItemsCounts()'. => Terminate the cache lifetime explicitly.
                 _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
 
-                UpdatingTodoItemsCounts();
+                UpdateTodoItemsCounts();
             });
         }
 
         [CanBeNull]
         public IReadOnlyCollection<TodoItemsCount> TodoItemsCounts => _todoItemsCounts;
 
-        private void UpdatingTodoItemsCounts()
+        private void UpdateTodoItemsCounts()
         {
-            Logger.Verbose(nameof(UpdatingTodoItemsCounts) + " ...");
+            Logger.Verbose(nameof(UpdateTodoItemsCounts) + " ...");
 
             var todoItemsCountDefinitions = GetTodoItemsCountDefinitions();
 
             IReadOnlyList<TodoItemsCount> newTodoItemsCounts = null;
 
-            if (todoItemsCountDefinitions != null)
+            if (todoItemsCountDefinitions != null && todoItemsCountDefinitions.Count > 0)
             {
                 var localTodoItemsCounts = new LocalList<TodoItemsCount>(todoItemsCountDefinitions.Select(x => new TodoItemsCount(x)));
 
