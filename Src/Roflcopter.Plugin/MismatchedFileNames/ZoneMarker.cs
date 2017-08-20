@@ -2,7 +2,7 @@
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp;
 
-namespace Roflcopter.Plugin
+namespace Roflcopter.Plugin.MismatchedFileNames
 {
     [ZoneMarker]
     public class ZoneMarker :
