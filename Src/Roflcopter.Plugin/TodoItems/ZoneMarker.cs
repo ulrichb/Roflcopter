@@ -5,8 +5,7 @@ namespace Roflcopter.Plugin.TodoItems
 {
     [ZoneMarker]
     public class ZoneMarker :
-            IRequire<NavigationZone> // following JetBrains.ReSharper.Features.Inspections.TodoItems.TodoExplorer
-        // IDEA: Also IRequire<IUIInteractiveZone> (if the above isn't enough for InspectCode; what about the tests?)
+        IRequire<NavigationZone> // following JetBrains.ReSharper.Features.Inspections.TodoItems.TodoExplorer
     {
     }
 }

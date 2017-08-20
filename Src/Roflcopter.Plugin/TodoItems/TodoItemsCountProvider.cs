@@ -20,11 +20,10 @@ namespace Roflcopter.Plugin.TodoItems
     {
         private static readonly ILogger Logger = JetBrains.Util.Logging.Logger.GetLogger(typeof(TodoItemsCountProvider));
 
-        [CanBeNull]
-        private volatile IReadOnlyList<TodoItemsCount> _todoItemsCounts;
-
-        private readonly MultiplexingTodoManager _multiplexingTodoManager;
+        private readonly IPrimaryTodoManager _primaryTodoManager;
         private readonly ISettingsStore _settingsStore;
+        private readonly IReadOnlyList<ITodoItemsCountConsumer> _todoItemsCountConsumers;
+
         private readonly ISettingsCache _settingsCache;
 
         [NotNull]
@@ -32,15 +31,17 @@ namespace Roflcopter.Plugin.TodoItems
 
         public TodoItemsCountProvider(
             Lifetime lifetime,
-            MultiplexingTodoManager multiplexingTodoManager,
+            IPrimaryTodoManager primaryTodoManager,
             SolutionSettingsCache solutionSettingsCache,
-            ISettingsStore settingsStore)
+            ISettingsStore settingsStore,
+            IEnumerable<ITodoItemsCountConsumer> todoItemsCountConsumers)
         {
-            _multiplexingTodoManager = multiplexingTodoManager;
+            _primaryTodoManager = primaryTodoManager;
             _settingsCache = solutionSettingsCache;
             _settingsStore = settingsStore;
+            _todoItemsCountConsumers = todoItemsCountConsumers.ToIReadOnlyList();
 
-            _multiplexingTodoManager.FilesWereUpdated.Advise(lifetime, files =>
+            _primaryTodoManager.FilesWereUpdated.Advise(lifetime, files =>
             {
                 // Check for invalid changed files, else we'll get "not valid" exceptions in the 'AllItems' access
                 // later (at least as observed during unit test shut down):
@@ -60,43 +61,50 @@ namespace Roflcopter.Plugin.TodoItems
 
                 UpdateTodoItemsCounts();
             });
-        }
 
-        [CanBeNull]
-        public IReadOnlyCollection<TodoItemsCount> TodoItemsCounts => _todoItemsCounts;
+            foreach (var consumer in _todoItemsCountConsumers)
+                consumer.UpdateRequestSignal.Advise(lifetime, () => { UpdateTodoItemsCounts(); });
+
+            // IDEA: Combine the three event sources and execute update in background thread?
+        }
 
         private void UpdateTodoItemsCounts()
         {
             Logger.Verbose(nameof(UpdateTodoItemsCounts) + " ...");
 
-            var todoItemsCountDefinitions = GetTodoItemsCountDefinitions();
+            var definitions = GetTodoItemsCountDefinitions();
 
-            IReadOnlyList<TodoItemsCount> newTodoItemsCounts = null;
+            IReadOnlyList<TodoItemsCount> todoItemsCounts = null;
 
-            if (todoItemsCountDefinitions != null && todoItemsCountDefinitions.Count > 0)
+            // IDEA: Maybe also early exit when there are no consumers/they have no visible presentation?
+
+            if (definitions != null && definitions.Count > 0)
             {
-                var localTodoItemsCounts = new LocalList<TodoItemsCount>(todoItemsCountDefinitions.Select(x => new TodoItemsCount(x)));
+                var localTodoItemsCounts = new LocalList<TodoItemsCount>(definitions.Select(x => new TodoItemsCount(x)));
 
-                List<ChunkHashMap<IPsiSourceFile, List<TodoItemBase>>> allItems;
+                var allTodoItems = FetchAllTodoItems();
 
-                using (_multiplexingTodoManager.Lock())
-                using (ReadLockCookie.Create())
-                {
-                    allItems = _multiplexingTodoManager.AllItems.ToList();
-                }
-
-                foreach (var todoItem in allItems.SelectMany(x => x).SelectMany(x => x.Value))
+                foreach (var todoItemChunk in allTodoItems.SelectMany(x => x))
+                foreach (var todoItem in todoItemChunk.Value) // IDEA: Parallelize?
                 {
                     foreach (var newTodoItemsCount in localTodoItemsCounts)
-                    {
                         newTodoItemsCount.IncreaseIfMatches(todoItem);
-                    }
                 }
 
-                newTodoItemsCounts = localTodoItemsCounts.ToArray();
+                todoItemsCounts = localTodoItemsCounts.ToArray();
             }
 
-            _todoItemsCounts = newTodoItemsCounts;
+            foreach (var consumer in _todoItemsCountConsumers)
+                consumer.Update(todoItemsCounts);
+        }
+
+        private List<ChunkHashMap<IPsiSourceFile, List<TodoItemBase>>> FetchAllTodoItems()
+        {
+            using (_primaryTodoManager.Lock())
+            using (ReadLockCookie.Create())
+            {
+                return _primaryTodoManager.AllItems.ToList();
+            }
         }
 
         [CanBeNull]
@@ -112,8 +120,6 @@ namespace Roflcopter.Plugin.TodoItems
             ReadData(IContextBoundSettingsStore store)
         {
             var isEnabled = store.GetValue((TodoItemsCountSettings s) => s.IsEnabled);
-
-            // IDEA: Maybe also return null when the display (explorer) isn't visible?
 
             if (!isEnabled)
                 return null;

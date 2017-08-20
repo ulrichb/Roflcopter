@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using JetBrains.ActionManagement;
 using JetBrains.Application.Components;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 using Roflcopter.Plugin.TodoItems;
-using JetBrains.Application.DataContext;
 using JetBrains.Application.Settings;
+using JetBrains.Util;
 
 namespace Roflcopter.Plugin.Tests.TodoItems
 {
@@ -21,10 +20,10 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         [Test]
         public void TodoItemsCounts()
         {
-            Test((sut, _) =>
+            Test((consumer, _) =>
             {
-                Assert.That(sut.TodoItemsCounts, Is.Not.Null);
-                Assert.That(sut.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
+                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Bug", 2),
                     ("Todo", 5),
@@ -35,13 +34,13 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         [Test]
         public void TodoItemsCountsWithCondition()
         {
-            Test((sut, settings) =>
+            Test((consumer, settings) =>
             {
                 var definitionText = "Todo\n Todo  [Important] ";
                 RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, definitionText));
 
-                Assert.That(sut.TodoItemsCounts, Is.Not.Null);
-                Assert.That(sut.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
+                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Todo", 5),
                     ("Todo[Important]", 3),
@@ -52,57 +51,39 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         [Test]
         public void TodoItemsCountsWithDisabledSetting()
         {
-            Test((sut, settings) =>
+            Test((consumer, settings) =>
             {
                 settings.SetValue((TodoItemsCountSettings s) => s.IsEnabled, false);
 
-                Assert.That(sut.TodoItemsCounts, Is.Null);
+                Assert.That(consumer.TodoItemsCounts, Is.Null);
             });
         }
 
         [Test]
         public void TodoItemsCountsWithEmptyDefinitions()
         {
-            Test((sut, settings) =>
+            Test((consumer, settings) =>
             {
                 settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "");
 
-                Assert.That(sut.TodoItemsCounts, Is.Null);
+                Assert.That(consumer.TodoItemsCounts, Is.Null);
             });
         }
 
         [Test]
-        public void TodoItemsCountDummyAction()
+        public void TodoItemsCounts_ConsumerUpdateRequestSignal()
         {
-            Test((_, __) =>
+            Test((consumer, _) =>
             {
-                var sut = new TodoItemsCountDummyAction();
-                var dataContext = ShellInstance.GetComponent<DataContexts>().CreateWithDataRules(TestFixtureLifetime);
-                var actionPresentation = new ActionPresentation();
+                var oldUpdateCounter = consumer.UpdateCounter;
 
-                var result = sut.Update(dataContext, actionPresentation, null);
+                RunGuarded(() => consumer.UpdateRequestSignal.Fire());
 
-                Assert.That(result, Is.EqualTo(false));
-                Assert.That(actionPresentation.Text, Is.EqualTo("Bug: 2, Todo: 5"));
+                Assert.That(consumer.UpdateCounter, Is.EqualTo(oldUpdateCounter + 1));
             });
         }
 
-        [Test]
-        public void TodoItemsCountDummyAction_WithEmptyDataContext()
-        {
-            Test((_, __) =>
-            {
-                var sut = new TodoItemsCountDummyAction();
-                var dataContext = ShellInstance.GetComponent<DataContexts>().Empty;
-                var actionPresentation = new ActionPresentation();
-
-                sut.Update(dataContext, actionPresentation, null);
-
-                Assert.That(actionPresentation.Text, Is.EqualTo(null));
-            });
-        }
-
-        private void Test(Action<TodoItemsCountProvider, IContextBoundSettingsStore> action)
+        private void Test(Action<TestTodoItemsCountConsumer, IContextBoundSettingsStore> action)
         {
             var files = new[] { "Sample.cs", "Sample.xml" };
 
@@ -112,9 +93,10 @@ namespace Roflcopter.Plugin.Tests.TodoItems
                     files.Select(x => GetTestDataFilePath2(x).FullPath),
                     (lifetime, solution, project) =>
                     {
-                        var sut = solution.GetComponent<TodoItemsCountProvider>();
+                        solution.GetComponent<TodoItemsCountProvider>().NotNull();
+                        var consumer = ShellInstance.GetComponent<TestTodoItemsCountConsumer>();
 
-                        action(sut, settings);
+                        action(consumer, settings);
                     });
 
                 // Disable to solve issues with TodoItemsCountProvider-updates during termination of

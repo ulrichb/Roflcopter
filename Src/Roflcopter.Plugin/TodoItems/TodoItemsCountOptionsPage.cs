@@ -9,11 +9,13 @@ using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
 namespace Roflcopter.Plugin.TodoItems
 {
     [OptionsPage(
-        "TodoItemsCountOptionsPage", "To-do Items Count", typeof(PsiSymbolsThemedIcons.Macro),
+        OptionsPageId, "To-do Items Count", typeof(PsiSymbolsThemedIcons.Macro),
         ParentId = TodoExplorerOptionsPage.PID)]
-    [ExcludeFromCodeCoverage /* manually tested UI */]
+    [ExcludeFromCodeCoverage /* manually tested UI code */]
     public class TodoItemsCountOptionsPage : SimpleOptionsPage
     {
+        public const string OptionsPageId = "TodoItemsCountOptionsPage";
+
         public TodoItemsCountOptionsPage([NotNull] Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
             base(lifetime, optionsSettingsSmartContext)
         {
