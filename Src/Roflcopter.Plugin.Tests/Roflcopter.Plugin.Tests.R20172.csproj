@@ -1,9 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project>
+  <PropertyGroup>
+    <ReSharperVersionIdentifier>20172</ReSharperVersionIdentifier>
+
+    <!-- This is a workaround for https://github.com/dotnet/sdk/issues/980: -->
+    <BaseIntermediateOutputPath>obj\R$(ReSharperVersionIdentifier)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
-    <ReSharperVersionIdentifier>20171</ReSharperVersionIdentifier>
-
     <TargetFramework>net45</TargetFramework>
+    <RootNamespace>Roflcopter.Plugin.Tests</RootNamespace>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <DebugType>full</DebugType> <!-- necessary for OpenCover -->
@@ -11,26 +17,28 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NET45;JET_MODE_ASSERT;RESHARPER$(ReSharperVersionIdentifier)</DefineConstants>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\R$(ReSharperVersionIdentifier)\Debug\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;NET45;RESHARPER$(ReSharperVersionIdentifier)</DefineConstants>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\R$(ReSharperVersionIdentifier)\Release\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="test\data\**" />
-    <None Remove="test\data\**" />
+    <Compile Remove="obj\**;test\data\**" />
+    <None Remove="obj\**;test\data\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.1.*" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.2.0-eap*" />
     <PackageReference Include="System.ValueTuple" Version="4.*" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.csproj" />
+    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.R$(ReSharperVersionIdentifier).csproj" />
   </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
 </Project>

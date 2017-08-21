@@ -3,8 +3,15 @@ using JetBrains.Annotations;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.TodoItems;
 using JetBrains.ReSharper.Psi.Resources;
+#if RESHARPER20171
 using JetBrains.UI.Options;
 using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
+#else
+using JetBrains.Application.UI.Options;
+using JetBrains.Application.UI.Options.OptionsDialog;
+using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
+
+#endif
 
 namespace Roflcopter.Plugin.TodoItems
 {

@@ -6,7 +6,12 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Features.Environment.CopyFqn;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.DataContext;
+#if RESHARPER20171
 using JetBrains.UI.Avalon.TreeListView;
+#else
+using JetBrains.UI.Controls.TreeListView;
+
+#endif
 
 namespace Roflcopter.Plugin.CopyFqnProviders
 {

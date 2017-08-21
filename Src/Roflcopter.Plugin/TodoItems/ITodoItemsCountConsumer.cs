@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using JetBrains.DataFlow;
-using JetBrains.UI.ActionSystem.ActionBar;
 
 namespace Roflcopter.Plugin.TodoItems
 {
@@ -9,7 +8,7 @@ namespace Roflcopter.Plugin.TodoItems
     /// A consumer for <see cref="TodoItemsCountProvider"/>.
     /// 
     /// This indirection (instead of depending on the provider directly in the "consumers") allows to register
-    /// the consumers as shell components (where UI parts like the <see cref="IActionBarPatcher"/> life).
+    /// the consumers as shell components (where UI parts like the IActionBarPatcher live).
     /// </summary>
     public interface ITodoItemsCountConsumer
     {

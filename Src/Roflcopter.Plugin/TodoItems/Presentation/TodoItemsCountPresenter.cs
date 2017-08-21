@@ -8,11 +8,21 @@ using JetBrains.Application;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.Actions;
 using JetBrains.ReSharper.Resources.Shell;
-using JetBrains.UI.Actions.Views;
-using JetBrains.UI.ActionSystem.ActionBar;
-using JetBrains.UI.Application;
 using JetBrains.Util;
 using JetBrains.Util.Threading.Tasks;
+#if RESHARPER20171
+using JetBrains.UI.Actions.Views;
+using JetBrains.UI.ActionSystem.ActionBar;
+using JetBrains.UI.Options;
+
+#else
+using JetBrains.Application.Threading;
+using JetBrains.Application.UI.ActionSystem.ActionBar;
+using JetBrains.Application.UI.Options.OptionsDialog;
+using JetBrains.UI.SrcView.Actions.ActionBar;
+using JetBrains.UI.SrcView.Actions.Views;
+
+#endif
 
 namespace Roflcopter.Plugin.TodoItems.Presentation
 {
@@ -83,7 +93,7 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
 
         private static void Label_MouseDoubleClick(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            Shell.Instance.Components.Options().ShowOptionsModal(TodoItemsCountOptionsPage.OptionsPageId);
+            Shell.Instance.GetComponent<OptionsManager>().ShowOptionsModal(TodoItemsCountOptionsPage.OptionsPageId);
         }
     }
 }

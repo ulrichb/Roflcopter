@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{26B55A35-CCB1-4635-871A-EE770850A5F2}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,11 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{26B55A35-CCB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionItems", "SolutionItems.csproj", "{6ADCE94D-EF87-42F6-A68B-69DA6FD90DE6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin", "Src\Roflcopter.Plugin\Roflcopter.Plugin.csproj", "{9E2BBE59-1972-45B2-836B-802479CFEB6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.R20171", "Src\Roflcopter.Plugin\Roflcopter.Plugin.R20171.csproj", "{9E2BBE59-1972-45B2-836B-802479CFEB6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.csproj", "{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.R20171", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.R20171.csproj", "{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Sample", "Src\Roflcopter.Plugin.Tests\test\data\Roflcopter.Sample.csproj", "{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.R20172", "Src\Roflcopter.Plugin\Roflcopter.Plugin.R20172.csproj", "{6AB5507F-8FE8-40B0-8E08-CA10091A6172}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.R20172", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.R20172.csproj", "{F255CA8C-81DC-41FD-BD67-F3D60E912F80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +42,14 @@ Global
 		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB5507F-8FE8-40B0-8E08-CA10091A6172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB5507F-8FE8-40B0-8E08-CA10091A6172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB5507F-8FE8-40B0-8E08-CA10091A6172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB5507F-8FE8-40B0-8E08-CA10091A6172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +58,7 @@ Global
 		{9E2BBE59-1972-45B2-836B-802479CFEB6D} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 		{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
+		{6AB5507F-8FE8-40B0-8E08-CA10091A6172} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
+		{F255CA8C-81DC-41FD-BD67-F3D60E912F80} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 	EndGlobalSection
 EndGlobal
