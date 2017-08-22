@@ -17,5 +17,6 @@
   </metadata>
   <files>
     <file src="$BinDirInclude$\$Configuration$\Roflcopter.Plugin.*" target="dotFiles" />
+    <file src="Macros\LiveTemplates.DotSettings" target="dotFiles\Extensions\ReSharper.Roflcopter\settings\" />
   </files>
 </package>
