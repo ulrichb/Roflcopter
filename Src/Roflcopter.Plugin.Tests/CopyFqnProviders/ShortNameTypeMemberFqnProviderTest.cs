@@ -2,16 +2,16 @@
 using System.IO;
 using System.Linq;
 using JetBrains.Application.Components;
+using JetBrains.Application.DataContext;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
+using JetBrains.ReSharper.Psi.DataContext;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.Util;
 using NUnit.Framework;
 using Roflcopter.Plugin.CopyFqnProviders;
-using JetBrains.Application.DataContext;
-using JetBrains.ReSharper.Psi.DataContext;
 
 namespace Roflcopter.Plugin.Tests.CopyFqnProviders
 {
