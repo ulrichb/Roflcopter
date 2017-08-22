@@ -16,6 +16,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="Roflcopter.Plugin\$BinDirInclude$\$Configuration$\Roflcopter.Plugin.*" target="dotFiles" />
+    <file src="$BinDirInclude$\$Configuration$\Roflcopter.Plugin.*" target="dotFiles" />
   </files>
 </package>
