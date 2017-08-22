@@ -39,12 +39,15 @@ namespace Roflcopter.Plugin.CopyFqnProviders
             {
                 var containingType = typeMember.GetContainingType();
 
+                string containingTypePath = null;
+
                 if (containingType != null)
                 {
-                    var containingTypePath = containingType.PathName(x => x.ShortName, x => x.GetContainingType());
-
-                    yield return new PresentableFqn($"{containingTypePath}.{typeMember.ShortName}");
+                    const string separator = ".";
+                    containingTypePath = containingType.PathName(separator, x => x.ShortName, x => x.GetContainingType()) + separator;
                 }
+
+                yield return new PresentableFqn(containingTypePath + typeMember.ShortName);
             }
         }
 

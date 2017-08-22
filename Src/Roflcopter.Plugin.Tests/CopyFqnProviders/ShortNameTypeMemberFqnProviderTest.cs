@@ -22,28 +22,15 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         protected override string RelativeTestDataPath => Path.Combine(base.RelativeTestDataPath, "..");
 
         [Test]
-        public void IsApplicable_WithProperty()
+        public void GetSortedFqns_WithTopLevelElement()
         {
             Test((sut, someClass) =>
             {
-                var dataContext = CreateDataContextWith(someClass.Properties.Single());
+                var dataContext = CreateDataContextWith(someClass);
 
-                var result = sut.IsApplicable(dataContext);
+                var result = sut.GetSortedFqns(dataContext);
 
-                Assert.That(result, Is.True);
-            });
-        }
-
-        [Test]
-        public void IsApplicable_WithDataContextWithNullDeclaredElement()
-        {
-            Test((sut, someClass) =>
-            {
-                var dataContext = CreateEmptyDataContext();
-
-                var result = sut.IsApplicable(dataContext);
-
-                Assert.That(result, Is.False);
+                Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass"));
             });
         }
 
@@ -100,19 +87,6 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         }
 
         [Test]
-        public void GetSortedFqns_WithTopLevelElement_ReturnsNothing()
-        {
-            Test((sut, someClass) =>
-            {
-                var dataContext = CreateDataContextWith(someClass);
-
-                var result = sut.GetSortedFqns(dataContext);
-
-                Assert.That(result, Is.Empty);
-            });
-        }
-
-        [Test]
         public void GetSortedFqns_WithDataContextWithNullDeclaredElement()
         {
             Test((sut, someClass) =>
@@ -122,6 +96,32 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
                 var result = sut.GetSortedFqns(dataContext);
 
                 Assert.That(result, Is.Empty);
+            });
+        }
+
+        [Test]
+        public void IsApplicable_WithProperty()
+        {
+            Test((sut, someClass) =>
+            {
+                var dataContext = CreateDataContextWith(someClass.Properties.Single());
+
+                var result = sut.IsApplicable(dataContext);
+
+                Assert.That(result, Is.True);
+            });
+        }
+
+        [Test]
+        public void IsApplicable_WithDataContextWithNullDeclaredElement()
+        {
+            Test((sut, someClass) =>
+            {
+                var dataContext = CreateEmptyDataContext();
+
+                var result = sut.IsApplicable(dataContext);
+
+                Assert.That(result, Is.False);
             });
         }
 
