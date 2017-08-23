@@ -1,4 +1,4 @@
-### vNext ###
+### 0.9.0 ###
 - First public release
 - Added "Assertion message is invalid" warning
 - "Mismatch between type and file name" learned the "interface + class pairs" (pattern: `class SomeType` + `interface ISomeType`)
