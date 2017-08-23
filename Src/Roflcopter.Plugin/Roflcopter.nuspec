@@ -5,10 +5,10 @@
     <version>$Version$</version>
     <title>Roflcopter</title>
     <authors>ulrichb</authors>
-    <!--<projectUrl></projectUrl>-->
-    <!--<licenseUrl></licenseUrl>-->
+    <licenseUrl>https://github.com/ulrichb/Roflcopter/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ulrichb/Roflcopter#readme</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>ROFL ROFL ROFL ROFL ROFL ROFL LOL ROFL ROFL ROFL </description>
+    <description>Roflcopter (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities</description>
     <releaseNotes>$ReleaseNotes$</releaseNotes>
     <tags>rofl lol</tags>
     <dependencies>
