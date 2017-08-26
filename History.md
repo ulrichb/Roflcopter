@@ -1,5 +1,6 @@
 ### vNext ###
 - Added limited support for Rider 2017.2 (see the package description for supported features)
+- Added quick fix for "Mismatch between type and file name" to fix the file name
 
 ### 0.11.0 ###
 - Added "Run Unit Tests in File" action

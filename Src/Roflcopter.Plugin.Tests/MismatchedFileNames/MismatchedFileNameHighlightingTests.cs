@@ -20,6 +20,9 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
         public void SingleClassWithWrongName() => DoNamedTest();
 
         [Test]
+        public void SingleClassWithWrongCaSiNg() => DoNamedTest();
+
+        [Test]
         public void MultipleClasses() => DoNamedTest();
 
         [Test]
@@ -38,10 +41,13 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
         public void InterfaceAndClassPairWithWrongName() => DoNamedTest();
 
         [Test]
-        public void PartialClass_partial() => DoNamedTest("PartialClass.InvalidPostfix.cs");
+        public void PartialClass() => DoNamedTest(nameof(PartialClass_partial) + ".cs", nameof(PartialClass_InvalidPostfix) + ".cs");
 
         [Test]
-        public void PartialClass_InvalidPostfix() => DoNamedTest("PartialClass.partial.cs");
+        public void PartialClass_partial() => DoNamedTest(nameof(PartialClass) + ".cs", nameof(PartialClass_InvalidPostfix) + ".cs");
+
+        [Test]
+        public void PartialClass_InvalidPostfix() => DoNamedTest(nameof(PartialClass) + ".cs", nameof(PartialClass_partial) + ".cs");
 
         protected override void DoTestSolution([NotNull] params string[] fileSet) =>
             base.DoTestSolution(fileSet.Select(x => x.Replace('_', '.')).ToArray());

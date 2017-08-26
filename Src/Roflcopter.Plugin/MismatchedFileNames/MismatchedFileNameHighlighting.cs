@@ -28,10 +28,15 @@ namespace Roflcopter.Plugin.MismatchedFileNames
 
         public const string Description = Title;
 
-        public MismatchedFileNameHighlighting(ITypeDeclaration declaration, string fileName)
-            : base(declaration, string.Format(Message, fileName))
+        public MismatchedFileNameHighlighting(ITypeDeclaration declaration, string currentFileName, string expectedFileName)
+            : base(declaration, string.Format(Message, currentFileName))
         {
+            CurrentFileName = currentFileName;
+            ExpectedFileName = expectedFileName;
         }
+
+        public string CurrentFileName { get; }
+        public string ExpectedFileName { get; }
 
         public override DocumentRange CalculateRange() => TreeNode.GetNameDocumentRange();
     }

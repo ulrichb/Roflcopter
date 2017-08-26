@@ -26,7 +26,9 @@ Roflcopter also provides default Live Template, just type `branch` and hit TAB.
 
 ### "Mismatch between type and file name" warning
 
-<img src="/Doc/MismatchedFileName.png" alt="MismatchedFileName" width="580" />
+<img src="/Doc/MismatchedFileName.png" alt="MismatchedFileName" width="657" />
+
+<img src="/Doc/MismatchedFileNameQuickFix.png" alt="MismatchedFileNameQuickFix" width="410" />
 
 Allowed file name postfixes can be configured on the "Mismatched file names" options page.
 

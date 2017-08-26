@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.IO;
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
@@ -22,12 +23,16 @@ namespace Roflcopter.Plugin.MismatchedFileNames
             {
                 var psiSourceFile = file.GetSourceFile().NotNull("file.GetSourceFile() != null");
 
-                var allowedFileNamePostfixRegex = data.SettingsStore.GetValue((MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex);
-                var fileNameWithoutPostfix = Regex.Replace(psiSourceFile.Name, allowedFileNamePostfixRegex, "");
+                var fileName = psiSourceFile.Name;
 
-                if (fileNameWithoutPostfix != mainTypeDeclaration.DeclaredName)
+                var allowedFileNamePostfixRegex = data.SettingsStore.GetValue((MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex);
+
+                var fileNameWithReplacedPostfix = Regex.Replace(fileName, allowedFileNamePostfixRegex, Path.GetExtension(fileName));
+                var expectedFileName = mainTypeDeclaration.DeclaredName + Path.GetExtension(fileName);
+
+                if (fileNameWithReplacedPostfix != expectedFileName)
                 {
-                    consumer.AddHighlighting(new MismatchedFileNameHighlighting(mainTypeDeclaration, psiSourceFile.Name));
+                    consumer.AddHighlighting(new MismatchedFileNameHighlighting(mainTypeDeclaration, fileName, expectedFileName));
                 }
             }
         }

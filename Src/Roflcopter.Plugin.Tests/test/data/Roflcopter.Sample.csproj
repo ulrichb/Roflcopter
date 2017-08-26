@@ -5,8 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AssertionMessages\InvalidAssertionMessageHighlightingTests\*ErrorSamples*.cs" />
-    <None Include="AssertionMessages\InvalidAssertionMessageHighlightingTests\*ErrorSamples*.cs" />
+    <Compile Remove="**\*ErrorSamples.cs" />
+    <None Include="**\*ErrorSamples.cs" />
+    <Compile Remove="**\QuickFix\**" />
+    <None Include="**\QuickFix\**" />
   </ItemGroup>
 
   <ItemGroup>
