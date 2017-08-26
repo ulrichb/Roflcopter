@@ -8,8 +8,11 @@ using JetBrains.ReSharper.Psi.CodeAnnotations;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
 using JetBrains.Util;
+#if !RESHARPER20171
+using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
+
+#endif
 
 namespace Roflcopter.Plugin.AssertionMessages
 {
@@ -50,7 +53,7 @@ namespace Roflcopter.Plugin.AssertionMessages
 
                 if (contractAnnotationFdt != null || _assertionMethodAnnotationProvider.GetInfo(method))
                 {
-                    if (resolveResult.Result.IsExtensionMethod())
+                    if (resolveResult.Result.IsExtensionMethodInvocation())
                     {
                         var thisArgumentInfo = (ExtensionArgumentInfo) invocationExpression
                             .ExtensionQualifier.NotNull("seems to be escaped by the positive resolution");
