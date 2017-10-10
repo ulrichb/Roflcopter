@@ -41,5 +41,11 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
 
         [Test]
         public void InterfaceAndClassPairWithWrongName() => DoNamedTest();
+
+        [Test]
+        public void PartialClass_partial() => DoTestSolution(TestName.Replace('_', '.'));
+
+        [Test]
+        public void PartialClass_InvalidPostfix() => DoTestSolution(TestName.Replace('_', '.'));
     }
 }

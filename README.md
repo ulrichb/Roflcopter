@@ -28,6 +28,8 @@ Roflcopter also provides default Live Template, just type `branch` and hit TAB.
 
 <img src="/Doc/MismatchedFileName.png" alt="MismatchedFileName" width="580" />
 
+Allowed file name postfixes can be configured on the "Mismatched file names" options page.
+
 ### "Assertion message is invalid" warning
 
 <img src="/Doc/InvalidAssertionMessage.png" alt="InvalidAssertionMessage" width="673"  />

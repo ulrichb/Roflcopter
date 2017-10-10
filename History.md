@@ -1,3 +1,6 @@
+### vNext ###
+- Added "Allowed file name postfix regex" option for "Mismatch between type and file name" warning
+
 ### 0.9.0 ###
 - First public release
 - Added "Assertion message is invalid" warning

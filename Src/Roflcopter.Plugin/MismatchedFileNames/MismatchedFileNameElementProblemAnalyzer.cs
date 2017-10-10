@@ -1,5 +1,6 @@
-﻿using System.IO;
+﻿using System.Text.RegularExpressions;
 using JetBrains.Annotations;
+using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
@@ -8,15 +9,10 @@ using JetBrains.Util;
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {
-    [ElementProblemAnalyzer(
-        typeof(ICSharpFile),
-        HighlightingTypes = new[] { typeof(MismatchedFileNameHighlighting) })]
+    [ElementProblemAnalyzer(typeof(ICSharpFile), HighlightingTypes = new[] { typeof(MismatchedFileNameHighlighting) })]
     public class MismatchedFileNameElementProblemAnalyzer : ElementProblemAnalyzer<ICSharpFile>
     {
-        protected override void Run(
-            ICSharpFile file,
-            ElementProblemAnalyzerData data,
-            IHighlightingConsumer consumer)
+        protected override void Run(ICSharpFile file, ElementProblemAnalyzerData data, IHighlightingConsumer consumer)
         {
             var tolLevelTypeDeclarations = GetTolLevelTypeDeclarations(file);
 
@@ -26,9 +22,10 @@ namespace Roflcopter.Plugin.MismatchedFileNames
             {
                 var psiSourceFile = file.GetSourceFile().NotNull("file.GetSourceFile() != null");
 
-                var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(psiSourceFile.Name);
+                var allowedFileNamePostfixRegex = data.SettingsStore.GetValue((MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex);
+                var fileNameWithoutPostfix = Regex.Replace(psiSourceFile.Name, allowedFileNamePostfixRegex, "");
 
-                if (fileNameWithoutExtension != mainTypeDeclaration.DeclaredName)
+                if (fileNameWithoutPostfix != mainTypeDeclaration.DeclaredName)
                 {
                     consumer.AddHighlighting(new MismatchedFileNameHighlighting(mainTypeDeclaration, psiSourceFile.Name));
                 }

@@ -1,0 +1,9 @@
+﻿namespace Roflcopter.Sample.MismatchedFileNames
+{
+    public partial class |PartialClass|(0)
+    {
+    }
+}
+
+---------------------------------------------------------
+(0): ReSharper Warning: Type doesn't match file name 'PartialClass.InvalidPostfix.cs'
