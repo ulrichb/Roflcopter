@@ -13,7 +13,7 @@ using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
 
 #endif
 
-namespace Roflcopter.Plugin.TodoItems
+namespace Roflcopter.Plugin.TodoItems.OptionsPages
 {
     [OptionsPage(
         OptionsPageId, "To-do Items Count", typeof(PsiSymbolsThemedIcons.Macro),

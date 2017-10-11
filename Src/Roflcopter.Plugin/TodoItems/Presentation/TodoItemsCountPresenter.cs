@@ -10,6 +10,7 @@ using JetBrains.ReSharper.Features.Inspections.Actions;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.Util;
 using JetBrains.Util.Threading.Tasks;
+using Roflcopter.Plugin.TodoItems.OptionsPages;
 #if RESHARPER20171
 using JetBrains.UI.Actions.Views;
 using JetBrains.UI.ActionSystem.ActionBar;
