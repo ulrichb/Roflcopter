@@ -6,13 +6,7 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Features.Environment.CopyFqn;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.DataContext;
-#if RESHARPER20171
-using JetBrains.UI.Avalon.TreeListView;
-
-#else
-using JetBrains.UI.Controls.TreeListView;
-
-#endif
+using JetBrains.Util.Special;
 
 namespace Roflcopter.Plugin.CopyFqnProviders
 {
@@ -37,17 +31,10 @@ namespace Roflcopter.Plugin.CopyFqnProviders
 
             foreach (var typeMember in typeMembers)
             {
-                var containingType = typeMember.GetContainingType();
+                var typeMemberAndParents =
+                    GeneralUtil.SelfAndParentReversedPath<IClrDeclaredElement>(typeMember, x => x.GetContainingType()).Reverse();
 
-                string containingTypePath = null;
-
-                if (containingType != null)
-                {
-                    const string separator = ".";
-                    containingTypePath = containingType.PathName(separator, x => x.ShortName, x => x.GetContainingType()) + separator;
-                }
-
-                yield return new PresentableFqn(containingTypePath + typeMember.ShortName);
+                yield return new PresentableFqn(string.Join(".", typeMemberAndParents.Select(x => x.ShortName)));
             }
         }
 
