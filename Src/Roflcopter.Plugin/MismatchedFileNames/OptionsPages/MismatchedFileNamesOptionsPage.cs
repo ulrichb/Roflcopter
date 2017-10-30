@@ -1,28 +1,23 @@
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
-using JetBrains.DataFlow;
-using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
-#if RS20171
-using JetBrains.UI.Resources;
-using JetBrains.UI.Options;
-using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
-
-#else
-using JetBrains.Application.UI.Icons.CommonThemedIcons;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.OptionsDialog;
-
-#endif
+using JetBrains.DataFlow;
+using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
+using JetBrains.ReSharper.Feature.Services.Resources;
 
 namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
 {
     [OptionsPage(
-        id: nameof(MismatchedFileNamesOptionsPage), name: "Mismatched file names",
-        typeofIcon: typeof(CommonThemedIcons.Bulb),
+        OptionsPageId,
+        "Mismatched file names",
+        typeofIcon: typeof(AlteringFeatuThemedIcons.FileHeaderText),
         ParentId = CodeInspectionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
     public class MismatchedFileNamesOptionsPage : SimpleOptionsPage
     {
+        private const string OptionsPageId = nameof(MismatchedFileNamesOptionsPage);
+
         public MismatchedFileNamesOptionsPage([NotNull] Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
             base(lifetime, optionsSettingsSmartContext)
         {

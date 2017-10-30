@@ -2,11 +2,14 @@
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+
+#if RS20172 || RD20172
+using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
+#endif
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {

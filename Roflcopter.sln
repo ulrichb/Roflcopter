@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{26B55A35-CCB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionItems", "SolutionItems.csproj", "{6ADCE94D-EF87-42F6-A68B-69DA6FD90DE6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.RS20171", "Src\Roflcopter.Plugin\Roflcopter.Plugin.RS20171.csproj", "{9E2BBE59-1972-45B2-836B-802479CFEB6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.RS20173", "Src\Roflcopter.Plugin\Roflcopter.Plugin.RS20173.csproj", "{9E2BBE59-1972-45B2-836B-802479CFEB6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.RS20171", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.RS20171.csproj", "{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.RS20173", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.RS20173.csproj", "{6AFE9FA3-33A0-43B2-9C04-05A4C6A57A2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Sample", "Src\Roflcopter.Plugin.Tests\test\data\Roflcopter.Sample.csproj", "{DA8C3190-009E-430B-95B5-7AFF7AA0A55F}"
 EndProject

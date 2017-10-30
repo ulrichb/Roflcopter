@@ -1,4 +1,4 @@
-﻿#if !(RS20171 || RIDER)
+﻿#if RESHARPER
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,19 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.CSharp.Conversions;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 using Roflcopter.Plugin.Utilities;
-#if RS20171
-using JetBrains.ReSharper.Psi.CSharp.Impl;
-
-#else
-using JetBrains.ReSharper.Psi.CSharp.Conversions;
+#if RS20172 || RD20172
+using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 
 #endif
 

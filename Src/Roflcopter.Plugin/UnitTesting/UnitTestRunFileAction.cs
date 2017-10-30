@@ -1,5 +1,7 @@
 ﻿using JetBrains.Annotations;
 using JetBrains.Application.DataContext;
+using JetBrains.Application.UI.ActionsRevised.Menu;
+using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Menu;
@@ -8,13 +10,6 @@ using JetBrains.ReSharper.UnitTestFramework.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Common;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Resources;
-#if RS20171
-using JetBrains.UI.ActionsRevised;
-#else
-using JetBrains.Application.UI.ActionsRevised.Menu;
-using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-
-#endif
 
 namespace Roflcopter.Plugin.UnitTesting
 {

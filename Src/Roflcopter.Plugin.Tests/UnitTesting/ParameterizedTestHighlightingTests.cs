@@ -2,10 +2,7 @@
 using JetBrains.ReSharper.FeaturesTestFramework.Daemon;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
-#if !RS20171
 using Roflcopter.Plugin.UnitTesting;
-
-#endif
 
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
@@ -28,11 +25,9 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         [Test]
         public void InheritanceSamples() => DoNamedTest();
 
-#if !RS20171
         [Test]
         [HighlightOnly(typeof(ParameterizedTestMissingArgumentHighlighting), typeof(ParameterizedTestTypeMismatchHighlighting))]
         public void ErrorSamples() => DoNamedTest();
-#endif
 
         [TestPackages("NUnit")]
         public class Default : ParameterizedTestHighlightingTests

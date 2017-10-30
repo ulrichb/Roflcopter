@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeAnnotations;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.Util;
-#if !RS20171
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
+using JetBrains.Util;
 
+#if RS20172 || RD20172
+using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 #endif
 
 namespace Roflcopter.Plugin.AssertionMessages

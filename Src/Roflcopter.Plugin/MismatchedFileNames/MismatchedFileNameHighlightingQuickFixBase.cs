@@ -24,11 +24,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
         {
             var newFileName = Highlighting.ExpectedFileName;
-#if RS20171
-            var isOnlyACasingRenaming = StringComparer.OrdinalIgnoreCase.Equals(newFileName, Highlighting.CurrentFileName);
-#else
             var isOnlyACasingRenaming = FileSystemDefinition.PathStringEquality.Equals(newFileName, Highlighting.CurrentFileName);
-#endif
 
             var psiSourceFile = Highlighting.HighlightingNode.GetSourceFile();
             var projectFile = psiSourceFile.ToProjectFile().NotNull("psiSourceFile.ToProjectFile() != null");

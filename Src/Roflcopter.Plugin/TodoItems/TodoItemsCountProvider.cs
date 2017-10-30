@@ -11,6 +11,10 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+#if !(RS20172 || RD20172)
+using System;
+
+#endif
 
 namespace Roflcopter.Plugin.TodoItems
 {
@@ -82,12 +86,24 @@ namespace Roflcopter.Plugin.TodoItems
                 var localTodoItemsCounts = new LocalList<TodoItemsCount>(definitions.Select(x => new TodoItemsCount(x)));
 
                 var allTodoItems = FetchAllTodoItems();
+#if !(RS20172 || RD20172)
+                var nameByIdLookup = FetchTodoMatcherNameByIdLookup();
+#endif
 
                 foreach (var todoItemChunk in allTodoItems.SelectMany(x => x))
                 foreach (var todoItem in todoItemChunk.Value) // IDEA: Parallelize?
                 {
-                    foreach (var newTodoItemsCount in localTodoItemsCounts)
-                        newTodoItemsCount.IncreaseIfMatches(todoItem);
+#if RS20172 || RD20172
+                    var todoItemName = todoItem.Name;
+#else
+                    // IDEA: Instead store the Guid-Id in the "definition" (extend the 'CachedSettingsReader', see also R#'s TodoPatternStorage)
+                    var todoItemName = nameByIdLookup[todoItem.PatternId].SingleItem();
+#endif
+                    foreach (var todoItemsCount in localTodoItemsCounts)
+                    {
+                        if (todoItemName == todoItemsCount.Definition.Name)
+                            todoItemsCount.IncreaseIfMatches(todoItem);
+                    }
                 }
 
                 todoItemsCounts = localTodoItemsCounts.ToArray();
@@ -97,7 +113,11 @@ namespace Roflcopter.Plugin.TodoItems
                 consumer.Update(todoItemsCounts);
         }
 
+#if RS20172 || RD20172
         private List<ChunkHashMap<IPsiSourceFile, List<TodoItemBase>>> FetchAllTodoItems()
+#else
+        private List<ChunkHashMap<IPsiSourceFile, List<ITodoItem>>> FetchAllTodoItems()
+#endif
         {
             using (_primaryTodoManager.Lock())
             using (ReadLockCookie.Create())
@@ -105,6 +125,13 @@ namespace Roflcopter.Plugin.TodoItems
                 return _primaryTodoManager.AllItems.ToList();
             }
         }
+
+#if !(RS20172 || RD20172)
+        private ILookup<Guid, string> FetchTodoMatcherNameByIdLookup()
+        {
+            return _primaryTodoManager.Matchers.ToLookup(x => x.Id, x => x.Name);
+        }
+#endif
 
         [CanBeNull]
         private IReadOnlyCollection<TodoItemsCountDefinition> GetTodoItemsCountDefinitions()

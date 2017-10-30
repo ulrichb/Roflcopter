@@ -16,12 +16,9 @@ namespace Roflcopter.Plugin.TodoItems
 
         public void IncreaseIfMatches(ITodoItem todoItem)
         {
-            if (todoItem.Name == Definition.Name)
+            if (Definition.Condition == null || IsConditionMatching(todoItem, Definition.Condition))
             {
-                if (Definition.Condition == null || IsConditionMatching(todoItem, Definition.Condition))
-                {
-                    Count++;
-                }
+                Count++;
             }
         }
 

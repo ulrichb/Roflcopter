@@ -1,4 +1,4 @@
-﻿#if !(RS20171 || RIDER)
+﻿#if RESHARPER
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -7,8 +7,13 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.PsiFeatures.VisualStudio.SinceVs10.Debugger;
 using JetBrains.Util;
+#if RS20172
+using JetBrains.PsiFeatures.VisualStudio.SinceVs10.Debugger;
+#else
+using JetBrains.PsiFeatures.VisualStudio.Debugger.ExternalSources;
+
+#endif
 
 namespace Roflcopter.Plugin.VisualStudio.ModulesWindow
 {

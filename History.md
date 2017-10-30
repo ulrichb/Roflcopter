@@ -1,3 +1,6 @@
+### vNext ###
+- ReSharper 2017.3 support
+
 ### 1.0.0 ###
 - Added limited support for Rider 2017.2 (see the package description for supported features)
 - Added warnings for NUnit parameterized tests (+ quick fixes)
