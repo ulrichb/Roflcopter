@@ -49,6 +49,22 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         }
 
         [Test]
+        public void TodoItemsCounts_WithNonMatchingName()
+        {
+            Test((consumer, settings) =>
+            {
+                RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nNON_MATCHING"));
+
+                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
+                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                {
+                    ("Todo", 5),
+                    ("NON_MATCHING", 0),
+                }));
+            });
+        }
+
+        [Test]
         public void TodoItemsCountsWithDisabledSetting()
         {
             Test((consumer, settings) =>
