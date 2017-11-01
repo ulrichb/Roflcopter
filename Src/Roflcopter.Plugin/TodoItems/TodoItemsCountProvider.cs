@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
@@ -16,15 +15,14 @@ using JetBrains.Util.DataStructures;
 namespace Roflcopter.Plugin.TodoItems
 {
     [SolutionComponent]
-    public class TodoItemsCountProvider : ICachedSettingsReader<IReadOnlyCollection<TodoItemsCountDefinition>>
+    public class TodoItemsCountProvider
     {
         private static readonly ILogger Logger = JetBrains.Util.Logging.Logger.GetLogger(typeof(TodoItemsCountProvider));
 
         private readonly IPrimaryTodoManager _primaryTodoManager;
-        private readonly ISettingsStore _settingsStore;
-        private readonly IReadOnlyList<ITodoItemsCountConsumer> _todoItemsCountConsumers;
-
         private readonly ISettingsCache _settingsCache;
+        private readonly TodoItemsCountDefinitionsCachedSettingsReader _todoItemsCountDefinitionsCachedSettingsReader;
+        private readonly IReadOnlyList<ITodoItemsCountConsumer> _todoItemsCountConsumers;
 
         [NotNull]
         private volatile Lifetime _currentSettingsCacheLifeTime;
@@ -33,12 +31,13 @@ namespace Roflcopter.Plugin.TodoItems
             Lifetime lifetime,
             IPrimaryTodoManager primaryTodoManager,
             SolutionSettingsCache solutionSettingsCache,
-            ISettingsStore settingsStore,
-            IEnumerable<ITodoItemsCountConsumer> todoItemsCountConsumers)
+            TodoItemsCountDefinitionsCachedSettingsReader todoItemsCountDefinitionsCachedSettingsReader,
+            IEnumerable<ITodoItemsCountConsumer> todoItemsCountConsumers,
+            ISettingsStore settingsStore)
         {
             _primaryTodoManager = primaryTodoManager;
             _settingsCache = solutionSettingsCache;
-            _settingsStore = settingsStore;
+            _todoItemsCountDefinitionsCachedSettingsReader = todoItemsCountDefinitionsCachedSettingsReader;
             _todoItemsCountConsumers = todoItemsCountConsumers.ToIReadOnlyList();
 
             _primaryTodoManager.FilesWereUpdated.Advise(lifetime, files =>
@@ -52,7 +51,7 @@ namespace Roflcopter.Plugin.TodoItems
             var settingsCacheGetDataSequentialLifeTime = new SequentialLifetimes(lifetime);
             _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
 
-            _settingsStore.AdviseChange(lifetime, KeyExposed, () =>
+            settingsStore.AdviseChange(lifetime, _todoItemsCountDefinitionsCachedSettingsReader.KeyExposed, () =>
             {
                 // We use the following lifetime to solve the issue that this 'ISettingsStore.AdviseChange()' callback
                 // arrives earlier than the one used in the cache. => The cache has still the old value when accessed
@@ -110,30 +109,7 @@ namespace Roflcopter.Plugin.TodoItems
         [CanBeNull]
         private IReadOnlyCollection<TodoItemsCountDefinition> GetTodoItemsCountDefinitions()
         {
-            return _settingsCache.GetData(_currentSettingsCacheLifeTime, this);
-        }
-
-        public SettingsKey KeyExposed => _settingsStore.Schema.GetKey<TodoItemsCountSettings>();
-
-        [CanBeNull]
-        IReadOnlyCollection<TodoItemsCountDefinition> ICachedSettingsReader<IReadOnlyCollection<TodoItemsCountDefinition>>.
-            ReadData(IContextBoundSettingsStore store)
-        {
-            var isEnabled = store.GetValue((TodoItemsCountSettings s) => s.IsEnabled);
-
-            if (!isEnabled)
-                return null;
-
-            var definitionsText = store.GetValue((TodoItemsCountSettings s) => s.Definitions);
-
-            var matches = Regex.Matches(definitionsText, @"^\s*(?<Title>.+?)\s*(\[(?<Condition>.*)\]\s*)?$", RegexOptions.Multiline);
-
-            var result = from Match match in matches
-                         let title = match.Groups["Title"].Value
-                         let condition = match.Groups["Condition"]
-                         select new TodoItemsCountDefinition(title, condition.Success ? condition.Value : null);
-
-            return result.ToList();
+            return _settingsCache.GetData(_currentSettingsCacheLifeTime, _todoItemsCountDefinitionsCachedSettingsReader);
         }
     }
 }
