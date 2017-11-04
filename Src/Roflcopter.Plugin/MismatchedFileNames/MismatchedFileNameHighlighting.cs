@@ -33,9 +33,6 @@ namespace Roflcopter.Plugin.MismatchedFileNames
         {
         }
 
-        public override DocumentRange CalculateRange()
-        {
-            return TreeNode.GetNameDocumentRange();
-        }
+        public override DocumentRange CalculateRange() => TreeNode.GetNameDocumentRange();
     }
 }

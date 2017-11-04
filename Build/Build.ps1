@@ -20,6 +20,7 @@ $NUnitAdditionalArgs = "--x86 --labels=All --agents=1"
 $NUnitTestAssemblyPaths = @(
     "Src\Roflcopter.Plugin.Tests\bin\RS20171\$Configuration\Roflcopter.Plugin.Tests.RS20171.dll"
     "Src\Roflcopter.Plugin.Tests\bin\RS20172\$Configuration\Roflcopter.Plugin.Tests.RS20172.dll"
+    "Src\Roflcopter.Plugin.Tests\bin\RD20172\$Configuration\Roflcopter.Plugin.Tests.RD20172.dll"
 )
 $NUnitFrameworkVersion = "net-4.5"
 $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
@@ -28,12 +29,14 @@ $NugetPackProperties = @(
     "Version=$(CalcNuGetPackageVersion 20171);Configuration=$Configuration;DependencyVer=[8.0];BinDirInclude=bin\RS20171"
     "Version=$(CalcNuGetPackageVersion 20172);Configuration=$Configuration;DependencyVer=[9.0];BinDirInclude=bin\RS20172"
 )
+$RiderPluginProject = "Src\RiderPlugin"
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
 Clean
 PackageRestore
 Build
 NugetPack
+BuildRiderPlugin
 Test
 
 if ($NugetPushKey) {

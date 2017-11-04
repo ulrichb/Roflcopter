@@ -1,0 +1,31 @@
+<idea-plugin url="https://github.com/ulrichb/Roflcopter#readme">
+  <id>Roflcopter</id>
+  <name>Roflcopter</name>
+  <description>
+  <![CDATA[
+<p>Roflcopter (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities</p>
+<p></p>
+
+<span>At the moment the following features have been ported to Rider.</span>
+<ul>
+<li>Git Branch Name Live Template (no Live Template configuration in Rider atm., 
+    see <a href="https://youtrack.jetbrains.com/issue/RIDER-548#comment=27-1325254">RIDER-548</a>. Use VS to edit live templates.)</li>
+<li>"Mismatch between type and file name" warning</li>
+<li>"Assertion message is invalid" warning</li>
+</ul>
+
+<p>Tags: rider c#</p>
+]]></description>
+  <change-notes>REPLACE ME</change-notes>
+  <vendor>ulrichb</vendor>
+
+  <depends>com.intellij.modules.rider</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationConfigurable
+      parentId="CodeInspectionSettingsId"
+      instance="com.jetbrains.rider.settings.MismatchedFileNamesOptionsPage"
+      id="preferences.MismatchedFileNamesOptionsPage"/>
+  </extensions>
+
+</idea-plugin>

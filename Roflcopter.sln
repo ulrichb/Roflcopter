@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.RS20172",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.RS20172", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.RS20172.csproj", "{F255CA8C-81DC-41FD-BD67-F3D60E912F80}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.RD20172", "Src\Roflcopter.Plugin\Roflcopter.Plugin.RD20172.csproj", "{B81B447C-A4D0-419A-BD44-8D8836272C3D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roflcopter.Plugin.Tests.RD20172", "Src\Roflcopter.Plugin.Tests\Roflcopter.Plugin.Tests.RD20172.csproj", "{E8FBF9D8-FDD3-4755-85D6-351600B6DB49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F255CA8C-81DC-41FD-BD67-F3D60E912F80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81B447C-A4D0-419A-BD44-8D8836272C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81B447C-A4D0-419A-BD44-8D8836272C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81B447C-A4D0-419A-BD44-8D8836272C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81B447C-A4D0-419A-BD44-8D8836272C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8FBF9D8-FDD3-4755-85D6-351600B6DB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8FBF9D8-FDD3-4755-85D6-351600B6DB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8FBF9D8-FDD3-4755-85D6-351600B6DB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8FBF9D8-FDD3-4755-85D6-351600B6DB49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +69,8 @@ Global
 		{DA8C3190-009E-430B-95B5-7AFF7AA0A55F} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 		{6AB5507F-8FE8-40B0-8E08-CA10091A6172} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 		{F255CA8C-81DC-41FD-BD67-F3D60E912F80} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
+		{B81B447C-A4D0-419A-BD44-8D8836272C3D} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
+		{E8FBF9D8-FDD3-4755-85D6-351600B6DB49} = {26B55A35-CCB1-4635-871A-EE770850A5F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27BC4B87-CF3C-42AA-9289-54CAE3F6F966}

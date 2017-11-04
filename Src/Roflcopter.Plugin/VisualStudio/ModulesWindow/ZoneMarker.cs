@@ -1,4 +1,4 @@
-#if !RS20171
+#if !(RS20171 || RIDER)
 using JetBrains.Application.BuildScript.Application.Zones;
 using JetBrains.Platform.VisualStudio.SinceVs10.Shell.Zones;
 using JetBrains.ReSharper.Resources.Shell;

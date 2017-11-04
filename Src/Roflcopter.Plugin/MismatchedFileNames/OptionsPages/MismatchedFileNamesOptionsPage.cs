@@ -17,7 +17,9 @@ using JetBrains.Application.UI.Options.OptionsDialog;
 namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
 {
     [OptionsPage(
-        nameof(MismatchedFileNamesOptionsPage), "Mismatched file names", typeof(CommonThemedIcons.Bulb), ParentId = CodeInspectionPage.PID)]
+        id: nameof(MismatchedFileNamesOptionsPage), name: "Mismatched file names",
+        typeofIcon: typeof(CommonThemedIcons.Bulb),
+        ParentId = CodeInspectionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
     public class MismatchedFileNamesOptionsPage : SimpleOptionsPage
     {
