@@ -9,7 +9,7 @@ using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.Util;
-#if !RESHARPER20171
+#if !RS20171
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
 
 #endif

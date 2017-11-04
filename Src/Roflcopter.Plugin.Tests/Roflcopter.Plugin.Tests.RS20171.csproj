@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.R$(ReSharperVersionIdentifier).csproj" />
+    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.$(ReSharperVersionIdentifier).csproj" />
   </ItemGroup>
 
 </Project>

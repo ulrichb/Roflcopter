@@ -1,4 +1,4 @@
-﻿#if RESHARPER20171
+﻿#if RS20171
 using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;

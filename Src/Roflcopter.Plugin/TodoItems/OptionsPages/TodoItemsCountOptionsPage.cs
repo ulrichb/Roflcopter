@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.TodoItems;
 using JetBrains.ReSharper.Psi.Resources;
-#if RESHARPER20171
+#if RS20171
 using JetBrains.UI.Options;
 using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
 #else

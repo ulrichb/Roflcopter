@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
-#if RESHARPER20171
+#if RS20171
 using JetBrains.UI.Resources;
 using JetBrains.UI.Options;
 using JetBrains.UI.Options.OptionsDialog2.SimpleOptions;
