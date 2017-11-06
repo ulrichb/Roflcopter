@@ -34,6 +34,12 @@ Allowed file name postfixes can be configured on the "Mismatched file names" opt
 
 <img src="/Doc/InvalidAssertionMessage.png" alt="InvalidAssertionMessage" width="673"  />
 
+### "Run Unit Tests in File" action
+
+<img src="/Doc/UnitTestRunFileAction.png" alt="UnitTestRunFileAction" width="490"  />
+
+To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment & Menus_](https://www.jetbrains.com/help/resharper/Reference__Options__Environment__Visual_Studio_Integration.html) options may be necessary.
+
 ### Provider for "Copy Fully-qualified name" which returns "short names"
 
 E.g. `<TypeShortName>.<MemberShortName>` (not including the name spaces)

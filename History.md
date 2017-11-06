@@ -1,3 +1,6 @@
+### vNext ###
+- Added "Run Unit Tests in File" action
+
 ### 0.10.0 ###
 - Added "Allowed file name postfix regex" option for "Mismatch between type and file name" warning
 
