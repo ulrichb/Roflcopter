@@ -21,6 +21,8 @@ namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightin
         public static void AssertIsTrue(bool condition, string message)
         {
         }
+
+        void NonErrorSample(string s) => s.ErrorSamplesNotNullExtension("|x|(0) != null");
     }
 
     public static class AssertionMessageErrorSamplesExtensions
@@ -33,3 +35,4 @@ namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightin
 }
 
 ---------------------------------------------------------
+(0): ReSharper Warning: Assertion message is invalid. Expected 's'.

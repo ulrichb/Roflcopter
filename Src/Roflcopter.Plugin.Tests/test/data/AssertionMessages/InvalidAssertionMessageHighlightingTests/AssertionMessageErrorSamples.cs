@@ -21,6 +21,8 @@ namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightin
         public static void AssertIsTrue(bool condition, string message)
         {
         }
+
+        void NonErrorSample(string s) => s.ErrorSamplesNotNullExtension("x != null");
     }
 
     public static class AssertionMessageErrorSamplesExtensions
