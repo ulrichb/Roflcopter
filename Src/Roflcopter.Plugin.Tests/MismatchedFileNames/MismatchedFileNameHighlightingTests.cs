@@ -1,11 +1,9 @@
 ﻿using System.IO;
+using System.Linq;
 using JetBrains.Annotations;
-using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.FeaturesTestFramework.Daemon;
-using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
-using Roflcopter.Plugin.MismatchedFileNames;
 
 namespace Roflcopter.Plugin.Tests.MismatchedFileNames
 {
@@ -14,9 +12,6 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
     public class MismatchedFileNameHighlightingTests : CSharpHighlightingTestBase
     {
         protected override string RelativeTestDataPath => Path.Combine(base.RelativeTestDataPath, "..");
-
-        protected override bool HighlightingPredicate([NotNull] IHighlighting highlighting, [CanBeNull] IPsiSourceFile _) =>
-            highlighting is MismatchedFileNameHighlighting;
 
         [Test]
         public void SingleClass() => DoNamedTest();
@@ -43,9 +38,12 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
         public void InterfaceAndClassPairWithWrongName() => DoNamedTest();
 
         [Test]
-        public void PartialClass_partial() => DoTestSolution(TestName.Replace('_', '.'));
+        public void PartialClass_partial() => DoNamedTest("PartialClass.InvalidPostfix.cs");
 
         [Test]
-        public void PartialClass_InvalidPostfix() => DoTestSolution(TestName.Replace('_', '.'));
+        public void PartialClass_InvalidPostfix() => DoNamedTest("PartialClass.partial.cs");
+
+        protected override void DoTestSolution([NotNull] params string[] fileSet) =>
+            base.DoTestSolution(fileSet.Select(x => x.Replace('_', '.')).ToArray());
     }
 }
