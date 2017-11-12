@@ -1,5 +1,6 @@
 ### vNext ###
 - Added "Run Unit Tests in File" action
+- Added possibility to write a debugging control .ini file in the Modules Debug window of Visual Studio to disable Jitter optimization of specific modules
 
 ### 0.10.0 ###
 - Added "Allowed file name postfix regex" option for "Mismatch between type and file name" warning

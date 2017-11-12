@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.2.*" />
+    <PackageReference Include="JetBrains.Psi.Features.VisualStudio" Version="109.*" />
     <PackageReference Include="System.ValueTuple" Version="4.*" />
   </ItemGroup>
 

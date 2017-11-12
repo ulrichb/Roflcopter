@@ -8,12 +8,17 @@
     <DebugType>full</DebugType> <!-- necessary for OpenCover -->
   </PropertyGroup>
 
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\..\Shared\Src\ReSharperExtensionsShared\Highlighting\SimpleTreeNodeHighlightingBase.cs" Link="ReSharperExtensionsShared\SimpleTreeNodeHighlightingBase.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.2.*" />
+    <PackageReference Include="JetBrains.Psi.Features.VisualStudio" Version="109.*" />
   </ItemGroup>
 
   <ItemGroup>

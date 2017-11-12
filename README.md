@@ -45,3 +45,12 @@ To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment
 E.g. `<TypeShortName>.<MemberShortName>` (not including the name spaces)
 
 <img src="/Doc/CopyShortNames.png" alt="CopyShortNames" width="552" />
+
+### Write/Remove Debugging Control .ini
+
+The context menu in the _Debug | Modules_ window is extended by ...
+
+* _Write Debugging Control .ini file with disabled Jitter optimizations_ to write such an [.ini file](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/making-an-image-easier-to-debug) for the selected module, and
+* _Remove Debugging Control .ini file_ to remove it again.
+
+<img src="/Doc/DebuggingControlIni_Write.png" alt="DebuggingControlIni_Write" width="980" />
