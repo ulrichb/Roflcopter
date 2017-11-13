@@ -1,4 +1,4 @@
-### vNext ###
+### 0.11.0 ###
 - Added "Run Unit Tests in File" action
 - Added possibility to write a debugging control .ini file in the Modules Debug window of Visual Studio to disable Jitter optimization of specific modules
 
