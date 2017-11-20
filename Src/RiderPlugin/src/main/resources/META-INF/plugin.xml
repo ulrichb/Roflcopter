@@ -2,7 +2,7 @@
   <id>Roflcopter</id>
   <name>Roflcopter</name>
   <description>
-  <![CDATA[
+    <![CDATA[
 <p>Roflcopter (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities</p>
 <p></p>
 
@@ -12,6 +12,7 @@
     see <a href="https://youtrack.jetbrains.com/issue/RIDER-548#comment=27-1325254">RIDER-548</a>. Use VS to edit live templates.)</li>
 <li>"Mismatch between type and file name" warning</li>
 <li>"Assertion message is invalid" warning</li>
+<li>"Run Unit Tests in File" action</li>
 </ul>
 
 <p>Tags: rider c#</p>
@@ -24,8 +25,26 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationConfigurable
       parentId="CodeInspectionSettingsId"
-      instance="com.jetbrains.rider.settings.MismatchedFileNamesOptionsPage"
+      instance="com.jetbrains.rider.roflcopter.settings.MismatchedFileNamesOptionsPage"
       id="preferences.MismatchedFileNamesOptionsPage"/>
   </extensions>
+
+  <actions>
+    <action id="Roflcopter.RiderUnitTestRunFileAction"
+            class="com.jetbrains.rider.roflcopter.unitTesting.RiderUnitTestRunFileAction"
+            text="Run All Tests in _File">
+      <add-to-group group-id="UnitTesting" anchor="after" relative-to-action="RiderUnitTestDebugContextAction"/>
+      <add-to-group group-id="EditorPopupMenu1.RiderSection" anchor="after"
+                    relative-to-action="RiderUnitTestDebugContextAction"/>
+      <keyboard-shortcut first-keystroke="control U" second-keystroke="F" keymap="Visual Studio"/>
+      <keyboard-shortcut first-keystroke="control U" second-keystroke="control F" keymap="Visual Studio"/>
+      <keyboard-shortcut first-keystroke="meta U" second-keystroke="F" keymap="Visual Studio OSX"/>
+      <keyboard-shortcut first-keystroke="meta U" second-keystroke="meta F" keymap="Visual Studio OSX"/>
+      <keyboard-shortcut first-keystroke="control T" second-keystroke="F" keymap="ReSharper" replace-all="true"/>
+      <keyboard-shortcut first-keystroke="control T" second-keystroke="control F" keymap="ReSharper"/>
+      <keyboard-shortcut first-keystroke="meta T" second-keystroke="F" keymap="ReSharper OSX" replace-all="true"/>
+      <keyboard-shortcut first-keystroke="meta T" second-keystroke="meta F" keymap="ReSharper OSX"/>
+    </action>
+  </actions>
 
 </idea-plugin>

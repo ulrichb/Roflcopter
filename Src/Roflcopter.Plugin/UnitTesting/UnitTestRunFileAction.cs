@@ -18,8 +18,8 @@ using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 
 namespace Roflcopter.Plugin.UnitTesting
 {
-    [Action("UnitTest.RunFile", "&Run Unit Tests in File",
-        Icon = typeof(UnitTestingThemedIcons.RunTest),
+    [Action("UnitTest.RunFile", "Run All Tests in &File",
+        Icon = typeof(UnitTestingThemedIcons.RunAll),
         Id = 1962458498,
         IdeaShortcuts = new[] { "Control+T F", "Control+T Control+F" },
         VsShortcuts = new[] { "Control+U F", "Control+U Control+F" })]

@@ -34,7 +34,7 @@ Allowed file name postfixes can be configured on the "Mismatched file names" opt
 
 <img src="/Doc/InvalidAssertionMessage.png" alt="InvalidAssertionMessage" width="673"  />
 
-### "Run Unit Tests in File" action
+### "Run All Tests in File" action
 
 <img src="/Doc/UnitTestRunFileAction.png" alt="UnitTestRunFileAction" width="490"  />
 
