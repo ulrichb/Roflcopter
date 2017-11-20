@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="bd289508-8e86-429b-ba39-3a818a6d8ca2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="bd289508-8e86-429b-ba39-3a818a6d8ca2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2017.2/project-config.xsd">
   <name>Build</name>
   <settings>
     <options>
