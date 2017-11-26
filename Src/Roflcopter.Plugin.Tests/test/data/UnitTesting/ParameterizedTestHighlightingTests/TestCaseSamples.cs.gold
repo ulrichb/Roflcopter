@@ -1,0 +1,134 @@
+﻿using System.Collections;
+using NUnit.Framework;
+
+// ReSharper disable RedundantExplicitParamsArrayCreation
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
+{
+    [TestFixture]
+    public class TestCaseSamples
+    {
+        [TestCase("Arg")]
+        public void TestCase(string param)
+        {
+        }
+
+        [Test]
+        [TestCase("Arg")]
+        public void TestCaseWithTestAttribute(string param)
+        {
+        }
+
+        [TestCase("Arg1A", "Arg1B")]
+        [TestCase("Arg2A", "Arg2B")]
+        public void TestCaseMultiple(string paramA, string paramB)
+        {
+        }
+
+        [TestCaseSource(nameof(TestCaseSourceCases))]
+        public void TestCaseSource(string paramA, string paramB)
+        {
+        }
+
+        [Test]
+        [TestCaseSource(nameof(TestCaseSourceCases))]
+        public void TestCaseSourceWithTestAttribute(string paramA, string paramB)
+        {
+        }
+
+        private static IEnumerable TestCaseSourceCases => new[] { new TestCaseData("Arg1A", "Arg1B"), new TestCaseData("Arg2A", "Arg2B") };
+
+        [TestCase(|"Arg"|(0))]
+        public void TestCaseWithWrongType(int param)
+        {
+        }
+
+        [TestCase("ArgA", |"ArgB"|(1), |"ArgC"|(2))]
+        [TestCase("ArgA", 42, |"ArgC"|(3))]
+        [TestCase(|1|(4), |"ArgB"|(5), |"ArgC"|(6))]
+        public void TestCaseWithWrongTypeMultiple(string paramA, int paramB, double paramC)
+        {
+        }
+
+        [TestCase(|"Arg"|(7))]
+        public void TestCaseWithoutParameter()
+        {
+        }
+
+        [TestCase("Arg1A", |"Arg1B"|(8))]
+        public void TestCaseWithMissingParameter(string paramA)
+        {
+        }
+
+        [TestCase("Arg1A", "Arg1B")]
+        [|TestCase|(9)("Arg2A")]
+        [||TestCase|(10)|(11)]
+        public void TestCaseWithMissingArgument(string paramA, string paramB)
+        {
+        }
+
+        [|TestCase|(12)("Arg1A")]
+        [|TestCase|(13)("Arg2A")]
+        public void TestCaseWithMissingArgumentInEveryTestCase(string paramA, |string paramB|(14))
+        {
+        }
+
+        [TestCase("Arg1A", "Arg1B")]
+        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(15))]
+        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(16), |"Arg1D"|(17))]
+        public void TestCaseWithExtraArgument(string paramA, string paramB)
+        {
+        }
+
+        [Test]
+        public void ParameterWithoutTestCase(|string param|(18))
+        {
+        }
+
+        [Test]
+        public void ParameterWithoutTestCaseMultiple(|string paramA|(19), |string paramB|(20))
+        {
+        }
+
+        [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH" })]
+        [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH")] // "params" array
+        //
+        [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(21) })]
+        [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(22))] // "params" array
+        public void TestCaseWithArrayContructor(string pA, string pB, string pC, string pD, string pE, string pF, string pG, string pH)
+        {
+        }
+
+        [TestCase(arg1: "Arg1A", arg2: "Arg1B")]
+        [|TestCase|(23)(arg: "Arg2A")]
+        public void TestCaseWithArgumentNames(string paramA, string paramB)
+        {
+        }
+    }
+}
+
+---------------------------------------------------------
+(0): ReSharper Warning: Argument value not convertible to 'System.Int32'
+(1): ReSharper Warning: Argument value not convertible to 'System.Int32'
+(2): ReSharper Warning: Argument value not convertible to 'System.Double'
+(3): ReSharper Warning: Argument value not convertible to 'System.Double'
+(4): ReSharper Warning: Argument value not convertible to 'System.String'
+(5): ReSharper Warning: Argument value not convertible to 'System.Int32'
+(6): ReSharper Warning: Argument value not convertible to 'System.Double'
+(7): ReSharper Warning: Missing parameter for argument
+(8): ReSharper Warning: Missing parameter for argument
+(9): ReSharper Warning: Missing arguments for parameter 'paramB'
+(10):<overlapped> ReSharper Warning: Missing arguments for parameter 'paramA'
+(11): ReSharper Warning: Missing arguments for parameter 'paramB'
+(12): ReSharper Warning: Missing arguments for parameter 'paramB'
+(13): ReSharper Warning: Missing arguments for parameter 'paramB'
+(14): ReSharper Warning: Missing arguments for parameter 'paramB'
+(15): ReSharper Warning: Missing parameter for argument
+(16): ReSharper Warning: Missing parameter for argument
+(17): ReSharper Warning: Missing parameter for argument
+(18): ReSharper Warning: Missing arguments for parameter 'param'
+(19): ReSharper Warning: Missing arguments for parameter 'paramA'
+(20): ReSharper Warning: Missing arguments for parameter 'paramB'
+(21): ReSharper Warning: Missing parameter for argument
+(22): ReSharper Warning: Missing parameter for argument
+(23): ReSharper Warning: Missing arguments for parameter 'paramB'

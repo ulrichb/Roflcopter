@@ -8,14 +8,15 @@
 
 <span>At the moment the following features have been ported to Rider.</span>
 <ul>
-<li>Git Branch Name Live Template (no Live Template configuration in Rider atm., 
-    see <a href="https://youtrack.jetbrains.com/issue/RIDER-548#comment=27-1325254">RIDER-548</a>. Use VS to edit live templates.)</li>
-<li>"Mismatch between type and file name" warning</li>
-<li>"Assertion message is invalid" warning</li>
-<li>"Run Unit Tests in File" action</li>
+  <li>Git Branch Name Live Template (no Live Template configuration in Rider atm., 
+      see <a href="https://youtrack.jetbrains.com/issue/RIDER-548#comment=27-1325254">RIDER-548</a>. Use VS to edit Live Templates.)</li>
+  <li>"Mismatch between type and file name" warning</li>
+  <li>Parameterized test warnings for NUnit tests</li>
+  <li>"Assertion message is invalid" warning</li>
+  <li>"Run Unit Tests in File" action</li>
 </ul>
 
-<p>Tags: rider c#</p>
+<p>Tags: rider c# git todo file name nunit testcase parameter assertion unit tests run debugger modules</p>
 ]]></description>
   <change-notes>REPLACE ME</change-notes>
   <vendor>ulrichb</vendor>

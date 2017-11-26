@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Roflcopter.Sample.UnitTestFramework
+namespace Roflcopter.Sample.UnitTesting
 {
     [TestFixture]
     public class SampleTest

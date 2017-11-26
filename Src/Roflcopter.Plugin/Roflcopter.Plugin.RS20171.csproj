@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\Shared\Src\ReSharperExtensionsShared\Highlighting\SimpleTreeNodeHighlightingBase.cs" Link="ReSharperExtensionsShared\SimpleTreeNodeHighlightingBase.cs" />
+    <Compile Include="..\..\Shared\Src\ReSharperExtensionsShared\ProblemAnalyzers\SimpleElementProblemAnalyzer.cs" Link="ReSharperExtensionsShared\SimpleElementProblemAnalyzer.cs" />
   </ItemGroup>
 
   <ItemGroup>

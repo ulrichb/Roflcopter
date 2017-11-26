@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Roflcopter (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities</description>
     <releaseNotes>$ReleaseNotes$</releaseNotes>
-    <tags>rofl lol</tags>
+    <tags>git todo file name nunit testcase parameter assertion unit tests run debugger modules</tags>
     <dependencies>
       <dependency id="Wave" version="$DependencyVer$" />
     </dependencies>
