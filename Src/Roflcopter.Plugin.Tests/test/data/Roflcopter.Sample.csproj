@@ -7,8 +7,8 @@
   <ItemGroup>
     <Compile Remove="**\*ErrorSamples.cs" />
     <None Include="**\*ErrorSamples.cs" />
-    <Compile Remove="**\QuickFix\**" />
-    <None Include="**\QuickFix\**" />
+    <Compile Remove="**\*QuickFixTest\**" />
+    <None Include="**\*QuickFixTest\**" />
   </ItemGroup>
 
   <ItemGroup>

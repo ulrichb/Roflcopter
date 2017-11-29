@@ -1,4 +1,4 @@
-﻿namespace Roflcopter.Sample.MismatchedFileNames
+﻿namespace Roflcopter.Sample.MismatchedFileNames.MismatchedFileNameHighlightingTests
 {
     public class |SingleClassWithWrongCasing|(0)
     {

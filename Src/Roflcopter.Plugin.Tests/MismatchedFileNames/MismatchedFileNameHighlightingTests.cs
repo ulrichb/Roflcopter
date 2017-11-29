@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.ReSharper.FeaturesTestFramework.Daemon;
 using JetBrains.ReSharper.TestFramework;
@@ -11,8 +10,6 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
     [TestNetFramework4]
     public class MismatchedFileNameHighlightingTests : CSharpHighlightingTestBase
     {
-        protected override string RelativeTestDataPath => Path.Combine(base.RelativeTestDataPath, "..");
-
         [Test]
         public void SingleClass() => DoNamedTest();
 

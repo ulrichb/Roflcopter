@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
@@ -16,8 +15,6 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
     public class MismatchedFileNameHighlightingQuickFixTest : CSharpQuickFixTestBase<MismatchedFileNameHighlightingQuickFixTest.TestQuickFix>
     {
         private TestQuickFix _quickFix;
-
-        protected override string RelativeTestDataPath => Path.Combine(nameof(MismatchedFileNames), "QuickFix");
 
         [CanBeNull]
         protected override IQuickFix CreateQuickFix(IProject project, ITextControl textControl)
