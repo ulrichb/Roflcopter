@@ -7,7 +7,7 @@ using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.Util;
+using JetBrains.ReSharper.Psi.Tree;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 #if RS20171
 using JetBrains.ReSharper.Psi.CSharp.Impl;
@@ -66,7 +66,6 @@ namespace Roflcopter.Plugin.UnitTesting
             {
                 // Test method attributes can only be applied to regular parameter methods:
                 var parameterDeclaration = (IRegularParameterDeclaration) methodDeclaration.ParameterDeclarations[iParameter];
-                var parameter = parameterDeclaration.DeclaredElement.NotNull("parameterDeclaration.DeclaredElement != null");
 
                 var parameterHasSomeSource = sourceInfo.HasNonTestCaseTestBuilder;
 
@@ -83,11 +82,11 @@ namespace Roflcopter.Plugin.UnitTesting
                     {
                         parameterHasSomeSource = true;
 
-                        AnalyzeArgumentType(argumentExpression, parameter, consumer);
+                        AnalyzeArgumentType(argumentExpression, parameterDeclaration, consumer);
                     }
                 }
 
-                parameterHasSomeSource |= AnalyzeValuesAttribute(parameterDeclaration, parameter, consumer);
+                parameterHasSomeSource |= AnalyzeValuesAttribute(parameterDeclaration, consumer);
 
                 if (!parameterHasSomeSource)
                 {
@@ -104,7 +103,7 @@ namespace Roflcopter.Plugin.UnitTesting
             }
         }
 
-        private bool AnalyzeValuesAttribute(IRegularParameterDeclaration parameterDeclaration, IParameter parameter, IHighlightingConsumer consumer)
+        private bool AnalyzeValuesAttribute(IRegularParameterDeclaration parameterDeclaration, IHighlightingConsumer consumer)
         {
             var parameterHasAnyDataSource = false;
 
@@ -125,7 +124,7 @@ namespace Roflcopter.Plugin.UnitTesting
 
                     foreach (var argumentsExpression in argumentsExpressions)
                     {
-                        AnalyzeArgumentType(argumentsExpression, parameter, consumer);
+                        AnalyzeArgumentType(argumentsExpression, parameterDeclaration, consumer);
                     }
                 }
             }
@@ -133,13 +132,16 @@ namespace Roflcopter.Plugin.UnitTesting
             return parameterHasAnyDataSource;
         }
 
-        private static void AnalyzeArgumentType(ICSharpExpression argumentExpression, IParameter parameter, IHighlightingConsumer consumer)
+        private static void AnalyzeArgumentType(
+            IExpression argumentExpression,
+            IParameterDeclaration parameterDeclaration,
+            IHighlightingConsumer consumer)
         {
             var typeConversionRule = argumentExpression.GetTypeConversionRule();
 
-            if (!argumentExpression.Type().IsImplicitlyConvertibleTo(parameter.Type, typeConversionRule))
+            if (!argumentExpression.Type().IsImplicitlyConvertibleTo(parameterDeclaration.Type, typeConversionRule))
             {
-                consumer.AddHighlighting(new ParameterizedTestTypeMismatchHighlighting(argumentExpression, parameter));
+                consumer.AddHighlighting(new ParameterizedTestTypeMismatchHighlighting(argumentExpression, parameterDeclaration));
             }
         }
 

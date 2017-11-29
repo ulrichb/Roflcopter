@@ -1,0 +1,12 @@
+﻿using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestTypeMismatchFixParameterQuickFixTest
+{
+    public class TestCaseWithWrongTypeString
+    {
+        [TestCase("Arg")]
+        public void Test({selstart}string param{selend})
+        {
+        }
+    }
+}

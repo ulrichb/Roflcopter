@@ -1,0 +1,13 @@
+﻿using System;
+using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestTypeMismatchFixParameterQuickFixTest
+{
+    public class TestCaseWithWrongTypeEnum
+    {
+        [TestCase(DateTimeKind.Utc)]
+        public void Test({selstart}DateTimeKind param{selend})
+        {
+        }
+    }
+}

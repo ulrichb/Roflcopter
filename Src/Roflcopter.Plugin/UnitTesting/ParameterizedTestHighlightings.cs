@@ -1,7 +1,5 @@
 ﻿using JetBrains.ReSharper.Feature.Services.Daemon;
-using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp;
-using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharperExtensionsShared.Highlighting;
 using Roflcopter.Plugin.UnitTesting;
@@ -45,7 +43,7 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public const string Description = Title;
 
-        public ParameterizedTestMissingArgumentHighlighting(ITreeNode highlightingNode, IRegularParameterDeclaration parameterDeclaration) :
+        public ParameterizedTestMissingArgumentHighlighting(ITreeNode highlightingNode, IParameterDeclaration parameterDeclaration) :
             base(highlightingNode, string.Format(Message, parameterDeclaration.DeclaredName))
         {
         }
@@ -83,9 +81,14 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public const string Description = Title;
 
-        public ParameterizedTestTypeMismatchHighlighting(ICSharpExpression argumentsExpression, IParameter parameter) :
-            base(argumentsExpression, string.Format(Message, parameter.Type))
+        public ParameterizedTestTypeMismatchHighlighting(IExpression argumentExpression, IParameterDeclaration parameterDeclaration) :
+            base(argumentExpression, string.Format(Message, parameterDeclaration.Type))
         {
+            ArgumentExpression = argumentExpression;
+            ParameterDeclaration = parameterDeclaration;
         }
+
+        public IExpression ArgumentExpression { get; }
+        public IParameterDeclaration ParameterDeclaration { get; }
     }
 }
