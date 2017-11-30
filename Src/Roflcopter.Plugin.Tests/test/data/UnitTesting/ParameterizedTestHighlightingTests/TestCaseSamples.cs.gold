@@ -55,52 +55,52 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
-        [TestCase("Arg1A", |"Arg1B"|(8))]
+        [TestCase("ArgA", |"ArgB"|(8), |"ArgC"|(9))]
         public void TestCaseWithMissingParameter(string paramA)
         {
         }
 
         [TestCase("Arg1A", "Arg1B")]
-        [|TestCase|(9)("Arg2A")]
-        [||TestCase|(10)|(11)]
+        [|TestCase|(10)("Arg2A")]
+        [||TestCase|(11)|(12)]
         public void TestCaseWithMissingArgument(string paramA, string paramB)
         {
         }
 
-        [|TestCase|(12)("Arg1A")]
-        [|TestCase|(13)("Arg2A")]
-        public void TestCaseWithMissingArgumentInEveryTestCase(string paramA, |string paramB|(14))
+        [|TestCase|(13)("Arg1A")]
+        [|TestCase|(14)("Arg2A")]
+        public void TestCaseWithMissingArgumentInEveryTestCase(string paramA, |string paramB|(15))
         {
         }
 
         [TestCase("Arg1A", "Arg1B")]
-        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(15))]
-        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(16), |"Arg1D"|(17))]
+        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(16))]
+        [TestCase("Arg1A", "Arg1B", |"Arg1C"|(17), |"Arg1D"|(18))]
         public void TestCaseWithExtraArgument(string paramA, string paramB)
         {
         }
 
         [Test]
-        public void ParameterWithoutTestCase(|string param|(18))
+        public void ParameterWithoutTestCase(|string param|(19))
         {
         }
 
         [Test]
-        public void ParameterWithoutTestCaseMultiple(|string paramA|(19), |string paramB|(20))
+        public void ParameterWithoutTestCaseMultiple(|string paramA|(20), |string paramB|(21))
         {
         }
 
         [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH" })]
         [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH")] // "params" array
         //
-        [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(21) })]
-        [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(22))] // "params" array
+        [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(22) })]
+        [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH", |"Invalid"|(23))] // "params" array
         public void TestCaseWithArrayContructor(string pA, string pB, string pC, string pD, string pE, string pF, string pG, string pH)
         {
         }
 
         [TestCase(arg1: "Arg1A", arg2: "Arg1B")]
-        [|TestCase|(23)(arg: "Arg2A")]
+        [|TestCase|(24)(arg: "Arg2A")]
         public void TestCaseWithArgumentNames(string paramA, string paramB)
         {
         }
@@ -117,18 +117,19 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
 (6): ReSharper Warning: Argument value not convertible to 'System.Double'
 (7): ReSharper Warning: Missing parameter for argument
 (8): ReSharper Warning: Missing parameter for argument
-(9): ReSharper Warning: Missing arguments for parameter 'paramB'
-(10):<overlapped> ReSharper Warning: Missing arguments for parameter 'paramA'
-(11): ReSharper Warning: Missing arguments for parameter 'paramB'
+(9): ReSharper Warning: Missing parameter for argument
+(10): ReSharper Warning: Missing arguments for parameter 'paramB'
+(11):<overlapped> ReSharper Warning: Missing arguments for parameter 'paramA'
 (12): ReSharper Warning: Missing arguments for parameter 'paramB'
 (13): ReSharper Warning: Missing arguments for parameter 'paramB'
 (14): ReSharper Warning: Missing arguments for parameter 'paramB'
-(15): ReSharper Warning: Missing parameter for argument
+(15): ReSharper Warning: Missing arguments for parameter 'paramB'
 (16): ReSharper Warning: Missing parameter for argument
 (17): ReSharper Warning: Missing parameter for argument
-(18): ReSharper Warning: Missing arguments for parameter 'param'
-(19): ReSharper Warning: Missing arguments for parameter 'paramA'
-(20): ReSharper Warning: Missing arguments for parameter 'paramB'
-(21): ReSharper Warning: Missing parameter for argument
+(18): ReSharper Warning: Missing parameter for argument
+(19): ReSharper Warning: Missing arguments for parameter 'param'
+(20): ReSharper Warning: Missing arguments for parameter 'paramA'
+(21): ReSharper Warning: Missing arguments for parameter 'paramB'
 (22): ReSharper Warning: Missing parameter for argument
-(23): ReSharper Warning: Missing arguments for parameter 'paramB'
+(23): ReSharper Warning: Missing parameter for argument
+(24): ReSharper Warning: Missing arguments for parameter 'paramB'

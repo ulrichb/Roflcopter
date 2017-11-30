@@ -55,7 +55,7 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
-        [TestCase("Arg1A", "Arg1B")]
+        [TestCase("ArgA", "ArgB", "ArgC")]
         public void TestCaseWithMissingParameter(string paramA)
         {
         }
