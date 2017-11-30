@@ -1,0 +1,28 @@
+﻿using System;
+using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
+{
+    public class ParameterizedTestMissingParameterAddParameterQuickFix
+    {
+        [TestCase("Arg", |"first missing parameter"|(0), |"next missing parameter"|(1))]
+        public void MissingStringParameter(string param)
+        {
+        }
+
+        [TestCase("Arg", |DateTimeKind.Utc|(2))]
+        public void MissingEnumParameter(string param)
+        {
+        }
+    }
+}
+
+------------------------------------------------
+0: Missing parameter for argument
+QUICKFIXES:
+Add 'string' parameter
+1: Missing parameter for argument
+NO QUICKFIXES
+2: Missing parameter for argument
+QUICKFIXES:
+Add 'DateTimeKind' parameter

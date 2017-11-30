@@ -1,5 +1,6 @@
 ﻿using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp;
+using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharperExtensionsShared.Highlighting;
 using Roflcopter.Plugin.UnitTesting;
@@ -62,10 +63,20 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public const string Description = Title;
 
-        public ParameterizedTestMissingParameterHighlighting(ITreeNode highlightingNode) :
-            base(highlightingNode, string.Format(Message))
+        public ParameterizedTestMissingParameterHighlighting(
+            IMethodDeclaration methodDeclaration,
+            IExpression argumentExpression,
+            bool isFirstMissingParameter) :
+            base(argumentExpression, string.Format(Message))
         {
+            MethodDeclaration = methodDeclaration;
+            ArgumentExpression = argumentExpression;
+            IsFirstMissingParameter = isFirstMissingParameter;
         }
+
+        public IMethodDeclaration MethodDeclaration { get; }
+        public IExpression ArgumentExpression { get; }
+        public bool IsFirstMissingParameter { get; }
     }
 
     [ConfigurableSeverityHighlighting(

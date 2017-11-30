@@ -96,9 +96,14 @@ namespace Roflcopter.Plugin.UnitTesting
 
             foreach (var testCaseAttributeInfo in sourceInfo.TestCaseAttributes)
             {
+                var isFirstMissingParameter = true;
+
                 foreach (var argumentsExpression in testCaseAttributeInfo.ArgumentExpressions.Skip(parametersCount))
                 {
-                    consumer.AddHighlighting(new ParameterizedTestMissingParameterHighlighting(argumentsExpression));
+                    consumer.AddHighlighting(
+                        new ParameterizedTestMissingParameterHighlighting(methodDeclaration, argumentsExpression, isFirstMissingParameter));
+
+                    isFirstMissingParameter = false;
                 }
             }
         }
