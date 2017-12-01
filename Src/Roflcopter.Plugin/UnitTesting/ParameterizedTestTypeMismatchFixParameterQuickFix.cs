@@ -5,32 +5,32 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
 using JetBrains.ReSharper.Psi.CSharp;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
+using ReSharperExtensionsShared.QuickFixes;
 
 namespace Roflcopter.Plugin.UnitTesting
 {
     [QuickFix]
-    public class ParameterizedTestTypeMismatchFixParameterQuickFix : QuickFixBase
+    public class ParameterizedTestTypeMismatchFixParameterQuickFix :
+        SimpleQuickFixBase<ParameterizedTestTypeMismatchHighlighting, ITreeNode>
     {
-        private readonly ParameterizedTestTypeMismatchHighlighting _highlighting;
-
-        public ParameterizedTestTypeMismatchFixParameterQuickFix(ParameterizedTestTypeMismatchHighlighting highlighting)
+        public ParameterizedTestTypeMismatchFixParameterQuickFix(ParameterizedTestTypeMismatchHighlighting highlighting) : base(highlighting)
         {
-            _highlighting = highlighting;
         }
 
         public override string Text =>
-            $"Change parameter type to '{_highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}'";
+            $"Change parameter type to '{Highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}'";
 
-        public override bool IsAvailable(IUserDataHolder _) => true;
+        protected override bool IsAvailableForTreeNode(IUserDataHolder _) => true;
 
         [CanBeNull]
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution _, IProgressIndicator __)
         {
-            _highlighting.ParameterDeclaration.SetType(_highlighting.ArgumentExpression.Type());
+            Highlighting.ParameterDeclaration.SetType(Highlighting.ArgumentExpression.Type());
 
-            return BulbActionUtils.SetSelection(_highlighting.ParameterDeclaration);
+            return BulbActionUtils.SetSelection(Highlighting.ParameterDeclaration);
         }
     }
 }

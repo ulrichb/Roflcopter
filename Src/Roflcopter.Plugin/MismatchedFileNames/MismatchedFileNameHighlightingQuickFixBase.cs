@@ -2,37 +2,35 @@
 using JetBrains.Annotations;
 using JetBrains.Application.Progress;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Feature.Services.QuickFixes;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
+using ReSharperExtensionsShared.QuickFixes;
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {
-    public abstract class MismatchedFileNameHighlightingQuickFixBase : QuickFixBase
+    public abstract class MismatchedFileNameHighlightingQuickFixBase : SimpleQuickFixBase<MismatchedFileNameHighlighting, ITypeDeclaration>
     {
-        private readonly MismatchedFileNameHighlighting _highlighting;
-
-        protected MismatchedFileNameHighlightingQuickFixBase(MismatchedFileNameHighlighting highlighting)
+        protected MismatchedFileNameHighlightingQuickFixBase(MismatchedFileNameHighlighting highlighting) : base(highlighting)
         {
-            _highlighting = highlighting;
         }
 
-        public override string Text => $"Rename file to '{_highlighting.ExpectedFileName}'";
+        public override string Text => $"Rename file to '{Highlighting.ExpectedFileName}'";
 
-        public override bool IsAvailable(IUserDataHolder cache) => true;
+        protected override bool IsAvailableForTreeNode(IUserDataHolder cache) => true;
 
         [CanBeNull]
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
         {
-            var newFileName = _highlighting.ExpectedFileName;
+            var newFileName = Highlighting.ExpectedFileName;
 #if RS20171
-            var isOnlyACasingRenaming = StringComparer.OrdinalIgnoreCase.Equals(newFileName, _highlighting.CurrentFileName);
+            var isOnlyACasingRenaming = StringComparer.OrdinalIgnoreCase.Equals(newFileName, Highlighting.CurrentFileName);
 #else
-            var isOnlyACasingRenaming = FileSystemDefinition.PathStringEquality.Equals(newFileName, _highlighting.CurrentFileName);
+            var isOnlyACasingRenaming = FileSystemDefinition.PathStringEquality.Equals(newFileName, Highlighting.CurrentFileName);
 #endif
 
-            var psiSourceFile = _highlighting.HighlightingNode.GetSourceFile();
+            var psiSourceFile = Highlighting.HighlightingNode.GetSourceFile();
             var projectFile = psiSourceFile.ToProjectFile().NotNull("psiSourceFile.ToProjectFile() != null");
 
             return _ =>

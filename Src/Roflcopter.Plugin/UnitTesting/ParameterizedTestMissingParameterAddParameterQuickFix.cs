@@ -9,32 +9,30 @@ using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
+using ReSharperExtensionsShared.QuickFixes;
 
 namespace Roflcopter.Plugin.UnitTesting
 {
     [QuickFix]
-    public class ParameterizedTestMissingParameterAddParameterQuickFix : QuickFixBase
+    public class ParameterizedTestMissingParameterAddParameterQuickFix :
+        SimpleQuickFixBase<ParameterizedTestMissingParameterHighlighting, ITreeNode>
     {
-        private readonly ParameterizedTestMissingParameterHighlighting _highlighting;
-
-        public ParameterizedTestMissingParameterAddParameterQuickFix(ParameterizedTestMissingParameterHighlighting highlighting)
+        public ParameterizedTestMissingParameterAddParameterQuickFix(ParameterizedTestMissingParameterHighlighting highlighting) : base(highlighting)
         {
-            _highlighting = highlighting;
         }
 
-        public override string Text =>
-            $"Add '{_highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}' parameter";
+        public override string Text => $"Add '{Highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}' parameter";
 
-        public override bool IsAvailable(IUserDataHolder _) => _highlighting.IsFirstMissingParameter;
+        protected override bool IsAvailableForTreeNode(IUserDataHolder _) => Highlighting.IsFirstMissingParameter;
 
         [CanBeNull]
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution _, IProgressIndicator __)
         {
-            var methodDeclaration = _highlighting.MethodDeclaration;
+            var methodDeclaration = Highlighting.MethodDeclaration;
 
             var parameterDeclaration = methodDeclaration.AddParameterDeclarationBefore(
                 ParameterKind.VALUE,
-                parameterType: _highlighting.ArgumentExpression.Type(),
+                parameterType: Highlighting.ArgumentExpression.Type(),
                 parameterName: "newParameter",
                 anchor: null);
 
