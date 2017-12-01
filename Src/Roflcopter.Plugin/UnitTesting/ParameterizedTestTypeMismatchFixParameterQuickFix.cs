@@ -4,6 +4,7 @@ using JetBrains.Application.Progress;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
+using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.TextControl;
 using JetBrains.Util;
 
@@ -19,7 +20,8 @@ namespace Roflcopter.Plugin.UnitTesting
             _highlighting = highlighting;
         }
 
-        public override string Text => $"Change parameter type to '{_highlighting.ArgumentExpression.Type()}'";
+        public override string Text =>
+            $"Change parameter type to '{_highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}'";
 
         public override bool IsAvailable(IUserDataHolder _) => true;
 

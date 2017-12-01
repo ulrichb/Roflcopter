@@ -1,0 +1,26 @@
+﻿using System;
+using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
+{
+    public class ParameterizedTestTypeMismatchFixParameterQuickFix
+    {
+        [TestCase(|"Arg"|(0))]
+        public void WrongTypeString(int param)
+        {
+        }
+
+        [TestCase(|DateTimeKind.Utc|(1))]
+        public void WrongTypeEnum(int param)
+        {
+        }
+    }
+}
+
+------------------------------------------------
+0: Argument value not convertible to 'System.Int32'
+QUICKFIXES:
+Change parameter type to 'string'
+1: Argument value not convertible to 'System.Int32'
+QUICKFIXES:
+Change parameter type to 'DateTimeKind'
