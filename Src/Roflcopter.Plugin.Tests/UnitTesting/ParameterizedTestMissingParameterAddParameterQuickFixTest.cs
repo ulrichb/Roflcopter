@@ -7,7 +7,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
 {
     [TestFixture]
     [TestNetFramework4]
-    [TestPackages("NUnit")]
+    [UseNUnitPackage]
     public class ParameterizedTestMissingParameterAddParameterQuickFixTest :
         CSharpQuickFixTestBase<ParameterizedTestMissingParameterAddParameterQuickFix>
     {

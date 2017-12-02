@@ -10,7 +10,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
 {
     [TestFixture]
     [TestNetFramework4]
-    [TestPackages("NUnit")]
+    [UseNUnitPackage]
     public class ParameterizedTestHighlightingsQuickFixAvailabilityTest : QuickFixAvailabilityTestBase
     {
         protected override bool HighlightingPredicate(IHighlighting highlighting, [CanBeNull] IPsiSourceFile _)

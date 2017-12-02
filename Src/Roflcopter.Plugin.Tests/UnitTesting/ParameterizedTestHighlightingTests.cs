@@ -29,7 +29,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         [HighlightOnly(typeof(ParameterizedTestMissingArgumentHighlighting), typeof(ParameterizedTestTypeMismatchHighlighting))]
         public void ErrorSamples() => DoNamedTest();
 
-        [TestPackages("NUnit")]
+        [UseNUnitPackage]
         public class Default : ParameterizedTestHighlightingTests
         {
             [Test]
@@ -39,7 +39,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
             public void ParameterDataSourceAttributeSamples() => DoNamedTest();
         }
 
-        [TestPackages("NUnit/2.6.4")]
+        [UseNUnitPackage("2.6.4")]
         public class WithNUnit2 : ParameterizedTestHighlightingTests
         {
         }
