@@ -90,6 +90,8 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
+        //
+
         [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH" })]
         [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH")] // "params" array
         //
@@ -99,8 +101,19 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
+        //
+
+        [TestCase("Arg", Description = "description", ExpectedResult = "result")]
+        [TestCase("Arg", "Invalid", Description = "description", ExpectedResult = "result")]
+        public string TestCaseWithAdditionalNamedParameterArguments(string param)
+        {
+            return "result";
+        }
+
         [TestCase(arg1: "Arg1A", arg2: "Arg1B")]
         [TestCase(arg: "Arg2A")]
+        [TestCase(arguments: new object[] { "Arg3A", "Arg3B" })]
+        [TestCase(arguments: new object[] { "Arg4A" })]
         public void TestCaseWithArgumentNames(string paramA, string paramB)
         {
         }

@@ -90,6 +90,8 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
+        //
+
         [TestCase(new object[] { "ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH" })]
         [TestCase("ArgA", "ArgB", "ArgC", "ArgD", "ArgE", "ArgF", "ArgG", "ArgH")] // "params" array
         //
@@ -99,8 +101,19 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
+        //
+
+        [TestCase("Arg", Description = "description", ExpectedResult = "result")]
+        [TestCase("Arg", |"Invalid"|(24), Description = "description", ExpectedResult = "result")]
+        public string TestCaseWithAdditionalNamedParameterArguments(string param)
+        {
+            return "result";
+        }
+
         [TestCase(arg1: "Arg1A", arg2: "Arg1B")]
-        [|TestCase|(24)(arg: "Arg2A")]
+        [|TestCase|(25)(arg: "Arg2A")]
+        [TestCase(arguments: new object[] { "Arg3A", "Arg3B" })]
+        [|TestCase|(26)(arguments: new object[] { "Arg4A" })]
         public void TestCaseWithArgumentNames(string paramA, string paramB)
         {
         }
@@ -132,4 +145,6 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
 (21): ReSharper Warning: Missing arguments for parameter 'paramB'
 (22): ReSharper Warning: Missing parameter for argument
 (23): ReSharper Warning: Missing parameter for argument
-(24): ReSharper Warning: Missing arguments for parameter 'paramB'
+(24): ReSharper Warning: Missing parameter for argument
+(25): ReSharper Warning: Missing arguments for parameter 'paramB'
+(26): ReSharper Warning: Missing arguments for parameter 'paramB'
