@@ -1,0 +1,14 @@
+﻿using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ConvertToParameterizedTestContextActionTest
+{
+    public class TestMethodWithoutParameters
+    {
+        [Test]
+        [TestCase(argument{caret})]
+        public void TestMethod(object parameter)
+        {
+            
+        }
+    }
+}

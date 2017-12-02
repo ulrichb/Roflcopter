@@ -32,11 +32,17 @@ Roflcopter also provides default Live Template, just type `branch` and hit TAB.
 
 Allowed file name postfixes can be configured on the "Mismatched file names" options page.
 
-### Parameterized test warnings for NUnit tests
+### Parameterized test support for NUnit tests
+
+#### Warnings for incorrect test parameters/attributes
 
 <img src="/Doc/ParameterizedTestHighlightings.png" alt="ParameterizedTestHighlightings" width="675" />
 
 <img src="/Doc/ParameterizedTestHighlightingsQuickFixes.png" alt="ParameterizedTestHighlightingsQuickFixes" width="540" />
+
+#### "Convert to parameterized test" context action
+
+<img src="/Doc/ConvertToParameterizedTestContextAction.gif" alt="ConvertToParameterizedTestContextAction" width="623" />
 
 ### "Assertion message is invalid" warning
 

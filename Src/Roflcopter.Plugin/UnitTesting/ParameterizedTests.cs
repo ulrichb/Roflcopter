@@ -18,6 +18,12 @@ namespace Roflcopter.Plugin.UnitTesting
         public static readonly IClrTypeName ValuesAttribute = new ClrTypeName("NUnit.Framework.ValuesAttribute");
         public static readonly IClrTypeName ValueSourceAttribute = new ClrTypeName("NUnit.Framework.ValueSourceAttribute");
 
+        public static bool IsTestMethodWithoutParameters(IMethodDeclaration methodDeclaration)
+        {
+            return methodDeclaration.AttributesEnumerable.Any(x => x.IsAttributeOrDerivedFrom(TestAttribute)) &&
+                   methodDeclaration.ParameterDeclarations.Count == 0;
+        }
+
         public static bool IsTestOrTestCaseMethod(IMethodDeclaration methodDeclaration)
         {
             return methodDeclaration.AttributesEnumerable.Any(x => x.IsAttributeOrDerivedFrom(TestAttribute, TestCaseAttribute));

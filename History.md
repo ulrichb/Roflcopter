@@ -1,5 +1,6 @@
 ### vNext ###
 - ReSharper 2017.3 support
+- Added "Convert to parameterized test" context action
 
 ### 1.0.0 ###
 - Added limited support for Rider 2017.2 (see the package description for supported features)

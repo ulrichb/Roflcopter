@@ -9,6 +9,8 @@
     <None Include="**\*ErrorSamples.cs" />
     <Compile Remove="**\*QuickFixTest\**" />
     <None Include="**\*QuickFixTest\**" />
+    <Compile Remove="**\*ContextActionTest\**" />
+    <None Include="**\*ContextActionTest\**" />
   </ItemGroup>
 
   <ItemGroup>
