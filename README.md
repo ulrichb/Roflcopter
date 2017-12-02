@@ -36,6 +36,8 @@ Allowed file name postfixes can be configured on the "Mismatched file names" opt
 
 <img src="/Doc/ParameterizedTestHighlightings.png" alt="ParameterizedTestHighlightings" width="675" />
 
+<img src="/Doc/ParameterizedTestHighlightingsQuickFixes.png" alt="ParameterizedTestHighlightingsQuickFixes" width="540" />
+
 ### "Assertion message is invalid" warning
 
 <img src="/Doc/InvalidAssertionMessage.png" alt="InvalidAssertionMessage" width="673"  />
