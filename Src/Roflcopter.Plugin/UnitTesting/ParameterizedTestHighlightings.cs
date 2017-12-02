@@ -44,10 +44,18 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public const string Description = Title;
 
-        public ParameterizedTestMissingArgumentHighlighting(ITreeNode highlightingNode, IParameterDeclaration parameterDeclaration) :
+        public ParameterizedTestMissingArgumentHighlighting(
+            ITreeNode highlightingNode,
+            IMethodDeclaration methodDeclaration,
+            ICSharpParameterDeclaration parameterDeclaration) :
             base(highlightingNode, string.Format(Message, parameterDeclaration.DeclaredName))
         {
+            MethodDeclaration = methodDeclaration;
+            ParameterDeclaration = parameterDeclaration;
         }
+
+        public IMethodDeclaration MethodDeclaration { get; }
+        public ICSharpParameterDeclaration ParameterDeclaration { get; }
     }
 
     [ConfigurableSeverityHighlighting(

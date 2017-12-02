@@ -1,0 +1,26 @@
+﻿using NUnit.Framework;
+
+namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
+{
+    public class ParameterizedTestMissingArgumentRemoveParameterQuickFix
+    {
+        [||TestCase|(0)|(1)("ArgA")]
+        public void Test(string paramA, |string paramB|(2), |string paramC|(3))
+        {
+        }
+    }
+}
+
+------------------------------------------------
+0: Missing arguments for parameter 'paramB'
+QUICKFIXES:
+Remove parameter 'paramB'
+1: Missing arguments for parameter 'paramC'
+QUICKFIXES:
+Remove parameter 'paramC'
+2: Missing arguments for parameter 'paramB'
+QUICKFIXES:
+Remove parameter 'paramB'
+3: Missing arguments for parameter 'paramC'
+QUICKFIXES:
+Remove parameter 'paramC'

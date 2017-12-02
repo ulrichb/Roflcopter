@@ -16,10 +16,13 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         protected override bool HighlightingPredicate(IHighlighting highlighting, [CanBeNull] IPsiSourceFile _)
         {
             return
-                // highlighting is ParameterizedTestMissingArgumentHighlighting ||
+                highlighting is ParameterizedTestMissingArgumentHighlighting ||
                 highlighting is ParameterizedTestMissingParameterHighlighting ||
                 highlighting is ParameterizedTestTypeMismatchHighlighting;
         }
+
+        [Test]
+        public void ParameterizedTestMissingArgumentRemoveParameterQuickFix() => DoNamedTest();
 
         [Test]
         public void ParameterizedTestMissingParameterAddParameterQuickFix() => DoNamedTest();

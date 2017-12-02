@@ -76,7 +76,8 @@ namespace Roflcopter.Plugin.UnitTesting
                     if (argumentExpression == null)
                     {
                         var highlightingNode = testCaseAttributeInfo.Attribute.Name;
-                        consumer.AddHighlighting(new ParameterizedTestMissingArgumentHighlighting(highlightingNode, parameterDeclaration));
+                        consumer.AddHighlighting(
+                            new ParameterizedTestMissingArgumentHighlighting(highlightingNode, methodDeclaration, parameterDeclaration));
                     }
                     else
                     {
@@ -90,7 +91,8 @@ namespace Roflcopter.Plugin.UnitTesting
 
                 if (!parameterHasSomeSource)
                 {
-                    consumer.AddHighlighting(new ParameterizedTestMissingArgumentHighlighting(parameterDeclaration, parameterDeclaration));
+                    consumer.AddHighlighting(
+                        new ParameterizedTestMissingArgumentHighlighting(parameterDeclaration, methodDeclaration, parameterDeclaration));
                 }
             }
 
