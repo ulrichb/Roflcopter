@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
 {
-    public class ParameterizedTestTypeMismatchFixParameterQuickFix
+    public class ParameterizedTestTypeMismatchHighlighting
     {
         [TestCase("Arg")]
         public void WrongTypeString(int param)

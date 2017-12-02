@@ -1,4 +1,5 @@
-﻿using JetBrains.ReSharper.Feature.Services.Daemon;
+﻿using JetBrains.Annotations;
+using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
@@ -73,18 +74,26 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public ParameterizedTestMissingParameterHighlighting(
             IMethodDeclaration methodDeclaration,
-            IExpression argumentExpression,
-            bool isFirstMissingParameter) :
+            IAttribute attribute,
+            ICSharpExpression argumentExpression,
+            bool isFirstMissingParameter,
+            [CanBeNull] ICSharpArgument argument) :
             base(argumentExpression, string.Format(Message))
         {
             MethodDeclaration = methodDeclaration;
+            Attribute = attribute;
             ArgumentExpression = argumentExpression;
+            Argument = argument;
             IsFirstMissingParameter = isFirstMissingParameter;
         }
 
         public IMethodDeclaration MethodDeclaration { get; }
+        public IAttribute Attribute { get; }
         public IExpression ArgumentExpression { get; }
         public bool IsFirstMissingParameter { get; }
+
+        [CanBeNull]
+        public ICSharpArgument Argument { get; }
     }
 
     [ConfigurableSeverityHighlighting(

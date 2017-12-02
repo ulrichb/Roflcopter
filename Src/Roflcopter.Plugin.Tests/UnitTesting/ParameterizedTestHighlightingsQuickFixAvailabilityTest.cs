@@ -22,12 +22,12 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         }
 
         [Test]
-        public void ParameterizedTestMissingArgumentRemoveParameterQuickFix() => DoNamedTest();
+        public void ParameterizedTestMissingArgumentHighlighting() => DoNamedTest();
 
         [Test]
-        public void ParameterizedTestMissingParameterAddParameterQuickFix() => DoNamedTest();
+        public void ParameterizedTestMissingParameterHighlighting() => DoNamedTest();
 
         [Test]
-        public void ParameterizedTestTypeMismatchFixParameterQuickFix() => DoNamedTest();
+        public void ParameterizedTestTypeMismatchHighlighting() => DoNamedTest();
     }
 }

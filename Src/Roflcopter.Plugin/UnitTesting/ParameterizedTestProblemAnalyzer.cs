@@ -101,10 +101,13 @@ namespace Roflcopter.Plugin.UnitTesting
             {
                 var isFirstMissingParameter = true;
 
-                foreach (var argument in testCaseAttributeInfo.Arguments.Skip(parametersCount))
+                foreach (var argumentInfo in testCaseAttributeInfo.Arguments.Skip(parametersCount))
                 {
-                    consumer.AddHighlighting(
-                        new ParameterizedTestMissingParameterHighlighting(methodDeclaration, argument.Expression, isFirstMissingParameter));
+                    consumer.AddHighlighting(new ParameterizedTestMissingParameterHighlighting(
+                        methodDeclaration,
+                        testCaseAttributeInfo.Attribute,
+                        argumentInfo.Expression,
+                        isFirstMissingParameter, argumentInfo.Argument));
 
                     isFirstMissingParameter = false;
                 }
@@ -246,7 +249,7 @@ namespace Roflcopter.Plugin.UnitTesting
             public ICSharpArgument Argument { get; }
 
             [CanBeNull]
-            public IExpressionInitializer ArrayExpressionInitializer { get; }
+            private IExpressionInitializer ArrayExpressionInitializer { get; }
 
             public ICSharpExpression Expression => Argument?.Value ?? ArrayExpressionInitializer.NotNull().Value;
         }

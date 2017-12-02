@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
 {
-    public class ParameterizedTestMissingParameterAddParameterQuickFix
+    public class ParameterizedTestMissingParameterHighlighting
     {
         [TestCase("Arg", "first missing parameter", "next missing parameter")]
         public void MissingStringParameter(string param)

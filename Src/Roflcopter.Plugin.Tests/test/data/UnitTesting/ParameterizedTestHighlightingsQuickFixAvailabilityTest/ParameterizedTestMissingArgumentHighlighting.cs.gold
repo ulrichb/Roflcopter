@@ -2,7 +2,7 @@
 
 namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingsQuickFixAvailabilityTest
 {
-    public class ParameterizedTestMissingArgumentRemoveParameterQuickFix
+    public class ParameterizedTestMissingArgumentHighlighting
     {
         [||TestCase|(0)|(1)("ArgA")]
         public void Test(string paramA, |string paramB|(2), |string paramC|(3))
