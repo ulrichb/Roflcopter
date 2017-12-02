@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using JetBrains.Metadata.Reader.API;
-using JetBrains.Metadata.Reader.Impl;
 using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
@@ -10,6 +8,7 @@ using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
+using Roflcopter.Plugin.Utilities;
 #if RS20171
 using JetBrains.ReSharper.Psi.CSharp.Impl;
 
@@ -30,16 +29,6 @@ namespace Roflcopter.Plugin.UnitTesting
         })]
     public class ParameterizedTestProblemAnalyzer : SimpleElementProblemAnalyzer<IMethodDeclaration, IMethod>
     {
-        private static readonly IClrTypeName TestAttribute = new ClrTypeName("NUnit.Framework.TestAttribute");
-
-        private static readonly IClrTypeName TestBuilderAttribute = new ClrTypeName("NUnit.Framework.Interfaces.ITestBuilder");
-        private static readonly IClrTypeName TestCaseAttribute = new ClrTypeName("NUnit.Framework.TestCaseAttribute");
-        private static readonly IClrTypeName TestCaseSourceAttribute = new ClrTypeName("NUnit.Framework.TestCaseSourceAttribute");
-
-        private static readonly IClrTypeName ParameterDataSourceInterface = new ClrTypeName("NUnit.Framework.Interfaces.IParameterDataSource");
-        private static readonly IClrTypeName ValuesAttribute = new ClrTypeName("NUnit.Framework.ValuesAttribute");
-        private static readonly IClrTypeName ValueSourceAttribute = new ClrTypeName("NUnit.Framework.ValueSourceAttribute");
-
         protected override void Run(
             IMethodDeclaration methodDeclaration,
             IMethod method,
@@ -50,7 +39,7 @@ namespace Roflcopter.Plugin.UnitTesting
 
             if (!method.IsAbstract)
             {
-                if (methodDeclaration.AttributesEnumerable.Any(x => IsAttributeOrDerivedFrom(x, TestAttribute, TestCaseAttribute)))
+                if (ParameterizedTests.IsTestOrTestCaseMethod(methodDeclaration))
                 {
                     AnalyzeTestMethod(methodDeclaration, consumer);
                 }
@@ -120,14 +109,14 @@ namespace Roflcopter.Plugin.UnitTesting
 
             foreach (var attribute in parameterDeclaration.AttributesEnumerable)
             {
-                if (IsAttributeOrDerivedFrom(attribute, ParameterDataSourceInterface,
+                if (attribute.IsAttributeOrDerivedFrom(ParameterizedTests.ParameterDataSourceInterface,
                     // NUnit 2 support:
-                    ValueSourceAttribute))
+                    ParameterizedTests.ValueSourceAttribute))
                 {
                     parameterHasAnyDataSource = true;
                 }
 
-                if (IsAttributeOrDerivedFrom(attribute, ValuesAttribute))
+                if (attribute.IsAttributeOrDerivedFrom(ParameterizedTests.ValuesAttribute))
                 {
                     parameterHasAnyDataSource = true;
 
@@ -163,7 +152,7 @@ namespace Roflcopter.Plugin.UnitTesting
 
             foreach (var attribute in methodDeclaration.AttributesEnumerable)
             {
-                if (IsAttributeOrDerivedFrom(attribute, TestCaseAttribute))
+                if (attribute.IsAttributeOrDerivedFrom(ParameterizedTests.TestCaseAttribute))
                 {
                     var arguments = GetArgumentsOfTestDataAttribute(attribute);
 
@@ -171,9 +160,9 @@ namespace Roflcopter.Plugin.UnitTesting
                 }
                 else
                 {
-                    if (IsAttributeOrDerivedFrom(attribute, TestBuilderAttribute,
+                    if (attribute.IsAttributeOrDerivedFrom(ParameterizedTests.TestBuilderAttribute,
                         // NUnit 2 support:
-                        TestCaseSourceAttribute))
+                        ParameterizedTests.TestCaseSourceAttribute))
                     {
                         hasNonTestCaseTestBuilder = true;
                     }
@@ -184,7 +173,8 @@ namespace Roflcopter.Plugin.UnitTesting
         }
 
         /// <summary>
-        /// Returns the list of arguments for <see cref="TestCaseAttribute"/> or <see cref="ValuesAttribute"/> declarations.
+        /// Returns the list of arguments for <see cref="ParameterizedTests.TestCaseAttribute"/> or
+        /// <see cref="ParameterizedTests.ValuesAttribute"/> declarations.
         /// </summary>
         private static IEnumerable<TestCaseArgumentInfo> GetArgumentsOfTestDataAttribute(IAttribute testCaseAttribute)
         {
@@ -252,24 +242,6 @@ namespace Roflcopter.Plugin.UnitTesting
             private IExpressionInitializer ArrayExpressionInitializer { get; }
 
             public ICSharpExpression Expression => Argument?.Value ?? ArrayExpressionInitializer.NotNull().Value;
-        }
-
-        private static bool IsAttributeOrDerivedFrom(IAttribute attribute, [ItemNotNull] params IClrTypeName[] typeNamesToTest)
-        {
-            if (attribute.TypeReference != null)
-            {
-                if (attribute.TypeReference.Resolve().DeclaredElement is ITypeElement typeElement)
-                {
-                    return typeNamesToTest.Any(typeNameToTest =>
-                    {
-                        var interfaceTypeToTest = TypeFactory.CreateTypeByCLRName(typeNameToTest, attribute.PsiModule);
-
-                        return typeElement.IsDescendantOf(interfaceTypeToTest.GetTypeElement());
-                    });
-                }
-            }
-
-            return false;
         }
     }
 }
