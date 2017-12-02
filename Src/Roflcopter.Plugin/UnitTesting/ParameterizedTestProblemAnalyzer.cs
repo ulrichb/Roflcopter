@@ -8,6 +8,7 @@ using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 #if RS20171
 using JetBrains.ReSharper.Psi.CSharp.Impl;
@@ -71,9 +72,9 @@ namespace Roflcopter.Plugin.UnitTesting
 
                 foreach (var testCaseAttributeInfo in sourceInfo.TestCaseAttributes)
                 {
-                    var argumentExpression = testCaseAttributeInfo.GetArgumentExpressionForParameter(iParameter);
+                    var argumentInfo = testCaseAttributeInfo.GetArgumentForParameter(iParameter);
 
-                    if (argumentExpression == null)
+                    if (argumentInfo == null)
                     {
                         var highlightingNode = testCaseAttributeInfo.Attribute.Name;
                         consumer.AddHighlighting(
@@ -83,7 +84,7 @@ namespace Roflcopter.Plugin.UnitTesting
                     {
                         parameterHasSomeSource = true;
 
-                        AnalyzeArgumentType(argumentExpression, parameterDeclaration, consumer);
+                        AnalyzeArgumentType(argumentInfo.Value.Expression, parameterDeclaration, consumer);
                     }
                 }
 
@@ -100,10 +101,10 @@ namespace Roflcopter.Plugin.UnitTesting
             {
                 var isFirstMissingParameter = true;
 
-                foreach (var argumentsExpression in testCaseAttributeInfo.ArgumentExpressions.Skip(parametersCount))
+                foreach (var argument in testCaseAttributeInfo.Arguments.Skip(parametersCount))
                 {
                     consumer.AddHighlighting(
-                        new ParameterizedTestMissingParameterHighlighting(methodDeclaration, argumentsExpression, isFirstMissingParameter));
+                        new ParameterizedTestMissingParameterHighlighting(methodDeclaration, argument.Expression, isFirstMissingParameter));
 
                     isFirstMissingParameter = false;
                 }
@@ -127,11 +128,11 @@ namespace Roflcopter.Plugin.UnitTesting
                 {
                     parameterHasAnyDataSource = true;
 
-                    var argumentsExpressions = GetArgumentsOfTestDataAttribute(attribute);
+                    var arguments = GetArgumentsOfTestDataAttribute(attribute);
 
-                    foreach (var argumentsExpression in argumentsExpressions)
+                    foreach (var argument in arguments)
                     {
-                        AnalyzeArgumentType(argumentsExpression, parameterDeclaration, consumer);
+                        AnalyzeArgumentType(argument.Expression, parameterDeclaration, consumer);
                     }
                 }
             }
@@ -161,9 +162,9 @@ namespace Roflcopter.Plugin.UnitTesting
             {
                 if (IsAttributeOrDerivedFrom(attribute, TestCaseAttribute))
                 {
-                    var argumentsExpressions = GetArgumentsOfTestDataAttribute(attribute);
+                    var arguments = GetArgumentsOfTestDataAttribute(attribute);
 
-                    testCaseAttributeInfos.Add(new TestCaseAttributeInfo(attribute, argumentsExpressions.ToList()));
+                    testCaseAttributeInfos.Add(new TestCaseAttributeInfo(attribute, arguments.ToList()));
                 }
                 else
                 {
@@ -182,24 +183,23 @@ namespace Roflcopter.Plugin.UnitTesting
         /// <summary>
         /// Returns the list of arguments for <see cref="TestCaseAttribute"/> or <see cref="ValuesAttribute"/> declarations.
         /// </summary>
-        private static IEnumerable<ICSharpExpression> GetArgumentsOfTestDataAttribute(IAttribute testCaseAttribute)
+        private static IEnumerable<TestCaseArgumentInfo> GetArgumentsOfTestDataAttribute(IAttribute testCaseAttribute)
         {
-            if (testCaseAttribute.ConstructorReference.Resolve().DeclaredElement is IConstructor constructor)
+            var arguments = testCaseAttribute.Arguments;
+
+            var singleArgument = arguments.SingleItem;
+
+            if (singleArgument != null && singleArgument.MatchingParameter?.Element.IsParameterArray == true)
             {
-                if (constructor.Parameters.Count == 1 && constructor.Parameters[0].IsParameterArray)
+                if (singleArgument.Value is IArrayCreationExpression arrayCreationExpression)
                 {
-                    var paramsExpression = testCaseAttribute.ConstructorArgumentExpressions.SingleItem;
+                    var initializers = arrayCreationExpression.ArrayInitializer.ElementInitializersEnumerable;
 
-                    if (paramsExpression is IArrayCreationExpression arrayCreationExpression)
-                    {
-                        var initializers = arrayCreationExpression.ArrayInitializer.ElementInitializersEnumerable;
-
-                        return initializers.Select(x => ((IExpressionInitializer) x).Value);
-                    }
+                    return initializers.Select(x => new TestCaseArgumentInfo(arrayExpressionInitializer: (IExpressionInitializer) x));
                 }
             }
 
-            return testCaseAttribute.ConstructorArgumentExpressions;
+            return arguments.Select(x => new TestCaseArgumentInfo(x));
         }
 
         private struct ParameterizedTestSourceInfo
@@ -216,17 +216,39 @@ namespace Roflcopter.Plugin.UnitTesting
 
         private struct TestCaseAttributeInfo
         {
-            public TestCaseAttributeInfo(IAttribute attribute, IReadOnlyList<ICSharpExpression> argumentExpressions)
+            public TestCaseAttributeInfo(IAttribute attribute, IReadOnlyList<TestCaseArgumentInfo> arguments)
             {
                 Attribute = attribute;
-                ArgumentExpressions = argumentExpressions;
+                Arguments = arguments;
             }
 
             public IAttribute Attribute { get; }
-            public IReadOnlyList<ICSharpExpression> ArgumentExpressions { get; }
+            public IReadOnlyList<TestCaseArgumentInfo> Arguments { get; }
+
+            public TestCaseArgumentInfo? GetArgumentForParameter(int index) =>
+                index < Arguments.Count ? Arguments[index] : (TestCaseArgumentInfo?) null;
+        }
+
+        /// <summary>
+        /// Represents a test case argument (which can be an attribute argument or an array initializer expression).
+        /// </summary>
+        private struct TestCaseArgumentInfo
+        {
+            public TestCaseArgumentInfo(ICSharpArgument argument = null, IExpressionInitializer arrayExpressionInitializer = null)
+            {
+                Assertion.Assert((argument == null) ^ (arrayExpressionInitializer == null), "argument XOR arrayExpressionInitializer");
+
+                Argument = argument;
+                ArrayExpressionInitializer = arrayExpressionInitializer;
+            }
 
             [CanBeNull]
-            public ICSharpExpression GetArgumentExpressionForParameter(int index) => ArgumentExpressions.ElementAtOrDefault(index);
+            public ICSharpArgument Argument { get; }
+
+            [CanBeNull]
+            public IExpressionInitializer ArrayExpressionInitializer { get; }
+
+            public ICSharpExpression Expression => Argument?.Value ?? ArrayExpressionInitializer.NotNull().Value;
         }
 
         private static bool IsAttributeOrDerivedFrom(IAttribute attribute, [ItemNotNull] params IClrTypeName[] typeNamesToTest)

@@ -102,6 +102,10 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         }
 
         //
+        [TestCase(arg: new object[] { "Elem0", "Elem1" })]
+        public void TestCaseWithArrayAsSingleArgument(object[] param)
+        {
+        }
 
         [TestCase("Arg", Description = "description", ExpectedResult = "result")]
         [TestCase("Arg", |"Invalid"|(24), Description = "description", ExpectedResult = "result")]

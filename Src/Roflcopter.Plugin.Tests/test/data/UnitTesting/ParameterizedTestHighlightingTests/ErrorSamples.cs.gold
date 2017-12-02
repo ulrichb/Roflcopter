@@ -20,6 +20,14 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         //
 
         [Test]
+        [TestCase(arguments: "Arg4A")]
+        public void TestArgumentParamterWithoutArrayInitializer(string param)
+        {
+        }
+
+        //
+
+        [Test]
         [InvalidAttributeReference]
         public void TestWithInvalidAttribute1(|string param|(0))
         {
