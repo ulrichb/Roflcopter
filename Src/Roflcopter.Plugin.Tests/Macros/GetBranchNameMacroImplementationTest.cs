@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
-using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Macros;
 using JetBrains.ReSharper.FeaturesTestFramework.LiveTemplates;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.Util;
 using NUnit.Framework;
+using Roflcopter.Plugin.Git;
 using Roflcopter.Plugin.Macros;
+using Roflcopter.Plugin.Tests.Git;
 
 namespace Roflcopter.Plugin.Tests.Macros
 {
@@ -16,30 +15,34 @@ namespace Roflcopter.Plugin.Tests.Macros
     [TestNetFramework4]
     public class GetBranchNameMacroImplementationTest : MacroImplTestBase
     {
-        private readonly PathProvider _pathProvider = new PathProvider();
+        private GitRepositoryProvider _gitRepositoryProvider;
+        private FileSystemPath _gitDirectory;
 
         [SetUp]
         public new void SetUp()
         {
-            Directory.CreateDirectory(_pathProvider.GitDirectoryName);
+            const string gitDirectory = "__git__";
+            _gitDirectory = SolutionItemsBasePath.Combine(gitDirectory);
+            _gitRepositoryProvider = new TestGitRepositoryProvider(gitDirectory);
+
+            _gitDirectory.CreateDirectory();
         }
 
         [TearDown]
         public new void TearDown()
         {
-            if (Directory.Exists(_pathProvider.GitDirectoryName))
-                Directory.Delete(_pathProvider.GitDirectoryName, recursive: true);
+            _gitDirectory.Delete();
         }
 
         protected override IMacroImplementation GetMacro([NotNull] IEnumerable<IMacroParameterValueNew> parameters)
         {
-            return new GetBranchNameMacroImplementation(_pathProvider, parameters.ToParameters());
+            return new GetBranchNameMacroImplementation(_gitRepositoryProvider, parameters.ToParameters());
         }
 
         [Test]
         public void Default()
         {
-            File.WriteAllText(Path.Combine(_pathProvider.GitDirectoryName, "HEAD"), "ref: refs/heads/my_branch");
+            _gitDirectory.Combine("HEAD").WriteAllText("ref: refs/heads/my_branch");
 
             DoNamedTest();
         }
@@ -47,7 +50,7 @@ namespace Roflcopter.Plugin.Tests.Macros
         [Test]
         public void StripingRegexParameter()
         {
-            File.WriteAllText(Path.Combine(_pathProvider.GitDirectoryName, "HEAD"), "ref: refs/heads/spike/my_branch");
+            _gitDirectory.Combine("HEAD").WriteAllText("ref: refs/heads/spike/my_branch");
 
             DoNamedTest();
         }
@@ -55,7 +58,7 @@ namespace Roflcopter.Plugin.Tests.Macros
         [Test]
         public void EmptyHeadFile()
         {
-            File.WriteAllText(Path.Combine(_pathProvider.GitDirectoryName, "HEAD"), "");
+            _gitDirectory.Combine("HEAD").WriteAllText("");
 
             DoNamedTest();
         }
@@ -69,15 +72,9 @@ namespace Roflcopter.Plugin.Tests.Macros
         [Test]
         public void NoGitDirectory()
         {
-            Directory.Delete(_pathProvider.GitDirectoryName);
+            _gitDirectory.Delete();
 
             DoNamedTest();
-        }
-
-        private class PathProvider : IGetBranchNameMacroPathProvider
-        {
-            public string GitDirectoryName => "__git__";
-            public FileSystemPath GetSolutionDirectory(ISolution solution) => FileSystemPath.Parse(Environment.CurrentDirectory);
         }
     }
 }

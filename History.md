@@ -1,6 +1,7 @@
 ### vNext ###
 - ReSharper 2017.3 support
 - Added "Convert to parameterized test" context action
+- Added "Custom source links" to "Copy source browser URI to clipboard" feature
 
 ### 1.0.0 ###
 - Added limited support for Rider 2017.2 (see the package description for supported features)

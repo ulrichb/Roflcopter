@@ -1,34 +1,23 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using JetBrains.Application.Components;
-using JetBrains.Application.DataContext;
+﻿using System.Linq;
+using JetBrains.Application.Settings;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.ReSharper.Psi.DataContext;
-using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.TestFramework;
-using JetBrains.Util;
 using NUnit.Framework;
 using Roflcopter.Plugin.CopyFqnProviders;
 
 namespace Roflcopter.Plugin.Tests.CopyFqnProviders
 {
-    [TestFixture]
     [TestNetFramework4]
-    public class ShortNameTypeMemberFqnProviderTest : BaseTestWithSingleProject
+    public class ShortNameTypeMemberFqnProviderTest : FqnProviderTestBase<ShortNameTypeMemberFqnProvider>
     {
-        protected override string RelativeTestDataPath => Path.Combine(base.RelativeTestDataPath, "..");
-
         [Test]
         public void GetSortedFqns_WithTopLevelElement()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass);
+                info.DataContext = Add(info.DataContext, info.SomeClassElement);
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass"));
             });
@@ -37,11 +26,11 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [Test]
         public void GetSortedFqns_WithProperty()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass.Properties.Single());
+                info.DataContext = Add(info.DataContext, info.SomeClassElement.Properties.Single());
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass.Property"));
             });
@@ -50,11 +39,11 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [Test]
         public void GetSortedFqns_WithMethod()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass.Methods.Single());
+                info.DataContext = Add(info.DataContext, info.SomeClassElement.Methods.Single());
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass.Method"));
             });
@@ -63,11 +52,11 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [Test]
         public void GetSortedFqns_WithNestedClass()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass.NestedTypes.Single());
+                info.DataContext = Add(info.DataContext, info.SomeClassElement.NestedTypes.Single());
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass.NestedClass"));
             });
@@ -76,37 +65,50 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [Test]
         public void GetSortedFqns_WithNestedClassProperty()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass.NestedTypes.Single().Properties.Single());
+                info.DataContext = Add(info.DataContext, info.SomeClassElement.NestedTypes.Single().Properties.Single());
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Single().PresentableText, Is.EqualTo("SomeClass.NestedClass.Property"));
             });
         }
 
         [Test]
-        public void GetSortedFqns_WithDataContextWithNullDeclaredElement()
+        public void GetSortedFqns_WithDisabledSetting()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateEmptyDataContext();
+                info.Settings.SetValue((CopyFqnProvidersSettings s) => s.EnableShortNames, false);
 
-                var result = sut.GetSortedFqns(dataContext);
+                var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result, Is.Empty);
             });
         }
 
         [Test]
+        public void GetSortedFqns_WithDataContextWithNullDeclaredElement()
+        {
+            Test(info =>
+            {
+                var result = info.Sut.GetSortedFqns(info.DataContext);
+
+                Assert.That(result, Is.Empty);
+            });
+        }
+
+        //
+
+        [Test]
         public void IsApplicable_WithProperty()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateDataContextWith(someClass.Properties.Single());
+                info.DataContext = Add(info.DataContext, info.SomeClassElement.Properties.Single());
 
-                var result = sut.IsApplicable(dataContext);
+                var result = info.Sut.IsApplicable(info.DataContext);
 
                 Assert.That(result, Is.True);
             });
@@ -115,50 +117,41 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [Test]
         public void IsApplicable_WithDataContextWithNullDeclaredElement()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var dataContext = CreateEmptyDataContext();
-
-                var result = sut.IsApplicable(dataContext);
+                var result = info.Sut.IsApplicable(info.DataContext);
 
                 Assert.That(result, Is.False);
             });
         }
 
         [Test]
+        public void IsApplicable_WithDisabledSetting()
+        {
+            Test(info =>
+            {
+                info.Settings.SetValue((CopyFqnProvidersSettings s) => s.EnableShortNames, false);
+
+                var result = info.Sut.IsApplicable(info.DataContext);
+
+                Assert.That(result, Is.False);
+            });
+        }
+
+        //
+
+        [Test]
         public void Priority()
         {
-            Test((sut, someClass) =>
+            Test(info =>
             {
-                var result = sut.Priority;
+                var result = info.Sut.Priority;
 
                 Assert.That(result, Is.EqualTo(-10));
             });
         }
 
-        private void Test(Action<ShortNameTypeMemberFqnProvider, ITypeElement> action)
-        {
-            WithSingleProject(
-                GetTestDataFilePath2("SomeClass.cs").FullPath,
-                (lifetime, solution, project) => RunGuarded(() =>
-                {
-                    var primaryPsiFile = project.GetAllProjectFiles().Single().GetPrimaryPsiFile().NotNull();
-
-                    var someClass = primaryPsiFile.Descendants<IClassDeclaration>().First();
-
-                    var sut = solution.GetComponent<ShortNameTypeMemberFqnProvider>();
-
-                    action(sut, someClass.DeclaredElement.NotNull());
-                }));
-        }
-
-        private IDataContext CreateDataContextWith(IDeclaredElement declaredElement)
-        {
-            return ShellInstance.GetComponent<DataContexts>().CreateWithoutDataRules(
-                TestFixtureLifetime,
-                DataRules.AddRule("MyTestDataRule", PsiDataConstants.DECLARED_ELEMENTS, new[] { declaredElement }));
-        }
-
-        private IDataContext CreateEmptyDataContext() => ShellInstance.GetComponent<DataContexts>().Empty;
+        protected override ShortNameTypeMemberFqnProvider CreateFqnProvider(ISolution solution) =>
+            solution.GetComponent<ShortNameTypeMemberFqnProvider>();
     }
 }

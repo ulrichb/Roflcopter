@@ -30,7 +30,7 @@ Roflcopter also provides default Live Template, just type `branch` and hit TAB.
 
 <img src="/Doc/MismatchedFileNameQuickFix.png" alt="MismatchedFileNameQuickFix" width="410" />
 
-Allowed file name postfixes can be configured on the "Mismatched file names" options page.
+Allowed file name postfixes can be configured in _Options | Code Inspection | Mismatched file names_.
 
 ### Parameterized test support for NUnit tests
 
@@ -54,11 +54,14 @@ Allowed file name postfixes can be configured on the "Mismatched file names" opt
 
 To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment & Menus_](https://www.jetbrains.com/help/resharper/Reference__Options__Environment__Visual_Studio_Integration.html) options may be necessary.
 
-### Provider for "Copy Fully-qualified name" which returns "short names"
+### Additional "Copy Fully-qualified name/ Source browser URI to Clipboard" providers
 
-E.g. `<TypeShortName>.<MemberShortName>` (not including the name spaces)
+* "Short names" (e.g. `<TypeShortName>.<MemberName>`)
+* Custom source URLs (including Git repository support)
 
-<img src="/Doc/CopyShortNames.png" alt="CopyShortNames" width="552" />
+The providers can be configured in _Options | Search & Navigation | Copy names to clipboard_.
+
+<img src="/Doc/CopyToClipboard.gif" alt="CopyToClipboard" width="804" />
 
 ### Write/Remove Debugging Control .ini
 
