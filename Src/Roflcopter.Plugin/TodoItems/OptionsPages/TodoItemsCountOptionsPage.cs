@@ -1,3 +1,4 @@
+#if RESHARPER
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using JetBrains.Application.UI.Options;
@@ -36,3 +37,4 @@ namespace Roflcopter.Plugin.TodoItems.OptionsPages
         }
     }
 }
+#endif
