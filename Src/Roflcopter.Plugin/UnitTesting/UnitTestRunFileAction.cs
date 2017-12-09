@@ -7,7 +7,6 @@ using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Menu;
 using JetBrains.ReSharper.UnitTestFramework;
 using JetBrains.ReSharper.UnitTestFramework.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Common;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Resources;
 
@@ -29,14 +28,9 @@ namespace Roflcopter.Plugin.UnitTesting
             if (projectFile == null)
                 return null;
 
-            var unitTestElements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED);
-
-            if (unitTestElements == null)
-                return null;
-
             var criterion = new ProjectFileCriterion(projectFile);
 
-            return new UnitTestElements(criterion, unitTestElements.Explicit);
+            return new UnitTestElements(criterion);
         }
 
         [CanBeNull]

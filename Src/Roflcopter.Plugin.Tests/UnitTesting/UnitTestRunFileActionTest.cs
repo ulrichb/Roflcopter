@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
@@ -9,7 +8,6 @@ using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.ReSharper.UnitTestFramework;
-using JetBrains.ReSharper.UnitTestFramework.Common;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using NUnit.Framework;
 using Roflcopter.Plugin.UnitTesting;
@@ -29,9 +27,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         {
             Test(test =>
             {
-                var dummyUnitTestElements = new HashSet<IUnitTestElement>();
-                var unitTestElements = new UnitTestElements(NothingCriterion.Instance, dummyUnitTestElements);
-                var dataContext = Add(Add(CreateEmptyDataContext(), test.ProjectFile), unitTestElements);
+                var dataContext = Add(CreateEmptyDataContext(), test.ProjectFile);
 
                 //
 
@@ -43,7 +39,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
                 var projectFileCriterion = (ProjectFileCriterion) result.Criterion;
                 Assert.That(projectFileCriterion.Location, Is.EqualTo(test.ProjectFile.Location));
 
-                Assert.That(result.Explicit, Is.SameAs(dummyUnitTestElements), "just passed by");
+                Assert.That(result.Explicit, Is.Empty);
             });
         }
 
@@ -53,23 +49,6 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
             Test(test =>
             {
                 var dataContext = CreateEmptyDataContext();
-
-                //
-
-                var result = test.Sut.GetElementsToRun(dataContext);
-
-                //
-
-                Assert.That(result, Is.Null);
-            });
-        }
-
-        [Test]
-        public void GetElementsToRun_WithOnlyProjectFile()
-        {
-            Test(test =>
-            {
-                var dataContext = Add(CreateEmptyDataContext(), test.ProjectFile);
 
                 //
 
@@ -105,21 +84,10 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
                 DataRules.AddRule("<test data rule>", ProjectModelDataConstants.PROJECT_MODEL_ELEMENT, projectFile));
         }
 
-        private IDataContext Add(IDataContext dataContext, UnitTestElements unitTestElements)
-        {
-            return ShellInstance.GetComponent<DataContexts>().CloneWithAdditionalDataRules(
-                TestFixtureLifetime,
-                dataContext,
-                DataRules.AddRule("<test data rule>", UnitTestDataConstants.UnitTestElements.SELECTED, unitTestElements));
-        }
-
         private class TestUnitTestRunFileAction : UnitTestRunFileAction
         {
             [CanBeNull]
-            public new UnitTestElements GetElementsToRun(IDataContext context)
-            {
-                return base.GetElementsToRun(context);
-            }
+            public new UnitTestElements GetElementsToRun(IDataContext context) => base.GetElementsToRun(context);
         }
     }
 }
