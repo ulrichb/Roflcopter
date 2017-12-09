@@ -65,6 +65,22 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         }
 
         [Test]
+        public void TodoItemsCounts_WithDuplicateDefinition()
+        {
+            Test((consumer, settings) =>
+            {
+                RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nTodo"));
+
+                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
+                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                {
+                    ("Todo", 5),
+                    ("Todo", 5),
+                }));
+            });
+        }
+
+        [Test]
         public void TodoItemsCountsWithDisabledSetting()
         {
             Test((consumer, settings) =>
