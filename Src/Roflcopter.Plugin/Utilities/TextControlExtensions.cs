@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
@@ -15,15 +14,25 @@ namespace Roflcopter.Plugin.Utilities
         public static HotspotSession CreateHotspotSessionAtopExistingText(
             this ITextControl textControl,
             ISolution solution,
-            IEnumerable<ITreeNode> hotspotNodes,
-            DocumentRange endSelectionRange)
+            DocumentRange endSelectionRange,
+            params ITreeNode[] hotspotNodes)
+        {
+            var hotspotDocumentRanges = hotspotNodes.Select(x => x.GetDocumentRange()).ToArray();
+
+            return CreateHotspotSessionAtopExistingText(textControl, solution, endSelectionRange, hotspotDocumentRanges);
+        }
+
+        private static HotspotSession CreateHotspotSessionAtopExistingText(
+            this ITextControl textControl,
+            ISolution solution,
+            DocumentRange endSelectionRange,
+            params DocumentRange[] hotspotDocumentRanges)
         {
             var escapeAction = LiveTemplatesManager.EscapeAction.LeaveTextAndCaret;
-
-            var hotspotInfos = hotspotNodes.Select(x => new HotspotInfo(new TemplateField(x.GetText(), 0), x.GetDocumentRange()));
+            var hotspotInfos = hotspotDocumentRanges.Select(x => new HotspotInfo(new TemplateField(x.GetText(), 0), x)).ToArray();
 
             return LiveTemplatesManager.Instance.CreateHotspotSessionAtopExistingText(
-                solution, endSelectionRange, textControl, escapeAction, hotspotInfos.ToArray());
+                solution, endSelectionRange, textControl, escapeAction, hotspotInfos);
         }
     }
 }

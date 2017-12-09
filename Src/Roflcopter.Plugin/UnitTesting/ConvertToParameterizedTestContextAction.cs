@@ -71,7 +71,7 @@ namespace Roflcopter.Plugin.UnitTesting
             return textControl =>
             {
                 var endSelectionRange = DocumentRange.InvalidRange;
-                var hotspotSession = textControl.CreateHotspotSessionAtopExistingText(solution, hotspotNodes, endSelectionRange);
+                var hotspotSession = textControl.CreateHotspotSessionAtopExistingText(solution, endSelectionRange, hotspotNodes);
 
                 hotspotSession.Execute();
             };

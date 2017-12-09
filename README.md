@@ -38,7 +38,7 @@ Allowed file name postfixes can be configured on the "Mismatched file names" opt
 
 <img src="/Doc/ParameterizedTestHighlightings.png" alt="ParameterizedTestHighlightings" width="675" />
 
-<img src="/Doc/ParameterizedTestHighlightingsQuickFixes.png" alt="ParameterizedTestHighlightingsQuickFixes" width="540" />
+<img src="/Doc/ParameterizedTestHighlightingsQuickFixes.gif" alt="ParameterizedTestHighlightingsQuickFixes" width="623" />
 
 #### "Convert to parameterized test" context action
 
