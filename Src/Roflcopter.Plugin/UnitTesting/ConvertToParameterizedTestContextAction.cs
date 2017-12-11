@@ -20,7 +20,7 @@ namespace Roflcopter.Plugin.UnitTesting
         Group = CSharpContextActions.GroupID,
         Name = Name,
         Description = "Converts NUnit test methods to parameterized tests",
-        Priority = 10)]
+        Priority = -5)]
     public class ConvertToParameterizedTestContextAction : ContextActionBase
     {
         private const string Name = "Convert to parameterized test";
