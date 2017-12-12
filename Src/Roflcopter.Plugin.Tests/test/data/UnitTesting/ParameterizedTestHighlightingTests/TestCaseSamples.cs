@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using NUnit.Framework;
 
 // ReSharper disable RedundantExplicitParamsArrayCreation
@@ -47,6 +48,16 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         [TestCase("ArgA", 42, "ArgC")]
         [TestCase(1, "ArgB", "ArgC")]
         public void TestCaseWithWrongTypeMultiple(string paramA, int paramB, double paramC)
+        {
+        }
+
+        [TestCase(null, null, null)]
+        public void TestCaseNullArguments(string paramA, object paramB, string[] paramC)
+        {
+        }
+
+        [TestCase(null, null, null)] // This is OK for NUnit (nulls are converted to default values)
+        public void TestCaseNullArgumentsOnValueTypes(int paramA, double paramB, DateTimeKind paramC)
         {
         }
 

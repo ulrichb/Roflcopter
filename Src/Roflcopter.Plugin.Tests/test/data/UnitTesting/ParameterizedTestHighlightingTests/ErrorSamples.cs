@@ -60,5 +60,22 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         public void WarningSample(int param)
         {
         }
+
+        //
+
+        [TestCase(null, )]
+        public void TestCaseWithIncompleteArgumentList(string paramA, string paramB)
+        {
+        }
+
+        [TestCase("Arg", )] // edge case: extra argument
+        public void TestCaseWithIncompleteArgumentList(string param)
+        {
+        }
+
+        [Test]
+        public void TestValuesWithIncompleteArgumentList([Values(null, )]string paramA)
+        {
+        }
     }
 }

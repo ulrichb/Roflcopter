@@ -9,6 +9,7 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 using Roflcopter.Plugin.Utilities;
+
 #if RS20172 || RD20172
 using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
 
@@ -89,11 +90,15 @@ namespace Roflcopter.Plugin.UnitTesting
 
                 foreach (var argumentInfo in testCaseAttributeInfo.Arguments.Skip(parametersCount))
                 {
-                    consumer.AddHighlighting(new ParameterizedTestMissingParameterHighlighting(
-                        methodDeclaration,
-                        testCaseAttributeInfo.Attribute,
-                        argumentInfo.Expression,
-                        isFirstMissingParameter, argumentInfo.Argument));
+                    if (argumentInfo.Expression != null)
+                    {
+                        consumer.AddHighlighting(new ParameterizedTestMissingParameterHighlighting(
+                            methodDeclaration,
+                            testCaseAttributeInfo.Attribute,
+                            isFirstMissingParameter,
+                            argumentInfo.Expression,
+                            argumentInfo.Argument));
+                    }
 
                     isFirstMissingParameter = false;
                 }
@@ -130,15 +135,18 @@ namespace Roflcopter.Plugin.UnitTesting
         }
 
         private static void AnalyzeArgumentType(
-            IExpression argumentExpression,
+            [CanBeNull] IExpression argumentExpression,
             IParameterDeclaration parameterDeclaration,
             IHighlightingConsumer consumer)
         {
-            var typeConversionRule = argumentExpression.GetTypeConversionRule();
-
-            if (!argumentExpression.Type().IsImplicitlyConvertibleTo(parameterDeclaration.Type, typeConversionRule))
+            if (argumentExpression != null && !argumentExpression.ConstantValue.IsNull())
             {
-                consumer.AddHighlighting(new ParameterizedTestTypeMismatchHighlighting(argumentExpression, parameterDeclaration));
+                var typeConversionRule = argumentExpression.GetTypeConversionRule();
+
+                if (!argumentExpression.Type().IsImplicitlyConvertibleTo(parameterDeclaration.Type, typeConversionRule))
+                {
+                    consumer.AddHighlighting(new ParameterizedTestTypeMismatchHighlighting(argumentExpression, parameterDeclaration));
+                }
             }
         }
 
@@ -238,7 +246,11 @@ namespace Roflcopter.Plugin.UnitTesting
             [CanBeNull]
             private IExpressionInitializer ArrayExpressionInitializer { get; }
 
-            public ICSharpExpression Expression => Argument?.Value ?? ArrayExpressionInitializer.NotNull().Value;
+            /// <summary>
+            /// Can be null in incomplete argument-lists (e.g. <c>"arg a", "arg b",</c>).
+            /// </summary>
+            [CanBeNull]
+            public ICSharpExpression Expression => Argument != null ? Argument.Value : ArrayExpressionInitializer.NotNull().Value;
         }
     }
 }

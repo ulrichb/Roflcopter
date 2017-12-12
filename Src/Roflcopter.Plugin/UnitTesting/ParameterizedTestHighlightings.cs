@@ -75,22 +75,22 @@ namespace Roflcopter.Plugin.UnitTesting
         public ParameterizedTestMissingParameterHighlighting(
             IMethodDeclaration methodDeclaration,
             IAttribute attribute,
-            ICSharpExpression argumentExpression,
             bool isFirstMissingParameter,
+            ICSharpExpression argumentExpression,
             [CanBeNull] ICSharpArgument argument) :
             base(argumentExpression, string.Format(Message))
         {
             MethodDeclaration = methodDeclaration;
             Attribute = attribute;
+            IsFirstMissingParameter = isFirstMissingParameter;
             ArgumentExpression = argumentExpression;
             Argument = argument;
-            IsFirstMissingParameter = isFirstMissingParameter;
         }
 
         public IMethodDeclaration MethodDeclaration { get; }
         public IAttribute Attribute { get; }
-        public IExpression ArgumentExpression { get; }
         public bool IsFirstMissingParameter { get; }
+        public IExpression ArgumentExpression { get; }
 
         [CanBeNull]
         public ICSharpArgument Argument { get; }
