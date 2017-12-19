@@ -1,4 +1,4 @@
-### vNext ###
+### 1.1.0 ###
 - ReSharper 2017.3 support
 - Added "Convert to parameterized test" context action
 - Added "Custom source links" to "Copy source browser URI to clipboard" feature
