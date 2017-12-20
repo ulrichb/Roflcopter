@@ -15,8 +15,8 @@ namespace Roflcopter.Plugin.UnitTesting
     [Action("UnitTest.RunFile", "Run All Tests in &File",
         Icon = typeof(UnitTestingThemedIcons.RunAll),
         Id = 1962458498,
-        IdeaShortcuts = new[] { "Control+T F", "Control+T Control+F" },
-        VsShortcuts = new[] { "Control+U F", "Control+U Control+F" })]
+        IdeaShortcuts = new[] { "Control+T I", "Control+T Control+I" },
+        VsShortcuts = new[] { "Control+U I", "Control+U Control+I" })]
     public class UnitTestRunFileAction : UnitTestRunContextActionImpl,
         IInsertAfter<UnitTestContextMenuActionGroup, UnitTestRunContextAction>
     {

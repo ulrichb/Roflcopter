@@ -20,7 +20,7 @@ $NUnitAdditionalArgs = "--x86 --labels=All --agents=1"
 $NUnitTestAssemblyPaths = @(
     "Src\Roflcopter.Plugin.Tests\bin\RS20172\$Configuration\Roflcopter.Plugin.Tests.RS20172.dll"
     "Src\Roflcopter.Plugin.Tests\bin\RS20173\$Configuration\Roflcopter.Plugin.Tests.RS20173.dll"
-    "Src\Roflcopter.Plugin.Tests\bin\RD20172\$Configuration\Roflcopter.Plugin.Tests.RD20172.dll"
+    "Src\Roflcopter.Plugin.Tests\bin\RD20173\$Configuration\Roflcopter.Plugin.Tests.RD20173.dll"
 )
 $NUnitFrameworkVersion = "net-4.5"
 $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
