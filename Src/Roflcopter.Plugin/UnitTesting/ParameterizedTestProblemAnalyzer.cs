@@ -10,11 +10,6 @@ using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 using Roflcopter.Plugin.Utilities;
 
-#if RS20172
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
-
-#endif
-
 namespace Roflcopter.Plugin.UnitTesting
 {
     [ElementProblemAnalyzer(

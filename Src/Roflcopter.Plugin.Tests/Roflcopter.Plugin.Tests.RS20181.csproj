@@ -13,13 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.2.*" />
-    <PackageReference Include="JetBrains.Psi.Features.VisualStudio" Version="109.*" />
-    <PackageReference Include="System.ValueTuple" Version="4.*" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2018.1.*" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.$(ReSharperVersionIdentifier).csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
 </Project>

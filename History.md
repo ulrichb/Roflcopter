@@ -1,3 +1,6 @@
+### vNext ###
+- ReSharper and Rider 2018.1 support
+
 ### 1.2.0 ###
 - Rider 2017.3 support
 - Change "Run All Tests in File" short cut to "Ctrl+U, I" because "Ctrl+U, F" is now assigned to "Run Failed Tests"

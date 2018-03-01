@@ -7,13 +7,8 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Util;
-#if RS20172
-using JetBrains.PsiFeatures.VisualStudio.SinceVs10.Debugger;
-#else
 using JetBrains.PsiFeatures.VisualStudio.Debugger.ExternalSources;
-
-#endif
+using JetBrains.Util;
 
 namespace Roflcopter.Plugin.VisualStudio.ModulesWindow
 {

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using JetBrains.Annotations;
 using JetBrains.Application;
 using JetBrains.Application.Threading;
+using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionSystem.ActionBar;
 using JetBrains.Application.UI.Options.OptionsDialog;
 using JetBrains.DataFlow;
@@ -16,13 +17,6 @@ using JetBrains.UI.SrcView.Actions.ActionBar;
 using JetBrains.Util;
 using JetBrains.Util.Threading.Tasks;
 using Roflcopter.Plugin.TodoItems.OptionsPages;
-#if RS20172
-using JetBrains.UI.SrcView.Actions.Views;
-
-#else
-using JetBrains.Application.UI.Actions;
-
-#endif
 
 namespace Roflcopter.Plugin.TodoItems.Presentation
 {
@@ -61,9 +55,7 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
                     _separator = null;
                 });
 
-#if !RS20172
                 _separator = actionBar.InjectSeparator(int.MaxValue);
-#endif
 
                 _shellLocks.Tasks.Queue(lifetime, () => UpdateRequestSignal.Fire(), TaskPriority.BelowNormal);
             }

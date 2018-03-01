@@ -7,10 +7,6 @@ using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 
-#if RS20172
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
-#endif
-
 namespace Roflcopter.Plugin.MismatchedFileNames
 {
     [ElementProblemAnalyzer(typeof(ICSharpFile), HighlightingTypes = new[] { typeof(MismatchedFileNameHighlighting) })]

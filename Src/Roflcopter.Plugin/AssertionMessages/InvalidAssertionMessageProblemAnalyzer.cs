@@ -10,10 +10,6 @@ using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
 using JetBrains.Util;
 
-#if RS20172
-using JetBrains.ReSharper.Daemon.Stages.Dispatcher;
-#endif
-
 namespace Roflcopter.Plugin.AssertionMessages
 {
     [ElementProblemAnalyzer(
