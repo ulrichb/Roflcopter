@@ -9,6 +9,10 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 using ReSharperExtensionsShared.QuickFixes;
+#if !RS20181
+using JetBrains.ReSharper.Psi;
+
+#endif
 
 namespace Roflcopter.Plugin.UnitTesting
 {

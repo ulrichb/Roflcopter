@@ -6,6 +6,10 @@ using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
 using JetBrains.ProjectModel;
 
+#if !RS20181
+using JetBrains.DataFlow;
+#endif
+
 namespace Roflcopter.Plugin.TodoItems
 {
     [SolutionComponent]
@@ -21,7 +25,11 @@ namespace Roflcopter.Plugin.TodoItems
         public SettingsKey KeyExposed => _settingsStore.Schema.GetKey<TodoItemsCountSettings>();
 
         [CanBeNull]
-        public IReadOnlyCollection<TodoItemsCountDefinition> ReadData(IContextBoundSettingsStore store)
+        public IReadOnlyCollection<TodoItemsCountDefinition> ReadData(
+#if !RS20181
+            [CanBeNull] Lifetime _,
+#endif
+            IContextBoundSettingsStore store)
         {
             var isEnabled = store.GetValue((TodoItemsCountSettings s) => s.IsEnabled);
 

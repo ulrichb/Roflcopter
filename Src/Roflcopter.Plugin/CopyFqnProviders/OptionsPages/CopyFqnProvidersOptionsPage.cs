@@ -15,7 +15,10 @@ namespace Roflcopter.Plugin.CopyFqnProviders.OptionsPages
         typeof(OptionsThemedIcons.CopySettings),
         ParentId = SearchAndNavigationOptionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
+#pragma warning disable 618
+    // TODO after dropping 20181 support: Refactor to BeSimpleOptionsPage
     public class CopyFqnProvidersOptionsPage : SimpleOptionsPage
+#pragma warning restore 618
     {
         private const string PageId = nameof(CopyFqnProvidersOptionsPage);
 

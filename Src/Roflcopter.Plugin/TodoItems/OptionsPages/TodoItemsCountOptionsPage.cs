@@ -16,7 +16,10 @@ namespace Roflcopter.Plugin.TodoItems.OptionsPages
         typeofIcon: typeof(PsiSymbolsThemedIcons.Macro),
         ParentId = TodoExplorerOptionsPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
+#pragma warning disable 618
+    // TODO after dropping 20181 support: Refactor to BeSimpleOptionsPage
     public class TodoItemsCountOptionsPage : SimpleOptionsPage
+#pragma warning restore 618
     {
         public const string OptionsPageId = nameof(TodoItemsCountOptionsPage);
 

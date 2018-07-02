@@ -6,6 +6,10 @@ using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 using Roflcopter.Plugin.UnitTesting;
 
+#if !RS20181
+using JetBrains.Application.Settings;
+#endif
+
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
     [TestFixture]
@@ -13,7 +17,14 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
     [UseNUnitPackage]
     public class ParameterizedTestHighlightingsQuickFixAvailabilityTest : QuickFixAvailabilityTestBase
     {
-        protected override bool HighlightingPredicate(IHighlighting highlighting, [CanBeNull] IPsiSourceFile _)
+        protected override bool HighlightingPredicate(
+            IHighlighting highlighting,
+            [CanBeNull] IPsiSourceFile _
+#if !RS20181
+            ,
+            [CanBeNull] IContextBoundSettingsStore __
+#endif
+        )
         {
             return
                 highlighting is ParameterizedTestMissingArgumentHighlighting ||
