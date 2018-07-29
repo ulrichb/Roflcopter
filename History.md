@@ -32,7 +32,7 @@
 - Added "Mismatch between type and file name" warning
 
 ### 0.7.0 ###
-- Added provider for "Copy Fully-qualified name" which returns <TypeShortName>.<MemberShortName>
+- Added provider for "Copy Fully-qualified name" which returns `<TypeShortName>.<MemberShortName>`
 - ReSharper 2017.1 support
 
 ### 0.6.0 ###
