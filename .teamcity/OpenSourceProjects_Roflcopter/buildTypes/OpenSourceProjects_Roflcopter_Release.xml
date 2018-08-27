@@ -7,6 +7,7 @@
       <param name="BranchSpecification"><![CDATA[+:refs/heads/(dev)
 +:refs/heads/(master)]]></param>
       <param name="Configuration" value="Release" />
+      <param name="DefaultBranch" value="refs/heads/master" />
       <param name="NugetPushKey" value="credentialsJSON:cae235e1-6527-4f72-b457-ec3cc2273c07" />
     </parameters>
     <build-runners order="RUNNER_1394" />
