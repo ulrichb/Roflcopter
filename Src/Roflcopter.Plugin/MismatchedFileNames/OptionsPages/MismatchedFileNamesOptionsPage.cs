@@ -15,7 +15,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
         ParentId = CodeInspectionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
 #pragma warning disable 618
-    // TODO after dropping 20181 support: Refactor to BeSimpleOptionsPage
+    // TODO: Refactor to BeSimpleOptionsPage
     public class MismatchedFileNamesOptionsPage : SimpleOptionsPage
 #pragma warning restore 618
     {

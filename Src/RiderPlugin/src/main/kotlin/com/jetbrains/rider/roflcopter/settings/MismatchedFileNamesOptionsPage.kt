@@ -4,4 +4,9 @@ import com.jetbrains.rider.settings.simple.SimpleOptionsPage
 
 class MismatchedFileNamesOptionsPage : SimpleOptionsPage(
         "Mismatched file names",
-        MismatchedFileNamesOptionsPage::class.simpleName!!)
+        MismatchedFileNamesOptionsPage::class.simpleName!!) {
+
+    override fun getId(): String {
+        return "preferences." + this.pageId;
+    }
+}

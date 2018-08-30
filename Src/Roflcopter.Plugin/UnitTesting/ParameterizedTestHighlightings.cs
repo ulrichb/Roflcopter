@@ -36,6 +36,7 @@ namespace Roflcopter.Plugin.UnitTesting
         SeverityId,
         CSharpLanguage.Name,
         OverlapResolve = OverlapResolveKind.WARNING,
+        OverloadResolvePriority = 1 /* override NUnitMethodWithParametersAndTestAttributeWarning (added in R# 2018.3) */,
         ToolTipFormatString = Message)]
     public class ParameterizedTestMissingArgumentHighlighting : SimpleTreeNodeHighlightingBase<ITreeNode>
     {
@@ -63,6 +64,7 @@ namespace Roflcopter.Plugin.UnitTesting
         SeverityId,
         CSharpLanguage.Name,
         OverlapResolve = OverlapResolveKind.WARNING,
+        OverloadResolvePriority = 1 /* override NUnitRedundantArgumentInTestCaseAttributeWarning (added in R# 2018.3 but has no QuickFix) */,
         ToolTipFormatString = Message)]
     public class ParameterizedTestMissingParameterHighlighting : SimpleTreeNodeHighlightingBase<ITreeNode>
     {
@@ -100,6 +102,7 @@ namespace Roflcopter.Plugin.UnitTesting
         SeverityId,
         CSharpLanguage.Name,
         OverlapResolve = OverlapResolveKind.WARNING,
+        OverloadResolvePriority = 1 /* override NUnitIncorrectArgumentTypeWarning (added in R# 2018.3 but has no QuickFix) */,
         ToolTipFormatString = Message)]
     public class ParameterizedTestTypeMismatchHighlighting : SimpleTreeNodeHighlightingBase<ITreeNode>
     {

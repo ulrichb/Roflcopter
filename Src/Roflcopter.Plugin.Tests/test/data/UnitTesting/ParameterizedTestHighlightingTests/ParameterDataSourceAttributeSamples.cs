@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 
@@ -12,7 +13,7 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         {
         }
 
-        public class CustomDataAttribute : DataAttribute, IParameterDataSource
+        public class CustomDataAttribute : Attribute, IParameterDataSource
         {
             public IEnumerable GetData(IParameterInfo parameter) => new[] { "Arg1", "Arg2" };
         }

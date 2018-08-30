@@ -5,6 +5,8 @@ using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
 using NUnit.Framework.Internal.Builders;
 
+// ReSharper disable NUnit.IncorrectArgumentType (added in R# 2018.3)
+
 namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
 {
     [TestFixture]
@@ -12,6 +14,7 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
     {
         [Test]
         [CustomTestBuilder]
+        // ReSharper disable once NUnit.MethodWithParametersAndTestAttribute (it's just wrong here)
         public void TestWithCustomTestBuilder(string paramA, string paramB)
         {
         }

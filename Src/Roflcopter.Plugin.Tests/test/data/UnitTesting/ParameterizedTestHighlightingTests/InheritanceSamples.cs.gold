@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 
+// ReSharper disable NUnit.RedundantArgumentInTestCaseAttribute (added in R# 2018.3)
+
 namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
 {
     public static class InheritanceSamples
@@ -7,6 +9,7 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
         public abstract class Base
         {
             [Test]
+            // ReSharper disable once NUnit.MethodWithParametersAndTestAttribute (it's just wrong here)
             public abstract void TestCaseInOverride(string paramA, string paramB);
         }
 

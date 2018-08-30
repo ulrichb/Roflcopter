@@ -33,6 +33,7 @@ namespace Roflcopter.Sample.UnitTesting.ParameterizedTestHighlightingTests
 
         [Test]
         [DerivedTestCaseSource(nameof(TestCaseSourceCases))]
+        // ReSharper disable once NUnit.MethodWithParametersAndTestAttribute (it's just wrong here)
         public void TestCaseSource(string paramA, string paramB)
         {
         }

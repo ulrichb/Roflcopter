@@ -48,7 +48,11 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
                 _label = actionBar.InjectLabel(int.MaxValue, "Updating...", lifetime);
                 _label.NotNull().MouseDoubleClick += Label_MouseDoubleClick;
 
+#if RS20182
                 lifetime.AddAction(() =>
+#else
+                lifetime.OnTermination(() =>
+#endif
                 {
                     _label.NotNull().MouseDoubleClick -= Label_MouseDoubleClick;
                     _label = null;

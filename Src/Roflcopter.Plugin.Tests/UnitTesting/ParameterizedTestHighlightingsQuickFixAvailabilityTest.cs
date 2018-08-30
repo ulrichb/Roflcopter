@@ -1,14 +1,11 @@
 ﻿using JetBrains.Annotations;
+using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 using Roflcopter.Plugin.UnitTesting;
-
-#if !RS20181
-using JetBrains.Application.Settings;
-#endif
 
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
@@ -19,12 +16,8 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
     {
         protected override bool HighlightingPredicate(
             IHighlighting highlighting,
-            [CanBeNull] IPsiSourceFile _
-#if !RS20181
-            ,
-            [CanBeNull] IContextBoundSettingsStore __
-#endif
-        )
+            [CanBeNull] IPsiSourceFile _,
+            [CanBeNull] IContextBoundSettingsStore __)
         {
             return
                 highlighting is ParameterizedTestMissingArgumentHighlighting ||

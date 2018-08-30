@@ -4,11 +4,8 @@ using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
-using JetBrains.ProjectModel;
-
-#if !RS20181
 using JetBrains.DataFlow;
-#endif
+using JetBrains.ProjectModel;
 
 namespace Roflcopter.Plugin.TodoItems
 {
@@ -25,11 +22,7 @@ namespace Roflcopter.Plugin.TodoItems
         public SettingsKey KeyExposed => _settingsStore.Schema.GetKey<TodoItemsCountSettings>();
 
         [CanBeNull]
-        public IReadOnlyCollection<TodoItemsCountDefinition> ReadData(
-#if !RS20181
-            [CanBeNull] Lifetime _,
-#endif
-            IContextBoundSettingsStore store)
+        public IReadOnlyCollection<TodoItemsCountDefinition> ReadData([CanBeNull] Lifetime _, IContextBoundSettingsStore store)
         {
             var isEnabled = store.GetValue((TodoItemsCountSettings s) => s.IsEnabled);
 

@@ -4,15 +4,12 @@ using JetBrains.Application.Progress;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 using ReSharperExtensionsShared.QuickFixes;
-#if !RS20181
-using JetBrains.ReSharper.Psi;
-
-#endif
 
 namespace Roflcopter.Plugin.UnitTesting
 {
