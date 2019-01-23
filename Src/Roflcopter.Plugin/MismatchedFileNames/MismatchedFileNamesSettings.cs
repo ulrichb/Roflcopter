@@ -8,7 +8,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames
     [SuppressMessage("ReSharper", "NotNullMemberIsNotInitialized")]
     public class MismatchedFileNamesSettings
     {
-        [SettingsEntry(DefaultValue: @"(.partial)?(\.\w+)$", Description: "Allowed file name postfix regex")]
+        [SettingsEntry(DefaultValue: @"(\.partial|\.aspx)?(\.\w+)$", Description: "Allowed file name postfix regex")]
         public readonly string AllowedFileNamePostfixRegex;
     }
 }

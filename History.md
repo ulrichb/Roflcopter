@@ -1,3 +1,6 @@
+### vNext ###
+- Updated default "allowed postfix regex" for 'MismatchedFileName' warning
+
 ### 1.5.0 ###
 - ReSharper and Rider 2018.3 support
 
