@@ -1,15 +1,17 @@
-using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
-using JetBrains.Application.UI.Options;
-using JetBrains.Application.UI.Options.OptionsDialog;
-using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
-using JetBrains.ReSharper.Feature.Services.Resources;
 #if RS20183
+using JetBrains.Annotations;
 using JetBrains.DataFlow;
 #else
 using JetBrains.Lifetimes;
-
 #endif
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Application.Settings;
+using JetBrains.Application.UI.Options;
+using JetBrains.Application.UI.Options.OptionsDialog;
+using JetBrains.IDE.UI.Extensions;
+using JetBrains.IDE.UI.Options;
+using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
+using JetBrains.ReSharper.Feature.Services.Resources;
 
 namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
 {
@@ -19,23 +21,22 @@ namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
         typeofIcon: typeof(AlteringFeatuThemedIcons.FileHeaderText),
         ParentId = CodeInspectionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
-#pragma warning disable 618
-    // TODO: Refactor to BeSimpleOptionsPage
-    public class MismatchedFileNamesOptionsPage : SimpleOptionsPage
-#pragma warning restore 618
+    public class MismatchedFileNamesOptionsPage : BeSimpleOptionsPage
     {
         private const string OptionsPageId = nameof(MismatchedFileNamesOptionsPage);
 
         public MismatchedFileNamesOptionsPage(
 #if RS20183
-            [NotNull] 
+            [NotNull]
 #endif
-            Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
-            base(lifetime, optionsSettingsSmartContext)
+            Lifetime lifetime,
+            OptionsPageContext optionsPageContext,
+            OptionsSettingsSmartContext optionsSettingsSmartContext) : base(lifetime, optionsPageContext, optionsSettingsSmartContext)
         {
-            AddStringOption((MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex, "Allowed file name postfix regex: ");
+            var allowedFileNamePostfixRegex =
+                OptionsSettingsSmartContext.GetValueProperty(lifetime, (MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex);
 
-            FinishPage();
+            AddControl(allowedFileNamePostfixRegex.GetBeTextBox(lifetime).WithDescription("Allowed file name postfix regex: ", lifetime));
         }
     }
 }
