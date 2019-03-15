@@ -12,6 +12,10 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+#if !RS20183
+using JetBrains.Lifetimes;
+
+#endif
 
 namespace Roflcopter.Plugin.TodoItems
 {
@@ -25,8 +29,13 @@ namespace Roflcopter.Plugin.TodoItems
         private readonly TodoItemsCountDefinitionsCachedSettingsReader _todoItemsCountDefinitionsCachedSettingsReader;
         private readonly IReadOnlyList<ITodoItemsCountConsumer> _todoItemsCountConsumers;
 
-        [NotNull]
-        private volatile Lifetime _currentSettingsCacheLifeTime;
+        private volatile object _currentSettingsCacheLifetimeBox;
+
+        private Lifetime CurrentSettingsCacheLifetime
+        {
+            get => (Lifetime) _currentSettingsCacheLifetimeBox;
+            set => _currentSettingsCacheLifetimeBox = value;
+        }
 
         public TodoItemsCountProvider(
             Lifetime lifetime,
@@ -49,15 +58,16 @@ namespace Roflcopter.Plugin.TodoItems
                     UpdateTodoItemsCounts();
             });
 
-            var settingsCacheGetDataSequentialLifeTime = new SequentialLifetimes(lifetime);
-            _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
+            var settingsCacheGetDataSequentialLifetime = new SequentialLifetimes(lifetime);
+            CurrentSettingsCacheLifetime = settingsCacheGetDataSequentialLifetime.Next();
 
             settingsStore.AdviseChange(lifetime, _todoItemsCountDefinitionsCachedSettingsReader.KeyExposed, () =>
             {
                 // We use the following lifetime to solve the issue that this 'ISettingsStore.AdviseChange()' callback
                 // arrives earlier than the one used in the cache. => The cache has still the old value when accessed
                 // in 'UpdateTodoItemsCounts()'. => Terminate the cache lifetime explicitly.
-                _currentSettingsCacheLifeTime = settingsCacheGetDataSequentialLifeTime.Next();
+
+                CurrentSettingsCacheLifetime = settingsCacheGetDataSequentialLifetime.Next();
 
                 UpdateTodoItemsCounts();
             });
@@ -122,7 +132,7 @@ namespace Roflcopter.Plugin.TodoItems
         [CanBeNull]
         private IReadOnlyCollection<TodoItemsCountDefinition> GetTodoItemsCountDefinitions()
         {
-            return _settingsCache.GetData(_currentSettingsCacheLifeTime, _todoItemsCountDefinitionsCachedSettingsReader);
+            return _settingsCache.GetData(CurrentSettingsCacheLifetime, _todoItemsCountDefinitionsCachedSettingsReader);
         }
     }
 }

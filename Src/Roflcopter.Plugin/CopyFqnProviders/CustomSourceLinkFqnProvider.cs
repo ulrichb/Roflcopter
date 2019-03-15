@@ -10,6 +10,10 @@ using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.Features.Environment.CopyFqn;
 using JetBrains.Util;
 using Roflcopter.Plugin.Git;
+#if !RS20183
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.CopyFqnProviders
 {

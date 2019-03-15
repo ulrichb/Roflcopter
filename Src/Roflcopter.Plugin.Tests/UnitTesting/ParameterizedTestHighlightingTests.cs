@@ -14,9 +14,6 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
             Path.Combine(base.RelativeTestDataPath, "..", nameof(ParameterizedTestHighlightingTests));
 
         [Test]
-#if RS20182
-        [TestAdditionalGoldSuffix(".RS20182")]
-#endif
         public void TestCaseSamples() => DoNamedTest();
 
         [Test]

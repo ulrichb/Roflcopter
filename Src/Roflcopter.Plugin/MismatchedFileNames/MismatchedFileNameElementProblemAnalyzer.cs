@@ -6,6 +6,10 @@ using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+#if !RS20183
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {

@@ -2,9 +2,14 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.OptionsDialog;
-using JetBrains.DataFlow;
 using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
 using JetBrains.ReSharper.Feature.Services.Resources;
+#if RS20183
+using JetBrains.DataFlow;
+#else
+using JetBrains.Lifetimes;
+
+#endif
 
 namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
 {
@@ -21,7 +26,11 @@ namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
     {
         private const string OptionsPageId = nameof(MismatchedFileNamesOptionsPage);
 
-        public MismatchedFileNamesOptionsPage([NotNull] Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
+        public MismatchedFileNamesOptionsPage(
+#if RS20183
+            [NotNull] 
+#endif
+            Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
             base(lifetime, optionsSettingsSmartContext)
         {
             AddStringOption((MismatchedFileNamesSettings s) => s.AllowedFileNamePostfixRegex, "Allowed file name postfix regex: ");

@@ -12,7 +12,12 @@ using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.DataContext;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.TestFramework;
+#if RS20183
 using JetBrains.Util;
+#else
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.Tests.CopyFqnProviders
 {

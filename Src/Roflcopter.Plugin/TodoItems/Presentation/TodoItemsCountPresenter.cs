@@ -14,9 +14,15 @@ using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.Actions;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.UI.SrcView.Actions.ActionBar;
-using JetBrains.Util;
 using JetBrains.Util.Threading.Tasks;
 using Roflcopter.Plugin.TodoItems.OptionsPages;
+#if RS20183
+using JetBrains.Util;
+#else
+using JetBrains.Diagnostics;
+using JetBrains.Lifetimes;
+
+#endif
 
 namespace Roflcopter.Plugin.TodoItems.Presentation
 {
@@ -39,7 +45,11 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
             UpdateRequestSignal = new SimpleSignal($"{nameof(TodoItemsCountPresenter)}.{nameof(UpdateRequestSignal)}");
         }
 
-        public void Patch([NotNull] Lifetime lifetime, [NotNull] IActionBar actionBar)
+        public void Patch(
+#if RS20183
+            [NotNull] 
+#endif
+            Lifetime lifetime, [NotNull] IActionBar actionBar)
         {
             if (actionBar.ActionGroup.ActionId == TodoExplorerActionBarActionGroup.ID)
             {
@@ -48,11 +58,7 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
                 _label = actionBar.InjectLabel(int.MaxValue, "Updating...", lifetime);
                 _label.NotNull().MouseDoubleClick += Label_MouseDoubleClick;
 
-#if RS20182
-                lifetime.AddAction(() =>
-#else
                 lifetime.OnTermination(() =>
-#endif
                 {
                     _label.NotNull().MouseDoubleClick -= Label_MouseDoubleClick;
                     _label = null;

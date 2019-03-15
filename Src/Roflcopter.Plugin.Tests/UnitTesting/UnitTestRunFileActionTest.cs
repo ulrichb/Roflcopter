@@ -37,11 +37,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
 
                 Assert.That(result, Is.Not.Null);
                 var projectFileCriterion = (ProjectFileCriterion) result.Criterion;
-#if RS20182
-                Assert.That(projectFileCriterion.Location, Is.EqualTo(test.ProjectFile.Location));
-#else
                 Assert.That(projectFileCriterion.PersistentId, Is.EqualTo(test.ProjectFile.GetPersistentID()));
-#endif
                 Assert.That(result.Explicit, Is.Empty);
             });
         }

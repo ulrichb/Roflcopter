@@ -15,7 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Rider.SDK" Version="2018.3.*" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2019.1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
 
 </Project>

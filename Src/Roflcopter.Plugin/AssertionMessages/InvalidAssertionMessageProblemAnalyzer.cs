@@ -9,6 +9,10 @@ using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
 using JetBrains.Util;
+#if !RS20183
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.AssertionMessages
 {

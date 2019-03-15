@@ -13,6 +13,10 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 using Roflcopter.Plugin.Utilities;
+#if !RS20183
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.UnitTesting
 {
@@ -53,7 +57,11 @@ namespace Roflcopter.Plugin.UnitTesting
                     name: "parameter",
                     defaultValue: null), anchor: null);
 
+#if RS20183
             var testCaseAttributeType = TypeFactory.CreateTypeByCLRName(ParameterizedTests.TestCaseAttribute, psiModule)
+#else
+            var testCaseAttributeType = TypeFactory.CreateTypeByCLRName(ParameterizedTests.TestCaseAttribute, NullableAnnotation.Unknown, psiModule)
+#endif
                 .GetTypeElement().NotNull($"Cannot resolve '{ParameterizedTests.TestCaseAttribute}'");
 
             var testCaseAttribute = methodDeclaration.AddAttributeBefore(elementFactory.CreateAttribute(testCaseAttributeType), anchor: null);

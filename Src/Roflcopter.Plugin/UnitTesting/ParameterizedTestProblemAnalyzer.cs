@@ -6,9 +6,14 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp.Conversions;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
 using ReSharperExtensionsShared.ProblemAnalyzers;
 using Roflcopter.Plugin.Utilities;
+#if RS20183
+using JetBrains.Util;
+#else
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.UnitTesting
 {

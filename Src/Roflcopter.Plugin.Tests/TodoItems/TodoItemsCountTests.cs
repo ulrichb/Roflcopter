@@ -7,7 +7,12 @@ using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 using Roflcopter.Plugin.TodoItems;
 using JetBrains.Application.Settings;
+#if RS20183
 using JetBrains.Util;
+#else
+using JetBrains.Diagnostics;
+
+#endif
 
 namespace Roflcopter.Plugin.Tests.TodoItems
 {

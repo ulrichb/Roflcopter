@@ -2,9 +2,15 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
-using JetBrains.Util;
 using ReSharperExtensionsShared.Highlighting;
 using Roflcopter.Plugin.AssertionMessages;
+#if RS20183
+using JetBrains.Util;
+
+#else
+using JetBrains.Diagnostics;
+
+#endif
 
 [assembly: RegisterConfigurableSeverity(
     InvalidAssertionMessageHighlighting.SeverityId,
