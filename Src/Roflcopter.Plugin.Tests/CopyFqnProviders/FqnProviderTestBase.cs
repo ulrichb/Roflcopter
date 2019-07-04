@@ -4,6 +4,7 @@ using System.Linq;
 using JetBrains.Application.Components;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.Settings;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.Features.Environment.CopyFqn;
@@ -12,12 +13,6 @@ using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.DataContext;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.TestFramework;
-#if RS20183
-using JetBrains.Util;
-#else
-using JetBrains.Diagnostics;
-
-#endif
 
 namespace Roflcopter.Plugin.Tests.CopyFqnProviders
 {

@@ -1,15 +1,10 @@
-#if RS20183
-using JetBrains.Annotations;
-using JetBrains.DataFlow;
-#else
-using JetBrains.Lifetimes;
-#endif
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Application.Settings;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.OptionsDialog;
 using JetBrains.IDE.UI.Extensions;
 using JetBrains.IDE.UI.Options;
+using JetBrains.Lifetimes;
 using JetBrains.ReSharper.Feature.Services.Daemon.OptionPages;
 using JetBrains.ReSharper.Feature.Services.Resources;
 
@@ -26,9 +21,6 @@ namespace Roflcopter.Plugin.MismatchedFileNames.OptionsPages
         private const string OptionsPageId = nameof(MismatchedFileNamesOptionsPage);
 
         public MismatchedFileNamesOptionsPage(
-#if RS20183
-            [NotNull]
-#endif
             Lifetime lifetime,
             OptionsPageContext optionsPageContext,
             OptionsSettingsSmartContext optionsSettingsSmartContext) : base(lifetime, optionsPageContext, optionsSettingsSmartContext)

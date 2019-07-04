@@ -17,11 +17,7 @@ namespace Roflcopter.Plugin.Utilities
                 {
                     return typeNamesToTest.Any(typeNameToTest =>
                     {
-#if RS20183
-                        var interfaceTypeToTest = TypeFactory.CreateTypeByCLRName(typeNameToTest, attribute.PsiModule);
-#else
                         var interfaceTypeToTest = TypeFactory.CreateTypeByCLRName(typeNameToTest, NullableAnnotation.Unknown, attribute.PsiModule);
-#endif
 
                         return typeElement.IsDescendantOf(interfaceTypeToTest.GetTypeElement());
                     });

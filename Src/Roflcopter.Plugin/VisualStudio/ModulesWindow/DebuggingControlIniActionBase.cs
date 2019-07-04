@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
-using JetBrains.Util;
-#if !RS20183
 using JetBrains.Diagnostics;
-
-#endif
+using JetBrains.Util;
 
 namespace Roflcopter.Plugin.VisualStudio.ModulesWindow
 {

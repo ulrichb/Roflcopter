@@ -2,14 +2,11 @@
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
+using JetBrains.Diagnostics;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
-#if !RS20183
-using JetBrains.Diagnostics;
-
-#endif
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {
@@ -54,6 +51,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames
                     descendantsEnumerator.SkipThisNode();
                 }
             }
+
             return result;
         }
 

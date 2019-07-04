@@ -20,17 +20,10 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         [SetUp]
         public new void SetUp()
         {
-#if RS20183
-            var testDataPath = TestDataPath2;
-#else
-            var testDataPath = TestDataPath;
-
-#endif
-
-            _solutionPathProvider = new FixedSolutionPathProvider(testDataPath.Parent.Parent.Parent);
+            _solutionPathProvider = new FixedSolutionPathProvider(TestDataPath.Parent.Parent.Parent);
 
             _gitRepositoryProvider = new TestGitRepositoryProvider();
-            _gitDirectoryPath = testDataPath.Parent.Combine(_gitRepositoryProvider.GitDirectoryName);
+            _gitDirectoryPath = TestDataPath.Parent.Combine(_gitRepositoryProvider.GitDirectoryName);
 
             _gitDirectoryPath.CreateDirectory();
             _gitDirectoryPath.Combine("config").WriteAllText("https://repository.url/");

@@ -1,16 +1,13 @@
 ﻿using System;
 using JetBrains.Annotations;
 using JetBrains.Application.Progress;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 using ReSharperExtensionsShared.QuickFixes;
-#if !RS20183
-using JetBrains.Diagnostics;
-
-#endif
 
 namespace Roflcopter.Plugin.MismatchedFileNames
 {

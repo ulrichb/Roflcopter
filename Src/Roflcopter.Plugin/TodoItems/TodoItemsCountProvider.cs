@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
 using JetBrains.DataFlow;
+using JetBrains.Lifetimes;
 using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.Settings.Cache;
 using JetBrains.ReSharper.Feature.Services.TodoItems;
@@ -12,10 +13,6 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
-#if !RS20183
-using JetBrains.Lifetimes;
-
-#endif
 
 namespace Roflcopter.Plugin.TodoItems
 {

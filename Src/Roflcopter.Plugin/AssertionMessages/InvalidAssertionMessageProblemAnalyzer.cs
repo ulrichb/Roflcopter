@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
+using JetBrains.Diagnostics;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeAnnotations;
@@ -9,10 +10,6 @@ using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using JetBrains.ReSharper.Psi.Resolve.ExtensionMethods;
 using JetBrains.Util;
-#if !RS20183
-using JetBrains.Diagnostics;
-
-#endif
 
 namespace Roflcopter.Plugin.AssertionMessages
 {

@@ -7,10 +7,7 @@ using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Features.Inspections.TodoItems;
 using JetBrains.ReSharper.Psi.Resources;
-#if !RS20183
 using JetBrains.Lifetimes;
-
-#endif
 
 namespace Roflcopter.Plugin.TodoItems.OptionsPages
 {
@@ -28,9 +25,6 @@ namespace Roflcopter.Plugin.TodoItems.OptionsPages
         public const string OptionsPageId = nameof(TodoItemsCountOptionsPage);
 
         public TodoItemsCountOptionsPage(
-#if RS20183
-            [NotNull] 
-#endif
             Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
             base(lifetime, optionsSettingsSmartContext)
         {

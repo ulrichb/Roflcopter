@@ -4,13 +4,8 @@ using JetBrains.Annotations;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.Options.ThemedIcons;
 using JetBrains.Application.UI.Options.OptionsDialog;
-using JetBrains.ReSharper.Features.Navigation.Options;
-#if RS20183
-using JetBrains.DataFlow;
-#else
 using JetBrains.Lifetimes;
-
-#endif
+using JetBrains.ReSharper.Features.Navigation.Options;
 
 namespace Roflcopter.Plugin.CopyFqnProviders.OptionsPages
 {
@@ -28,9 +23,6 @@ namespace Roflcopter.Plugin.CopyFqnProviders.OptionsPages
         private const string PageId = nameof(CopyFqnProvidersOptionsPage);
 
         public CopyFqnProvidersOptionsPage(
-#if RS20183
-            [NotNull] 
-#endif
             Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
             base(lifetime, optionsSettingsSmartContext)
         {

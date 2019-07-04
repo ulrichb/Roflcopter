@@ -11,18 +11,13 @@ using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionSystem.ActionBar;
 using JetBrains.Application.UI.Options.OptionsDialog;
 using JetBrains.DataFlow;
+using JetBrains.Diagnostics;
+using JetBrains.Lifetimes;
 using JetBrains.ReSharper.Features.Inspections.Actions;
 using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.UI.SrcView.Actions.ActionBar;
 using JetBrains.Util.Threading.Tasks;
 using Roflcopter.Plugin.TodoItems.OptionsPages;
-#if RS20183
-using JetBrains.Util;
-#else
-using JetBrains.Diagnostics;
-using JetBrains.Lifetimes;
-
-#endif
 
 namespace Roflcopter.Plugin.TodoItems.Presentation
 {
@@ -45,11 +40,7 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
             UpdateRequestSignal = new SimpleSignal($"{nameof(TodoItemsCountPresenter)}.{nameof(UpdateRequestSignal)}");
         }
 
-        public void Patch(
-#if RS20183
-            [NotNull] 
-#endif
-            Lifetime lifetime, [NotNull] IActionBar actionBar)
+        public void Patch(Lifetime lifetime, [NotNull] IActionBar actionBar)
         {
             if (actionBar.ActionGroup.ActionId == TodoExplorerActionBarActionGroup.ID)
             {
