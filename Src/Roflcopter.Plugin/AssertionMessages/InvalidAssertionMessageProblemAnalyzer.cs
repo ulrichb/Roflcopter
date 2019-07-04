@@ -46,16 +46,16 @@ namespace Roflcopter.Plugin.AssertionMessages
             {
                 // Following 'FDTApplicator..ctor' and 'CSharpControlFlowGraphInspector.PatchContextByObsoleteAnnotatedMethodCall'
 
-                var contractAnnotationFdt = _contractAnnotationProvider.GetInfo(method);
+                var functionDefinitionTable = _contractAnnotationProvider.GetInfo(method);
 
-                if (contractAnnotationFdt != null || _assertionMethodAnnotationProvider.GetInfo(method))
+                if (functionDefinitionTable != null || _assertionMethodAnnotationProvider.GetInfo(method))
                 {
                     if (resolveResult.Result.IsExtensionMethodInvocation())
                     {
                         var thisArgumentInfo = (ExtensionArgumentInfo) invocationExpression
                             .ExtensionQualifier.NotNull("seems to be escaped by the positive resolution");
 
-                        var conditionType = GetConditionTypeForParameter(thisArgumentInfo, contractAnnotationFdt);
+                        var conditionType = GetConditionTypeForParameter(thisArgumentInfo, functionDefinitionTable);
 
                         if (conditionType != null)
                         {
@@ -73,7 +73,7 @@ namespace Roflcopter.Plugin.AssertionMessages
                             var argument = arguments[i];
                             var nextArgument = arguments[i + 1];
 
-                            var conditionType = GetConditionTypeForParameter(argument, contractAnnotationFdt);
+                            var conditionType = GetConditionTypeForParameter(argument, functionDefinitionTable);
 
                             if (conditionType != null)
                             {
@@ -88,16 +88,16 @@ namespace Roflcopter.Plugin.AssertionMessages
 
         private ConditionType? GetConditionTypeForParameter(
             ICSharpArgumentInfo argumentInfo,
-            [CanBeNull] IContractAnnotationFDT contractAnnotationFdt)
+            [CanBeNull] FunctionDefinitionTable functionDefinitionTable)
         {
             var matchingParameter = argumentInfo.MatchingParameter;
             if (matchingParameter != null)
             {
                 var parameter = matchingParameter.Element;
 
-                if (contractAnnotationFdt != null)
+                if (functionDefinitionTable != null)
                 {
-                    var conditionType = GetContractAnnotationConditionTypeForParameter(contractAnnotationFdt, parameter);
+                    var conditionType = GetContractAnnotationConditionTypeForParameter(functionDefinitionTable, parameter);
 
                     if (conditionType != null)
                         return conditionType;
@@ -111,17 +111,17 @@ namespace Roflcopter.Plugin.AssertionMessages
 
         [Pure]
         private static ConditionType? GetContractAnnotationConditionTypeForParameter(
-            IContractAnnotationFDT contractAnnotationFdt,
+            FunctionDefinitionTable functionDefinitionTable,
             IParameter parameter)
         {
-            foreach (var row in contractAnnotationFdt.Rows)
+            foreach (var row in functionDefinitionTable.Rows)
             {
-                if (row.MethodReturn == ContractAnnotationValue.HALT)
+                if (row.FunctionReturn == ContractAnnotationValue.HALT)
                 {
-                    if (row.Input.Length == 1)
+                    if (row.Input.Count == 1)
                     {
                         var contractAnnotationValue =
-                            row.Input[0].First == parameter.ShortName ? row.Input[0].Second : (ContractAnnotationValue?) null;
+                            row.Input[0].ParameterName == parameter.ShortName ? row.Input[0].Value : (ContractAnnotationValue?) null;
 
                         switch (contractAnnotationValue)
                         {

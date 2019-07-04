@@ -1,9 +1,11 @@
 #if RESHARPER
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
+using JetBrains.Application.Settings;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.Options.ThemedIcons;
 using JetBrains.Application.UI.Options.OptionsDialog;
+using JetBrains.IDE.UI.Extensions;
+using JetBrains.IDE.UI.Options;
 using JetBrains.Lifetimes;
 using JetBrains.ReSharper.Features.Navigation.Options;
 
@@ -15,28 +17,35 @@ namespace Roflcopter.Plugin.CopyFqnProviders.OptionsPages
         typeof(OptionsThemedIcons.CopySettings),
         ParentId = SearchAndNavigationOptionPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
-#pragma warning disable 618
-    // TODO: Refactor to BeSimpleOptionsPage
-    public class CopyFqnProvidersOptionsPage : SimpleOptionsPage
-#pragma warning restore 618
+    public class CopyFqnProvidersOptionsPage : BeSimpleOptionsPage
     {
         private const string PageId = nameof(CopyFqnProvidersOptionsPage);
 
         public CopyFqnProvidersOptionsPage(
-            Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
-            base(lifetime, optionsSettingsSmartContext)
+            Lifetime lifetime,
+            OptionsPageContext optionsPageContext,
+            OptionsSettingsSmartContext optionsSettingsSmartContext) : base(lifetime, optionsPageContext, optionsSettingsSmartContext)
         {
             AddText("\"Copy Fully-qualified name/ Source browser URI to Clipboard\" will be extended by the following entries.");
-            AddText("");
+
+            AddSpacer();
 
             AddBoolOption((CopyFqnProvidersSettings s) => s.EnableShortNames, "Short names");
 
-            AddText("");
+            AddSpacer();
 
             AddText("URL templates:");
-            AddStringOption((CopyFqnProvidersSettings s) => s.UrlTemplates, "", acceptsReturn: true);
 
-            FinishPage();
+            // Use BeControls.GetTextControl() + manual Bind() instead of GetBeTextBox() to support multi-line
+            // editing (no handling of the "Enter" key). Just like the `ReSpellerSettingsPage`.
+
+            var textControl = BeControls.GetTextControl(isReadonly: false);
+
+            OptionsSettingsSmartContext
+                .GetValueProperty(Lifetime, (CopyFqnProvidersSettings s) => s.UrlTemplates)
+                .Bind(Lifetime, textControl.Text);
+
+            AddControl(textControl);
         }
     }
 }

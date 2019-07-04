@@ -1,13 +1,14 @@
 #if RESHARPER
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
+using JetBrains.Application.Settings;
 using JetBrains.Application.UI.Options;
 using JetBrains.Application.UI.Options.OptionsDialog;
 using JetBrains.Application.UI.Options.OptionsDialog.SimpleOptions;
-using JetBrains.DataFlow;
+using JetBrains.IDE.UI.Extensions;
+using JetBrains.IDE.UI.Options;
+using JetBrains.Lifetimes;
 using JetBrains.ReSharper.Features.Inspections.TodoItems;
 using JetBrains.ReSharper.Psi.Resources;
-using JetBrains.Lifetimes;
 
 namespace Roflcopter.Plugin.TodoItems.OptionsPages
 {
@@ -17,28 +18,32 @@ namespace Roflcopter.Plugin.TodoItems.OptionsPages
         typeofIcon: typeof(PsiSymbolsThemedIcons.Macro),
         ParentId = TodoExplorerOptionsPage.PID)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
-#pragma warning disable 618
-    // TODO: Refactor to BeSimpleOptionsPage
-    public class TodoItemsCountOptionsPage : SimpleOptionsPage
-#pragma warning restore 618
+    public class TodoItemsCountOptionsPage : BeSimpleOptionsPage
     {
         public const string OptionsPageId = nameof(TodoItemsCountOptionsPage);
 
         public TodoItemsCountOptionsPage(
-            Lifetime lifetime, [NotNull] OptionsSettingsSmartContext optionsSettingsSmartContext) :
-            base(lifetime, optionsSettingsSmartContext)
+            Lifetime lifetime,
+            OptionsPageContext optionsPageContext,
+            OptionsSettingsSmartContext optionsSettingsSmartContext) : base(lifetime, optionsPageContext, optionsSettingsSmartContext)
         {
-            var enabledOption = AddBoolOption((TodoItemsCountSettings s) => s.IsEnabled, "Enabled");
+            AddBoolOption((TodoItemsCountSettings s) => s.IsEnabled, "Enabled");
 
             AddText("Definitions:");
-            var definitionsOption = AddStringOption(
-                (TodoItemsCountSettings s) => s.Definitions, "",
-                acceptsReturn: true,
-                toolTipText: "Syntax: <To-do Title>[<Optional text-matching>]");
 
-            enabledOption.CheckedProperty.FlowInto(lifetime, definitionsOption.GetIsEnabledProperty(), x => x);
+            // Use BeControls.GetTextControl() + manual Bind() instead of GetBeTextBox() to support multi-line
+            // editing (no handling of the "Enter" key). Just like the `ReSpellerSettingsPage`.
 
-            FinishPage();
+            var textControl = BeControls.GetTextControl(isReadonly: false);
+
+            OptionsSettingsSmartContext
+                .GetValueProperty(Lifetime, (TodoItemsCountSettings s) => s.Definitions)
+                .Bind(Lifetime, textControl.Text);
+
+            AddBinding(textControl, BindingStyle.IsEnabledProperty, (TodoItemsCountSettings s) => s.IsEnabled, x => x);
+
+            AddControl(textControl);
+            AddText("Syntax: <To-do title>[<Optional text-matching used to filter the counted items>]");
         }
     }
 }

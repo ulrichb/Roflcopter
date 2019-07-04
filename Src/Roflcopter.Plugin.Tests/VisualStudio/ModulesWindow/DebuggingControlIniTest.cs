@@ -78,10 +78,10 @@ namespace Roflcopter.Plugin.Tests.VisualStudio.ModulesWindow
 
                 Assert.That(
                     _infos.Single(),
-                    Is.StringStarting($"Wrote .ini file for:{Environment.NewLine}module1.dll{Environment.NewLine}module2.dll"));
+                    Does.StartWith($"Wrote .ini file for:{Environment.NewLine}module1.dll{Environment.NewLine}module2.dll"));
 
                 var iniText = _sampleModulePath1.ChangeExtension(".ini").ReadAllText2(Encoding.Default).Text;
-                Assert.That(iniText, Is.StringStarting("[.NET Framework Debugging Control]"));
+                Assert.That(iniText, Does.StartWith("[.NET Framework Debugging Control]"));
             }
 
             //
@@ -94,7 +94,7 @@ namespace Roflcopter.Plugin.Tests.VisualStudio.ModulesWindow
                 var modulesPathsEnumerable = new[] { _sampleModulePath1, _sampleModulePath2 }.Select((x, i) =>
                 {
                     if (i == 1)
-                        stream = _sampleModulePath1.ChangeExtension(".ini").OpenStream(FileMode.CreateNew);
+                        stream = _sampleModulePath1.ChangeExtension(".ini").OpenStream(FileMode.CreateNew, FileAccess.ReadWrite);
 
                     return x;
                 });
@@ -103,7 +103,7 @@ namespace Roflcopter.Plugin.Tests.VisualStudio.ModulesWindow
                 {
                     _sut.WriteDebuggingControlIni(modulesPathsEnumerable);
 
-                    Assert.That(_errors.Single(), Is.StringStarting($"Error while writing .ini for '{_sampleModulePath1.Name}': "));
+                    Assert.That(_errors.Single(), Does.StartWith($"Error while writing .ini for '{_sampleModulePath1.Name}': "));
                 }
                 finally
                 {
@@ -158,7 +158,7 @@ namespace Roflcopter.Plugin.Tests.VisualStudio.ModulesWindow
 
                 Assert.That(
                     _infos.Single(),
-                    Is.StringStarting($"Deleted .INI file for:{Environment.NewLine}module1.dll{Environment.NewLine}module2.dll"));
+                    Does.StartWith($"Deleted .INI file for:{Environment.NewLine}module1.dll{Environment.NewLine}module2.dll"));
             }
 
             //
@@ -166,13 +166,13 @@ namespace Roflcopter.Plugin.Tests.VisualStudio.ModulesWindow
             [Test]
             public void RemoveDebuggingControlIni_WithError()
             {
-                using (_sampleModulePath1.ChangeExtension(".ini").OpenStream(FileMode.Open))
+                using (_sampleModulePath1.ChangeExtension(".ini").OpenStream(FileMode.Open, FileAccess.ReadWrite))
                 {
                     var modulesPaths = new[] { _sampleModulePath1, _sampleModulePath2 };
 
                     _sut.RemoveDebuggingControlIni(modulesPaths);
 
-                    Assert.That(_errors.Single(), Is.StringStarting($"Error while deleting .ini file for '{_sampleModulePath1.Name}': "));
+                    Assert.That(_errors.Single(), Does.StartWith($"Error while deleting .ini file for '{_sampleModulePath1.Name}': "));
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 using JetBrains.Application.Progress;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
@@ -22,7 +23,7 @@ namespace Roflcopter.Plugin.UnitTesting
         }
 
         public override string Text =>
-            $"Change parameter type to '{Highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance)}'";
+            $"Change parameter type to '{Highlighting.ArgumentExpression.Type().GetPresentableName(CSharpLanguage.Instance.NotNull())}'";
 
         protected override bool IsAvailableForTreeNode(IUserDataHolder _) => true;
 
