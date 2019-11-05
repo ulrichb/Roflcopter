@@ -7,9 +7,5 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         public UseNUnitPackageAttribute() : base("NUnit")
         {
         }
-
-        public UseNUnitPackageAttribute(string version) : base("NUnit/" + version)
-        {
-        }
     }
 }

@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using JetBrains.Application.Components;
 using JetBrains.Application.Settings;
-using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
@@ -125,7 +124,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
                     files.Select(x => GetTestDataFilePath2(x).FullPath),
                     (lifetime, solution, project) =>
                     {
-                        solution.GetComponent<TodoItemsCountProvider>().NotNull();
+                        Assert.That(solution.GetComponent<TodoItemsCountProvider>, Is.Not.Null);
                         var consumer = ShellInstance.GetComponent<TestTodoItemsCountConsumer>();
 
                         action(consumer, settings);

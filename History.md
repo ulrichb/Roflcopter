@@ -1,3 +1,6 @@
+### 1.8.0 ###
+- ReSharper and Rider 2019.3 support
+
 ### 1.7.0 ###
 - ReSharper and Rider 2019.2 support
 
