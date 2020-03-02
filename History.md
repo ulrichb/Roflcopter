@@ -1,3 +1,6 @@
+### 1.9.0 ###
+- ReSharper and Rider 2020.1 support
+
 ### 1.8.1 ###
 - Fix ZoneMarker for Debugging Control feature to avoid exceptions in InspectCode
 
