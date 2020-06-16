@@ -4,18 +4,16 @@ using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using ReSharperExtensionsShared.Highlighting;
-using Roflcopter.Plugin.AssertionMessages;
-
-[assembly: RegisterConfigurableSeverity(
-    InvalidAssertionMessageHighlighting.SeverityId,
-    CompoundItemName: null,
-    Group: HighlightingGroupIds.CodeSmell,
-    Title: InvalidAssertionMessageHighlighting.Title,
-    Description: InvalidAssertionMessageHighlighting.Description,
-    DefaultSeverity: Severity.WARNING)]
 
 namespace Roflcopter.Plugin.AssertionMessages
 {
+    [RegisterConfigurableSeverity(
+        SeverityId,
+        CompoundItemName: null,
+        Group: HighlightingGroupIds.CodeSmell,
+        Title: Title,
+        Description: Description,
+        DefaultSeverity: Severity.WARNING)]
     [ConfigurableSeverityHighlighting(
         SeverityId,
         CSharpLanguage.Name,
@@ -23,12 +21,12 @@ namespace Roflcopter.Plugin.AssertionMessages
         ToolTipFormatString = Message)]
     public class InvalidAssertionMessageHighlighting : SimpleTreeNodeHighlightingBase<ICSharpLiteralExpression>
     {
-        public const string SeverityId = "InvalidAssertionMessage";
-        public const string Title = "Assertion message is invalid";
+        private const string SeverityId = "InvalidAssertionMessage";
+        private const string Title = "Assertion message is invalid";
         private const string Message = "Assertion message is invalid. Expected '{0}'.";
 
-        public const string Description = "Assertion message is invalid (e.g. wrong/outdated null-check " +
-                                          "condition is part of the assertion message).";
+        private const string Description = "Assertion message is invalid (e.g. wrong/outdated null-check " +
+                                           "condition is part of the assertion message).";
 
         private readonly int _messagePostfixLength;
 

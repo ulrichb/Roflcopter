@@ -35,7 +35,7 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
         [Test]
         public void SomeClassWithWrongName_ButExistingFile()
         {
-            DoTestFiles(nameof(SomeClassWithWrongName) + ".cs", "SomeClass.cs");
+            DoTestSolution(nameof(SomeClassWithWrongName) + ".cs", "SomeClass.cs");
 
             Assert.That(_quickFix.Errors, Is.EqualTo(new[] { "Can't rename 'SomeClassWithWrongName.cs': A file 'SomeClass.cs' already exists." }));
             Assert.That(_quickFix.RenameFileActions, Is.Empty);

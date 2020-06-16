@@ -18,14 +18,14 @@ $SolutionFilePath = "Roflcopter.sln"
 $MSBuildPath = (Get-ChildItem "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\*\MSBuild\15.0\Bin\MSBuild.exe").FullName
 $NUnitAdditionalArgs = "--x86 --labels=All --agents=1"
 $NUnitTestAssemblyPaths = @(
-    "Src\Roflcopter.Plugin.Tests\bin\RD20201\$Configuration\Roflcopter.Plugin.Tests.RD20201.dll"
-    "Src\Roflcopter.Plugin.Tests\bin\RS20201\$Configuration\Roflcopter.Plugin.Tests.RS20201.dll"
+    "Src\Roflcopter.Plugin.Tests\bin\RD20202\$Configuration\Roflcopter.Plugin.Tests.RD20202.dll"
+    "Src\Roflcopter.Plugin.Tests\bin\RS20202\$Configuration\Roflcopter.Plugin.Tests.RS20202.dll"
 )
 $NUnitFrameworkVersion = "net-4.5"
 $TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.Plugin\Roflcopter.nuspec"
 $NugetPackProperties = @(
-    "Version=$(CalcNuGetPackageVersion 20201);Configuration=$Configuration;DependencyVer=[201.0];BinDirInclude=bin\RS20201"
+    "Version=$(CalcNuGetPackageVersion 20202);Configuration=$Configuration;DependencyVer=[202.0];BinDirInclude=bin\RS20202"
 )
 $RiderPluginProject = "Src\RiderPlugin"
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
