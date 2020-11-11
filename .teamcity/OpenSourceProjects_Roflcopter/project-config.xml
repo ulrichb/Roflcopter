@@ -26,6 +26,6 @@
     </extension>
   </project-extensions>
   <cleanup />
-  <buildTypesOrder order="OpenSourceProjects_Roflcopter_BuildVersion,OpenSourceProjects_Roflcopter_Ci,OpenSourceProjects_Roflcopter_Release" />
+  <buildTypesOrder order="OpenSourceProjects_Roflcopter_BuildVersion,OpenSourceProjects_Roflcopter_Ci" />
 </project>
 
