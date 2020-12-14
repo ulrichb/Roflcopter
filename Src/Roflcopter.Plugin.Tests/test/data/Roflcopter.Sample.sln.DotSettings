@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CSharpNaming/ApplyAutoDetectedRules/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/Shortcut/@EntryValue">todo</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DB5DDB561AE1884E9899521333E617D7/Text/@EntryValue">TODO $Branch$: $END$</s:String>

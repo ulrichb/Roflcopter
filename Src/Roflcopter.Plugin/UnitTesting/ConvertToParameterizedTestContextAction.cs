@@ -49,7 +49,7 @@ namespace Roflcopter.Plugin.UnitTesting
             var parameterDeclaration = methodDeclaration.AddParameterDeclarationBefore(
                 elementFactory.CreateParameterDeclaration(
                     ParameterKind.VALUE,
-                    isParametric: false,
+                    isParams: false,
                     isVarArg: false,
                     type: psiModule.GetPredefinedType().Object,
                     name: "parameter",
@@ -75,7 +75,7 @@ namespace Roflcopter.Plugin.UnitTesting
                 var endSelectionRange = DocumentRange.InvalidRange;
                 var hotspotSession = textControl.CreateHotspotSessionAtopExistingText(solution, endSelectionRange, hotspotNodes);
 
-                hotspotSession.Execute();
+                hotspotSession.ExecuteAndForget();
             };
         }
 

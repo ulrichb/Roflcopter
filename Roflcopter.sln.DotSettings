@@ -2,6 +2,7 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/GeneratedFilesAndFolders/=DA8C3190_002D009E_002D430B_002D95B5_002D7AFF7AA0A55F/@EntryIndexedValue">DA8C3190-009E-430B-95B5-7AFF7AA0A55F</s:String>
 	<s:Boolean x:Key="/Default/CodeInspection/ImplicitNullability/Enabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/ImplicitNullability/FieldsRestrictToReadonly/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CSharpNaming/ApplyAutoDetectedRules/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8180D39E8F16764B90221B1534307E85/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8180D39E8F16764B90221B1534307E85/RelativePath/@EntryValue">..\Shared\Shared.DotSettings</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File8180D39E8F16764B90221B1534307E85/@KeyIndexDefined">True</s:Boolean>
