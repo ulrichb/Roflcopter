@@ -62,12 +62,3 @@ To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment
 The providers can be configured in _Options | Search & Navigation | Copy names to clipboard_.
 
 <img src="/Doc/CopyToClipboard.gif" alt="CopyToClipboard" width="804" />
-
-### Write/Remove Debugging Control .ini
-
-The context menu in the _Debug | Modules_ window is extended by ...
-
-* _Write Debugging Control .ini file with disabled Jitter optimizations_ to write such an [.ini file](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/making-an-image-easier-to-debug) for the selected module, and
-* _Remove Debugging Control .ini file_ to remove it again.
-
-<img src="/Doc/DebuggingControlIni_Write.png" alt="DebuggingControlIni_Write" width="980" />

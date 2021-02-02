@@ -1,3 +1,6 @@
+### 1.12.0 ###
+- Removed the "Write Debugging Control .ini file with disabled Jitter optimizations" feature
+
 ### 1.11.0 ###
 - ReSharper and Rider 2020.3 support
 
