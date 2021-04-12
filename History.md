@@ -1,5 +1,6 @@
 ### 1.12.0 ###
 - Removed the "Write Debugging Control .ini file with disabled Jitter optimizations" feature
+- Dropped the GitHub default values for "Copy FQN" (it's now a R# feature)
 - ReSharper and Rider 2021.1 support
 
 ### 1.11.0 ###

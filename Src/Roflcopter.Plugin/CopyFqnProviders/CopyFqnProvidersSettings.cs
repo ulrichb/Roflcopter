@@ -12,8 +12,7 @@ namespace Roflcopter.Plugin.CopyFqnProviders
         public readonly bool EnableShortNames;
 
         [SettingsEntry(
-            "GitHub (master): {GitRepoOriginUrl}/blob/master/{PathRelativeToGitRepoSlashSeparated}\n" +
-            "GitHub (current branch): {GitRepoOriginUrl}/blob/{GitRepoBranch}/{PathRelativeToGitRepoSlashSeparated}",
+            "",
             "URL templates\n\nReplacements:\n" +
             "{PathRelativeToSolutionSlashSeparated}" + "\n" +
             "{GitRepoOriginUrl}" + "\n" +

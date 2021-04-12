@@ -37,27 +37,10 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         }
 
         [Test]
-        public void GetSortedFqns()
-        {
-            Test(info =>
-            {
-                var result = info.Sut.GetSortedFqns(info.DataContext);
-
-                Assert.That(result.Select(x => x.TextToCopy), Is.EqualTo(new[]
-                {
-                    "https://repository.url/blob/master/CopyFqnProviders/SomeClass.cs",
-                    "https://repository.url/blob/my_branch/CopyFqnProviders/SomeClass.cs",
-                }));
-            });
-        }
-
-        [Test]
         public void GetSortedFqns_WithoutTemplates()
         {
             Test(info =>
             {
-                info.Settings.SetValue((CopyFqnProvidersSettings s) => s.UrlTemplates, "");
-
                 var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result, Is.Empty);
@@ -90,18 +73,34 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         }
 
         [Test]
+        public void GetSortedFqns_WithGitRepoUrl()
+        {
+            Test(info =>
+            {
+                SetDummyGitUrlTemplate(info.Settings);
+
+                var result = info.Sut.GetSortedFqns(info.DataContext);
+
+                Assert.That(result.Select(x => x.TextToCopy), Is.EqualTo(new[]
+                {
+                    "https://repository.url/branch/my_branch/CopyFqnProviders/SomeClass.cs",
+                }));
+            });
+        }
+
+        [Test]
         public void GetSortedFqns_WithoutGitDirectory()
         {
             Test(info =>
             {
+                SetDummyGitUrlTemplate(info.Settings);
                 _gitDirectoryPath.Delete();
 
                 var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Select(x => x.TextToCopy), Is.EqualTo(new[]
                 {
-                    "<cannot find Git repository origin>/blob/master/<cannot find Git repository>",
-                    "<cannot find Git repository origin>/blob/<cannot find Git branch>/<cannot find Git repository>",
+                    "<cannot find Git repository origin>/branch/<cannot find Git branch>/<cannot find Git repository>",
                 }));
             });
         }
@@ -111,14 +110,14 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         {
             Test(info =>
             {
+                SetDummyGitUrlTemplate(info.Settings);
                 _gitDirectoryPath.Combine("config").WriteAllText("");
 
                 var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Select(x => x.TextToCopy), Is.EqualTo(new[]
                 {
-                    "<cannot find Git repository origin>/blob/master/CopyFqnProviders/SomeClass.cs",
-                    "<cannot find Git repository origin>/blob/my_branch/CopyFqnProviders/SomeClass.cs",
+                    "<cannot find Git repository origin>/branch/my_branch/CopyFqnProviders/SomeClass.cs",
                 }));
             });
         }
@@ -128,16 +127,22 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         {
             Test(info =>
             {
+                SetDummyGitUrlTemplate(info.Settings);
                 _gitDirectoryPath.Combine("HEAD").WriteAllText("");
 
                 var result = info.Sut.GetSortedFqns(info.DataContext);
 
                 Assert.That(result.Select(x => x.TextToCopy), Is.EqualTo(new[]
                 {
-                    "https://repository.url/blob/master/CopyFqnProviders/SomeClass.cs",
-                    "https://repository.url/blob/<cannot find Git branch>/CopyFqnProviders/SomeClass.cs",
+                    "https://repository.url/branch/<cannot find Git branch>/CopyFqnProviders/SomeClass.cs",
                 }));
             });
+        }
+
+        private static void SetDummyGitUrlTemplate(IContextBoundSettingsStore contextBoundSettingsStore)
+        {
+            contextBoundSettingsStore.SetValue((CopyFqnProvidersSettings s) => s.UrlTemplates,
+                "{GitRepoOriginUrl}/branch/{GitRepoBranch}/{PathRelativeToGitRepoSlashSeparated}");
         }
 
         [Test]
@@ -157,10 +162,12 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         //
 
         [Test]
-        public void IsApplicable()
+        public void IsApplicable_WithTemplates()
         {
             Test(info =>
             {
+                info.Settings.SetValue((CopyFqnProvidersSettings s) => s.UrlTemplates, "some entry");
+
                 var result = info.Sut.IsApplicable(info.DataContext);
 
                 Assert.That(result, Is.True);
@@ -168,12 +175,10 @@ namespace Roflcopter.Plugin.Tests.CopyFqnProviders
         }
 
         [Test]
-        public void IsApplicable_WithoutTemplates()
+        public void IsApplicable_WithDefault()
         {
             Test(info =>
             {
-                info.Settings.SetValue((CopyFqnProvidersSettings s) => s.UrlTemplates, "");
-
                 var result = info.Sut.IsApplicable(info.DataContext);
 
                 Assert.That(result, Is.False);
