@@ -3,7 +3,7 @@
     "Plugin (in VS)": {
       "commandName": "Executable",
       "executablePath": "$(DevEnvDir)devenv.exe",
-      "commandLineArgs": "/RootSuffix Exp$(ReSharperVersionIdentifier) /ReSharper.Internal $(SolutionDir)Src\\Roflcopter.Plugin.Tests\\test\\data\\Roflcopter.Sample.sln"
+      "commandLineArgs": "/RootSuffix ReSharper /ReSharper.Internal $(SolutionDir)Src\\Roflcopter.Plugin.Tests\\test\\data\\Roflcopter.Sample.sln"
     },
     "Plugin (in Rider)": {
       "commandName": "Executable",
