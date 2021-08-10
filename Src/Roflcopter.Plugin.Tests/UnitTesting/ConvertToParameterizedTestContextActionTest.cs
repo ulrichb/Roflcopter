@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
 using JetBrains.ReSharper.TestFramework;
-using Roflcopter.Plugin.UnitTesting;
 using NUnit.Framework;
+using Roflcopter.Plugin.UnitTesting;
 
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
@@ -12,9 +11,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
     [UseNUnitPackage]
     public class ConvertToParameterizedTestContextActionTest : CSharpContextActionExecuteTestBase<ConvertToParameterizedTestContextAction>
     {
-        private static readonly string CommonTestDataPath = Path.Combine(nameof(UnitTesting), nameof(ConvertToParameterizedTestContextActionTest));
-
-        protected override string RelativeTestDataPath => CommonTestDataPath;
+        protected override string RelativeTestDataPath => this.CalculateRelativeTestDataPath();
 
         [ExcludeFromCodeCoverage]
         protected override string ExtraPath => throw new NotSupportedException();
@@ -26,7 +23,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         [UseNUnitPackage]
         public class AvailabilityTest : CSharpContextActionAvailabilityTestBase<ConvertToParameterizedTestContextAction>
         {
-            protected override string RelativeTestDataPath => CommonTestDataPath;
+            protected override string RelativeTestDataPath => this.CalculateRelativeTestDataPath();
 
             [ExcludeFromCodeCoverage]
             protected override string ExtraPath => throw new NotSupportedException();
