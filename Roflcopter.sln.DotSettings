@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=DA8C3190_002D009E_002D430B_002D95B5_002D7AFF7AA0A55F_002Fd_003AUpdateAspDesignerFiles/@EntryIndexedValue">ExplicitlyExcluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/GeneratedFilesAndFolders/=DA8C3190_002D009E_002D430B_002D95B5_002D7AFF7AA0A55F/@EntryIndexedValue">DA8C3190-009E-430B-95B5-7AFF7AA0A55F</s:String>
 	<s:Boolean x:Key="/Default/CodeInspection/ImplicitNullability/Enabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/ImplicitNullability/FieldsRestrictToReadonly/@EntryValue">True</s:Boolean>

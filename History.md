@@ -1,4 +1,5 @@
 ### 1.13.0 ###
+- "Update ASP.NET Designer File" context action + reference error quick fix
 - ReSharper and Rider 2021.2 support
 
 ### 1.12.0 ###

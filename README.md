@@ -62,3 +62,9 @@ To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment
 The providers can be configured in _Options | Search & Navigation | Copy names to clipboard_.
 
 <img src="/Doc/CopyToClipboard.gif" alt="CopyToClipboard" width="804" />
+
+#### Update ASP.NET Designer File (R# only)
+
+Allows to generate .ASPX / .ASCX Designer files in SDK projects.
+
+<img src="/Doc/UpdateAspDesignerFile.gif" alt="UpdateAspDesignerFile" width="1143" />
