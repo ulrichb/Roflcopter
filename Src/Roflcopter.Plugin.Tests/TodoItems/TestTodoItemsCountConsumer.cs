@@ -21,7 +21,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
 
         public int UpdateCounter;
 
-        public void Update([CanBeNull] IReadOnlyList<TodoItemsCount> todoItemsCounts)
+        public void Update( IReadOnlyList<TodoItemsCount> todoItemsCounts)
         {
             TodoItemsCounts = todoItemsCounts;
             UpdateCounter++;

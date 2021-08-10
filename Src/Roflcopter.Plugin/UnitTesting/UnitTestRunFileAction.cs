@@ -20,7 +20,6 @@ namespace Roflcopter.Plugin.UnitTesting
     public class UnitTestRunFileAction : UnitTestRunContextActionImpl,
         IInsertAfter<UnitTestContextMenuActionGroup, UnitTestRunContextAction>
     {
-        [CanBeNull]
         protected override UnitTestElements GetElementsToRun([NotNull] IDataContext context)
         {
             var projectFile = GetProjectFile(context);

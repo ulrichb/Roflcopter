@@ -1,5 +1,4 @@
 ﻿using System;
-using JetBrains.Annotations;
 using JetBrains.Application.Progress;
 using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
@@ -21,7 +20,6 @@ namespace Roflcopter.Plugin.MismatchedFileNames
 
         protected override bool IsAvailableForTreeNode(IUserDataHolder cache) => true;
 
-        [CanBeNull]
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
         {
             var newFileName = Highlighting.ExpectedFileName;

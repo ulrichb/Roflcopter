@@ -37,7 +37,6 @@ namespace Roflcopter.Plugin.UnitTesting
 
         public override bool IsAvailable(IUserDataHolder _) => SelectedTestMethodDeclaration != null;
 
-        [CanBeNull]
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator _)
         {
             var methodDeclaration = SelectedTestMethodDeclaration.NotNull();

@@ -22,7 +22,6 @@ namespace Roflcopter.Plugin.Macros
             _stripingRegexParameter = parameters.OptionalFirstOrDefault();
         }
 
-        [CanBeNull]
         public override HotspotItems GetLookupItems(IHotspotContext context)
         {
             return MacroUtil.SimpleEvaluateResult(Evaluate(context));

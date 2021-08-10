@@ -64,7 +64,7 @@ namespace Roflcopter.Plugin.TodoItems.Presentation
 
         public ISimpleSignal UpdateRequestSignal { get; }
 
-        public void Update([CanBeNull] IReadOnlyList<TodoItemsCount> todoItemsCounts)
+        public void Update(IReadOnlyList<TodoItemsCount> todoItemsCounts)
         {
             _shellLocks.Dispatcher.Invoke(
                 nameof(TodoItemsCountPresenter) + "." + nameof(Update),
