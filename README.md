@@ -54,15 +54,6 @@ Allowed file name postfixes can be configured in _Options | Code Inspection | Mi
 
 To apply the short cut (Ctrl+R, F) executing _Apply Scheme_ in the [_Environment & Menus_](https://www.jetbrains.com/help/resharper/Reference__Options__Environment__Visual_Studio_Integration.html) options may be necessary.
 
-### Additional "Copy Fully-qualified name/ Source browser URI to Clipboard" providers
-
-* "Short names" (e.g. `<TypeShortName>.<MemberName>`)
-* Custom source URLs (including Git repository support)
-
-The providers can be configured in _Options | Search & Navigation | Copy names to clipboard_.
-
-<img src="/Doc/CopyToClipboard.gif" alt="CopyToClipboard" width="804" />
-
 #### Update ASP.NET Designer File (R# only)
 
 Allows to generate .ASPX / .ASCX Designer files in SDK projects.
