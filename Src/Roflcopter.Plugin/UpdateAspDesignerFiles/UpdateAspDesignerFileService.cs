@@ -13,6 +13,7 @@ using JetBrains.DocumentModel.Impl;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Asp.CodeBehind;
+using JetBrains.ReSharper.Psi.Asp.CodeBehind.CodeGeneration;
 using JetBrains.TextControl;
 using JetBrains.Util;
 
@@ -37,7 +38,7 @@ namespace Roflcopter.Plugin.UpdateAspDesignerFiles
         {
             var projectFile = sourceFile.ToProjectFile().NotNull("sourceFile.ToProjectFile() != null");
 
-            var aspCodeBehindGenerator = _aspCodeBehindGeneratorProvider.Create(projectFile);
+            var aspCodeBehindGenerator = _aspCodeBehindGeneratorProvider.Create(projectFile, AspGeneratorGeneration.Default);
             if (aspCodeBehindGenerator == null)
                 return null;
 
@@ -91,7 +92,7 @@ namespace Roflcopter.Plugin.UpdateAspDesignerFiles
 
             private static (IProjectFile, bool Created) GetOrCreateTargetFile(
                 IProject project,
-                FileSystemPath targetFilePath,
+                VirtualFileSystemPath targetFilePath,
                 IProjectModelEditor projectModelEditor)
             {
                 var targetFile = FindSingleProjectItemByLocation<IProjectFile>(project, targetFilePath);
@@ -107,7 +108,7 @@ namespace Roflcopter.Plugin.UpdateAspDesignerFiles
             }
 
             [CanBeNull]
-            private static T FindSingleProjectItemByLocation<T>(IProject project, FileSystemPath path) where T : IProjectItem =>
+            private static T FindSingleProjectItemByLocation<T>(IProject project, VirtualFileSystemPath path) where T : IProjectItem =>
                 project.FindProjectItemsByLocation(path).OfType<T>().SingleOrDefault();
         }
     }

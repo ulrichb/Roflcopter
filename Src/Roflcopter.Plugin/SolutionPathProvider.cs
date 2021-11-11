@@ -9,6 +9,6 @@ namespace Roflcopter.Plugin
     public class SolutionPathProvider
     {
         [ExcludeFromCodeCoverage /* this is stubbed in the tests */]
-        public virtual FileSystemPath GetSolutionDirectory(ISolution solution) => solution.SolutionFilePath.Directory;
+        public virtual VirtualFileSystemPath GetSolutionDirectory(ISolution solution) => solution.SolutionFilePath.Directory;
     }
 }

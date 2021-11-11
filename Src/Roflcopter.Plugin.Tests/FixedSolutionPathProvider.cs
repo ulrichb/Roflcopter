@@ -5,13 +5,13 @@ namespace Roflcopter.Plugin.Tests
 {
     internal class FixedSolutionPathProvider : SolutionPathProvider
     {
-        public FixedSolutionPathProvider(FileSystemPath solutionDirectory)
+        public FixedSolutionPathProvider(VirtualFileSystemPath solutionDirectory)
         {
             SolutionDirectory = solutionDirectory;
         }
 
-        private FileSystemPath SolutionDirectory { get; }
+        private VirtualFileSystemPath SolutionDirectory { get; }
 
-        public override FileSystemPath GetSolutionDirectory(ISolution solution) => SolutionDirectory;
+        public override VirtualFileSystemPath GetSolutionDirectory(ISolution solution) => SolutionDirectory;
     }
 }

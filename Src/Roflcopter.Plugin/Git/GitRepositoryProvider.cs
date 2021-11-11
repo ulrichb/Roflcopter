@@ -9,7 +9,7 @@ namespace Roflcopter.Plugin.Git
     public class GitRepositoryProvider
     {
         [CanBeNull]
-        public GitRepositoryInfo FetchGitRepositoryInfo(FileSystemPath directory)
+        public GitRepositoryInfo FetchGitRepositoryInfo(VirtualFileSystemPath directory)
         {
             var gitDirectory = FindGitDirectory(directory);
 
@@ -20,7 +20,7 @@ namespace Roflcopter.Plugin.Git
         }
 
         [CanBeNull]
-        private FileSystemPath FindGitDirectory(FileSystemPath directory)
+        private VirtualFileSystemPath FindGitDirectory(VirtualFileSystemPath directory)
         {
             do
             {

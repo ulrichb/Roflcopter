@@ -8,19 +8,19 @@ namespace Roflcopter.Plugin.Git
 {
     public class GitRepositoryInfo
     {
-        public GitRepositoryInfo(FileSystemPath gitDirectory)
+        public GitRepositoryInfo(VirtualFileSystemPath gitDirectory)
         {
             GitDirectory = gitDirectory;
         }
 
         /// <summary>The ".git" directory.</summary>
-        private FileSystemPath GitDirectory { get; }
+        private VirtualFileSystemPath GitDirectory { get; }
 
-        public FileSystemPath RepositoryDirectory => GitDirectory.Directory;
+        public VirtualFileSystemPath RepositoryDirectory => GitDirectory.Directory;
 
-        private FileSystemPath HeadFile => GitDirectory.Combine("HEAD");
+        private VirtualFileSystemPath HeadFile => GitDirectory.Combine("HEAD");
 
-        private FileSystemPath ConfigFile => GitDirectory.Combine("config");
+        private VirtualFileSystemPath ConfigFile => GitDirectory.Combine("config");
 
         [CanBeNull]
         public string ReadHeadFileReference()

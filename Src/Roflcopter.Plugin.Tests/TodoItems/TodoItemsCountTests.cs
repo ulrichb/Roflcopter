@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using JetBrains.Application.Components;
 using JetBrains.Application.Settings;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
@@ -22,7 +23,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             Test((consumer, _) =>
             {
                 Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
-                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Bug", 2),
                     ("Todo", 5),
@@ -38,8 +39,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
                 var definitionText = "Todo\n Todo  [Important] ";
                 RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, definitionText));
 
-                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
-                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Todo", 5),
                     ("Todo[Important]", 3),
@@ -54,8 +54,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             {
                 RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nNON_MATCHING"));
 
-                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
-                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Todo", 5),
                     ("NON_MATCHING", 0),
@@ -70,8 +69,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             {
                 RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nTodo"));
 
-                Assert.That(consumer.TodoItemsCounts, Is.Not.Null);
-                Assert.That(consumer.TodoItemsCounts.Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
+                Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
                     ("Todo", 5),
                     ("Todo", 5),

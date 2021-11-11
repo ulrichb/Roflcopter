@@ -4,11 +4,12 @@ using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.Application.Components;
 using JetBrains.Application.DataContext;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.DataContext;
 using JetBrains.ReSharper.TestFramework;
-using JetBrains.ReSharper.UnitTestFramework;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
+using JetBrains.ReSharper.UnitTestFramework.Execution.Launch;
 using NUnit.Framework;
 using Roflcopter.Plugin.UnitTesting;
 
@@ -35,8 +36,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
 
                 //
 
-                Assert.That(result, Is.Not.Null);
-                var projectFileCriterion = (ProjectFileCriterion) result.Criterion;
+                var projectFileCriterion = (ProjectFileCriterion) result.NotNull().Criterion;
                 Assert.That(projectFileCriterion.PersistentId, Is.EqualTo(test.ProjectFile.GetPersistentID()));
                 Assert.That(result.Explicit, Is.Empty);
             });
