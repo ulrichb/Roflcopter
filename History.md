@@ -1,3 +1,6 @@
+### 1.15.0 ###
+- ReSharper and Rider 2022.1 support
+
 ### 1.14.0 ###
 - Drop the "Copy Fully-qualified name/ Source browser URI to Clipboard" providers feature because it's now part of R# 2021.3
 - ReSharper and Rider 2021.3 support
