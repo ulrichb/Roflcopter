@@ -15,13 +15,6 @@ trap { $error[0] | Format-List -Force; $host.SetShouldExit(1) }
 
 $BuildOutputPath = "Build\Output"
 $SolutionFilePath = "Roflcopter.sln"
-$NUnitAdditionalArgs = "--x86 --labels=All --agents=1"
-$NUnitTestAssemblyPaths = @(
-    "Src\Roflcopter.Plugin.Tests\bin\RD20221\$Configuration\Roflcopter.Plugin.Tests.RD20221.dll"
-    "Src\Roflcopter.Plugin.Tests\bin\RS20221\$Configuration\Roflcopter.Plugin.Tests.RS20221.dll"
-)
-$NUnitFrameworkVersion = "net-4.5"
-$TestCoverageFilter = "+[Roflcopter*]* -[Roflcopter*]ReSharperExtensionsShared.*"
 $NuspecPath = "Src\Roflcopter.Plugin\Roflcopter.nuspec"
 $NugetPackProperties = @(
     "Version=$(CalcNuGetPackageVersion 20221);Configuration=$Configuration;DependencyVer=[221.0];BinDirInclude=bin\RS20221"

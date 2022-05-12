@@ -2,9 +2,9 @@
 
 _Roflcopter_ (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities
 
-[![Build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:(id:OpenSourceProjects_Roflcopter_Ci),branch:master,running:any/statusIcon.svg)](https://teamcity.jetbrains.com/viewType.html?buildTypeId=OpenSourceProjects_Roflcopter_Ci)
-<a href="https://teamcity.jetbrains.com/viewType.html?buildTypeId=OpenSourceProjects_Roflcopter_Ci&branch=master"><img src="https://dl.dropbox.com/s/t4kzgq58t4cfi1z/master-linecoverage.svg" alt="Line Coverage" title="Line Coverage"></a>
-<a href="https://teamcity.jetbrains.com/viewType.html?buildTypeId=OpenSourceProjects_Roflcopter_Ci&branch=master"><img src="https://dl.dropbox.com/s/unjpcx06rztot8k/master-branchcoverage.svg" alt="Branch Coverage" title="Branch Coverage"></a>
+[![build](https://github.com/ulrichb/Roflcopter/actions/workflows/build.yml/badge.svg)](https://github.com/ulrichb/Roflcopter/actions/workflows/build.yml)
+<img src="https://dl.dropbox.com/s/t4kzgq58t4cfi1z/master-linecoverage.svg" alt="Line Coverage" title="Line Coverage">
+<img src="https://dl.dropbox.com/s/unjpcx06rztot8k/master-branchcoverage.svg" alt="Branch Coverage" title="Branch Coverage">
 
 [ReSharper Gallery Page](https://resharper-plugins.jetbrains.com/packages/ReSharper.Roflcopter/)
 
