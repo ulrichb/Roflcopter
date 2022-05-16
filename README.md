@@ -6,7 +6,7 @@ _Roflcopter_ (noun) 1. a breeding ground for new ReSharper extensions 2. a colle
 <img src="https://dl.dropbox.com/s/t4kzgq58t4cfi1z/master-linecoverage.svg" alt="Line Coverage" title="Line Coverage">
 <img src="https://dl.dropbox.com/s/unjpcx06rztot8k/master-branchcoverage.svg" alt="Branch Coverage" title="Branch Coverage">
 
-[ReSharper Gallery Page](https://resharper-plugins.jetbrains.com/packages/ReSharper.Roflcopter/)
+Plugin pages: [ReSharper](https://plugins.jetbrains.com/plugin/11757-roflcopter) / [Rider](https://plugins.jetbrains.com/plugin/10238-roflcopter)
 
 [History of changes](History.md)
 
