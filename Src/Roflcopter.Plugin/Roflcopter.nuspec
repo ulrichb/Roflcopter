@@ -2,21 +2,21 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ReSharper.Roflcopter</id>
-    <version>$Version$</version>
+    <version>$PackageVersion$</version>
     <title>Roflcopter</title>
     <authors>ulrichb</authors>
-    <licenseUrl>https://github.com/ulrichb/Roflcopter/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/ulrichb/Roflcopter#readme</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Roflcopter (noun) 1. a breeding ground for new ReSharper extensions 2. a collection of small, handy ReSharper utilities</description>
-    <releaseNotes>$ReleaseNotes$</releaseNotes>
+    <releaseNotes>$PackageReleaseNotes$</releaseNotes>
     <tags>git todo file name nunit testcase parameter assertion unit tests run debugger modules</tags>
     <dependencies>
-      <dependency id="Wave" version="$DependencyVer$" />
+      <dependency id="Wave" version="$PackageWaveDependency$" />
     </dependencies>
   </metadata>
   <files>
-    <file src="$BinDirInclude$\$Configuration$\Roflcopter.Plugin.*" target="dotFiles" />
+    <file src="$OutputPath$Roflcopter.Plugin.*" target="dotFiles" />
     <file src="Macros\LiveTemplates.DotSettings" target="dotFiles\Extensions\ReSharper.Roflcopter\settings\" />
   </files>
 </package>

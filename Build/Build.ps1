@@ -1,6 +1,5 @@
 [CmdletBinding()]
 Param(
-  [Parameter()] [string] $NugetExecutable = "Shared\.nuget\nuget.exe",
   [Parameter()] [string] $Configuration = "Debug",
   [Parameter()] [string] $Version = "0.0.0.1",
   [Parameter()] [string] $BranchName,
@@ -15,10 +14,8 @@ trap { $error[0] | Format-List -Force; $host.SetShouldExit(1) }
 
 $BuildOutputPath = "Build\Output"
 $SolutionFilePath = "Roflcopter.sln"
-$NuspecPath = "Src\Roflcopter.Plugin\Roflcopter.nuspec"
-$NugetPackProperties = @(
-    "Version=$(CalcNuGetPackageVersion 20221);Configuration=$Configuration;DependencyVer=[221.0];BinDirInclude=bin\RS20221"
-)
+
+$NugetPackProjects = gci "Src\Roflcopter.Plugin\Roflcopter.Plugin.RS*.csproj"
 $RiderPluginProject = "Src\RiderPlugin"
 $NugetPushServer = "https://www.myget.org/F/ulrichb/api/v2/package"
 
