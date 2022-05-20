@@ -12,7 +12,10 @@ using JetBrains.ReSharper.UnitTestFramework.Resources;
 
 namespace Roflcopter.Plugin.UnitTesting
 {
+#pragma warning disable CS0612
+    // TODO: ActionId is obsolete. How to connect then the Rider action (RiderUnitTestRunFileAction)?
     [Action("UnitTest.RunFile", "Run All Tests in &File",
+#pragma warning restore CS0612
         Icon = typeof(UnitTestingThemedIcons.RunAll),
         Id = 1962458498,
         IdeaShortcuts = new[] { "Control+T I", "Control+T Control+I" },
