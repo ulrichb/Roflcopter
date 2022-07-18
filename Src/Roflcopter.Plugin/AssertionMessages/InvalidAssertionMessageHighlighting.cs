@@ -37,8 +37,7 @@ namespace Roflcopter.Plugin.AssertionMessages
             : base(messageExpression, string.Format(Message, expectedMessage))
         {
             Assertion.Assert(
-                messageExpression.GetTextLength() > 1 + _messagePostfixLength + 1,
-                "messageExpression.GetTextLength() > 1 + _messagePostfixLength + 1");
+                messageExpression.GetTextLength() > 1 + _messagePostfixLength + 1);
 
             _messagePostfixLength = messagePostfixLength;
         }

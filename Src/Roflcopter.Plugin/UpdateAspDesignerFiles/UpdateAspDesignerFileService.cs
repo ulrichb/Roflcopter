@@ -36,13 +36,13 @@ namespace Roflcopter.Plugin.UpdateAspDesignerFiles
         [CanBeNull]
         public Generator GetGenerator(IPsiSourceFile sourceFile)
         {
-            var projectFile = sourceFile.ToProjectFile().NotNull("sourceFile.ToProjectFile() != null");
+            var projectFile = sourceFile.ToProjectFile().NotNull();
 
             var aspCodeBehindGenerator = _aspCodeBehindGeneratorProvider.Create(projectFile, AspGeneratorGeneration.Default);
             if (aspCodeBehindGenerator == null)
                 return null;
 
-            var project = projectFile.GetProject().NotNull("projectFile.GetProject() != null");
+            var project = projectFile.GetProject().NotNull();
             return new Generator(this, aspCodeBehindGenerator, project);
         }
 

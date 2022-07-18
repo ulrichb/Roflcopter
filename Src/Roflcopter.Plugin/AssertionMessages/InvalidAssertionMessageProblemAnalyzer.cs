@@ -60,7 +60,7 @@ namespace Roflcopter.Plugin.AssertionMessages
                         if (conditionType != null)
                         {
                             var conditionExpression = thisArgumentInfo.Expression;
-                            Assertion.Assert(arguments.Count > 0, "arguments.Count > 0");
+                            Assertion.Assert(arguments.Count > 0);
                             var nextToConditionArgument = arguments[0];
 
                             CheckMessageArgument(conditionExpression, conditionType.Value, nextToConditionArgument, consumer);

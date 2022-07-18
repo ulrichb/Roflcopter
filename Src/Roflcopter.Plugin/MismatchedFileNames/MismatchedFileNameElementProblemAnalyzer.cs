@@ -21,7 +21,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames
 
             if (mainTypeDeclaration != null)
             {
-                var psiSourceFile = file.GetSourceFile().NotNull("file.GetSourceFile() != null");
+                var psiSourceFile = file.GetSourceFile().NotNull();
 
                 var fileName = psiSourceFile.Name;
 

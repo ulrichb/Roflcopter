@@ -26,7 +26,7 @@ namespace Roflcopter.Plugin.MismatchedFileNames
             var isOnlyACasingRenaming = FileSystemDefinition.PathStringEquality.Equals(newFileName, Highlighting.CurrentFileName);
 
             var psiSourceFile = Highlighting.HighlightingNode.GetSourceFile();
-            var projectFile = psiSourceFile.ToProjectFile().NotNull("psiSourceFile.ToProjectFile() != null");
+            var projectFile = psiSourceFile.ToProjectFile().NotNull();
 
             return _ =>
             {
