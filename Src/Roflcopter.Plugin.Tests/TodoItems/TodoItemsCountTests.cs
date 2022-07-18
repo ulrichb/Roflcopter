@@ -120,7 +120,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             {
                 WithSingleProject(
                     files.Select(x => GetTestDataFilePath2(x).FullPath),
-                    (lifetime, solution, project) =>
+                    (_, solution, _) =>
                     {
                         Assert.That(solution.GetComponent<TodoItemsCountProvider>, Is.Not.Null);
                         var consumer = ShellInstance.GetComponent<TestTodoItemsCountConsumer>();

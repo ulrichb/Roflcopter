@@ -63,7 +63,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         {
             WithSingleProject(
                 GetTestDataFilePath2("SampleTest.cs").FullPath,
-                (lifetime, solution, project) => RunGuarded(() =>
+                (_, _, project) => RunGuarded(() =>
                 {
                     var projectFile = project.GetAllProjectFiles().Single();
 
