@@ -18,7 +18,7 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
 
         protected override IQuickFix CreateQuickFix(IProject project, ITextControl textControl, out IHighlighting highlighting)
         {
-            _quickFix = (TestQuickFix) base.CreateQuickFix(project, textControl, out highlighting);
+            _quickFix = (TestQuickFix)base.CreateQuickFix(project, textControl, out highlighting);
             return _quickFix;
         }
 

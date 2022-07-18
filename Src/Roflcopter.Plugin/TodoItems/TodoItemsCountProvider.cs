@@ -30,7 +30,7 @@ namespace Roflcopter.Plugin.TodoItems
 
         private Lifetime CurrentSettingsCacheLifetime
         {
-            get => (Lifetime) _currentSettingsCacheLifetimeBox;
+            get => (Lifetime)_currentSettingsCacheLifetimeBox;
             set => _currentSettingsCacheLifetimeBox = value;
         }
 

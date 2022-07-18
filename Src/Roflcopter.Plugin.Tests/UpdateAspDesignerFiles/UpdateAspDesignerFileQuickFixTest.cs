@@ -29,7 +29,8 @@ namespace Roflcopter.Plugin.Tests.UpdateAspDesignerFiles
         {
             base.DoTest(lifetime, testProject);
 
-            var designerFile = testProject.GetPsiSourceFileInProject(_aspCodeBehindTestHelper.DesignerFileName.ToFileSystemPath().ToVirtualFileSystemPath());
+            var designerFile = testProject.GetPsiSourceFileInProject(
+                _aspCodeBehindTestHelper.DesignerFileName.ToFileSystemPath().ToVirtualFileSystemPath());
 
             ExecuteWithGold(_aspCodeBehindTestHelper.DesignerFileName, writer => { writer.Write(designerFile.Document.GetText()); });
         }

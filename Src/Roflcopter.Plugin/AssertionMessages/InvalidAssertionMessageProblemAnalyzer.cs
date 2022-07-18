@@ -52,7 +52,7 @@ namespace Roflcopter.Plugin.AssertionMessages
                 {
                     if (resolveResult.Result.IsExtensionMethodInvocation())
                     {
-                        var thisArgumentInfo = (ExtensionArgumentInfo) invocationExpression
+                        var thisArgumentInfo = (ExtensionArgumentInfo)invocationExpression
                             .ExtensionQualifier.NotNull("seems to be escaped by the positive resolution");
 
                         var conditionType = GetConditionTypeForParameter(thisArgumentInfo, functionDefinitionTable);
@@ -121,7 +121,7 @@ namespace Roflcopter.Plugin.AssertionMessages
                     if (row.Input.Count == 1)
                     {
                         var contractAnnotationValue =
-                            row.Input[0].ParameterName == parameter.ShortName ? row.Input[0].Value : (ContractAnnotationValue?) null;
+                            row.Input[0].ParameterName == parameter.ShortName ? row.Input[0].Value : (ContractAnnotationValue?)null;
 
                         switch (contractAnnotationValue)
                         {

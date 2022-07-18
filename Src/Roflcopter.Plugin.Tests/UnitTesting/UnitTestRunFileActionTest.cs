@@ -36,7 +36,7 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
 
                 //
 
-                var projectFileCriterion = (ProjectFileCriterion) result.NotNull().Criterion;
+                var projectFileCriterion = (ProjectFileCriterion)result.NotNull().Criterion;
                 Assert.That(projectFileCriterion.PersistentId, Is.EqualTo(test.ProjectFile.GetPersistentID()));
                 Assert.That(result.Explicit, Is.Empty);
             });
