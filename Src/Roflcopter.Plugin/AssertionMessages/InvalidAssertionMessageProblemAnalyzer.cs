@@ -160,7 +160,7 @@ namespace Roflcopter.Plugin.AssertionMessages
         {
             if (nextToConditionArgument.Value is ICSharpLiteralExpression literalExpression)
             {
-                if (literalExpression.ConstantValue.Value is string message)
+                if (literalExpression.ConstantValue.AsString() is { } message)
                 {
                     var nullabilityEqualityPostfixLength = MatchNullabilityEqualityPostfix(message);
 
