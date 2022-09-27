@@ -12,7 +12,7 @@ using Roflcopter.Plugin.TodoItems;
 namespace Roflcopter.Plugin.Tests.TodoItems
 {
     [TestFixture]
-    [TestNetFramework4]
+    [TestNetFramework46]
     public class TodoItemsCountTests : BaseTestWithSingleProject
     {
         protected override string RelativeTestDataPath => Path.Combine(base.RelativeTestDataPath, "..");

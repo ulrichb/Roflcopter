@@ -11,7 +11,7 @@ using Roflcopter.Plugin.MismatchedFileNames;
 namespace Roflcopter.Plugin.Tests.MismatchedFileNames
 {
     [TestFixture]
-    [TestNetFramework4]
+    [TestNetFramework46]
     public class MismatchedFileNameHighlightingQuickFixTest : CSharpQuickFixTestBase<MismatchedFileNameHighlightingQuickFixTest.TestQuickFix>
     {
         private TestQuickFix _quickFix;

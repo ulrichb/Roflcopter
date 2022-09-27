@@ -8,7 +8,7 @@ using Roflcopter.Plugin.UpdateAspDesignerFiles;
 
 namespace Roflcopter.Plugin.Tests.UpdateAspDesignerFiles
 {
-    [TestNetFramework4]
+    [TestNetFramework46]
     public class UpdateAspDesignerFileContextActionTest : AspContextActionExecuteTestBase<UpdateAspDesignerFileContextAction>
     {
         private readonly AspCodeBehindTestHelper _aspCodeBehindTestHelper;

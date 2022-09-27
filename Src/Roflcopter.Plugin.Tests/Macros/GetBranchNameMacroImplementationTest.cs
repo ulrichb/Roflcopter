@@ -12,7 +12,7 @@ using Roflcopter.Plugin.Tests.Git;
 namespace Roflcopter.Plugin.Tests.Macros
 {
     [TestFixture]
-    [TestNetFramework4]
+    [TestNetFramework46]
     public class GetBranchNameMacroImplementationTest : MacroImplTestBase
     {
         private GitRepositoryProvider _gitRepositoryProvider;

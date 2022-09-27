@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Roflcopter.Plugin.Tests.MismatchedFileNames
 {
     [TestFixture]
-    [TestNetFramework4]
+    [TestNetFramework46]
     public class MismatchedFileNameHighlightingTests : CSharpHighlightingTestBase
     {
         [Test]
