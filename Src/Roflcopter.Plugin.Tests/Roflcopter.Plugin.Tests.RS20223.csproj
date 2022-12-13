@@ -14,20 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="3.1.*" PrivateAssets="all" />
-    <PackageReference Include="GitHubActionsTestLogger" Version="1.4.1" PrivateAssets="all" />
+    <PackageReference Include="coverlet.collector" Version="3.2.*" PrivateAssets="all" />
+    <PackageReference Include="GitHubActionsTestLogger" Version="1.4.*" PrivateAssets="all" />
     <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="$(SdkNuGetPackageVersion)" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.3.*" />
     <!--<PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.36" />-->
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.RS20223.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
 </Project>
