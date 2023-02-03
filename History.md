@@ -1,3 +1,6 @@
+### 1.18.0 ###
+- ReSharper and Rider 2023.1 support
+
 ### 1.17.0 ###
 - ReSharper and Rider 2022.3 support
 
