@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.RS20231.csproj" />
+    <ProjectReference Include="..\Roflcopter.Plugin\Roflcopter.Plugin.RS20232.csproj" />
   </ItemGroup>
 
 </Project>

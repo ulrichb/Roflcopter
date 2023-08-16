@@ -46,8 +46,9 @@ namespace Roflcopter.Plugin.UnitTesting
 
             var parameterDeclaration = methodDeclaration.AddParameterDeclarationBefore(
                 elementFactory.CreateParameterDeclaration(
+                    ownerDeclaration: methodDeclaration,
                     ParameterKind.VALUE,
-                    isParams: false,
+                    isParameterArray: false,
                     isVarArg: false,
                     type: psiModule.GetPredefinedType().Object,
                     name: "parameter",
