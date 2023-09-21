@@ -1,5 +1,6 @@
 ### 1.19.0 ###
 - ReSharper and Rider 2023.2 support
+- Add missing 'displayName' for options page in Rider plugin metadata
 
 ### 1.18.0 ###
 - ReSharper and Rider 2023.1 support
