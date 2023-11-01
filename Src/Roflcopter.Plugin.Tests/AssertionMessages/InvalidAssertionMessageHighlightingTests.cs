@@ -6,7 +6,6 @@ using Roflcopter.Plugin.AssertionMessages;
 namespace Roflcopter.Plugin.Tests.AssertionMessages
 {
     [TestFixture]
-    [TestNetFramework46]
     public class InvalidAssertionMessageHighlightingTests : CSharpHighlightingTestBase
     {
         [Test]

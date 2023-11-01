@@ -7,8 +7,8 @@ using Roflcopter.Plugin.UnitTesting;
 
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
-    [TestNetFramework46]
-    [UseNUnitPackage]
+    [TestNet60]
+    [TestPackages("NUnit")]
     public class ConvertToParameterizedTestContextActionTest : CSharpContextActionExecuteTestBase<ConvertToParameterizedTestContextAction>
     {
         protected override string RelativeTestDataPath => this.CalculateRelativeTestDataPath();
@@ -19,8 +19,8 @@ namespace Roflcopter.Plugin.Tests.UnitTesting
         [Test]
         public void TestMethodWithoutParameters() => DoNamedTest();
 
-        [TestNetFramework46]
-        [UseNUnitPackage]
+        [TestNet60]
+        [TestPackages("NUnit")]
         public class AvailabilityTest : CSharpContextActionAvailabilityTestBase<ConvertToParameterizedTestContextAction>
         {
             protected override string RelativeTestDataPath => this.CalculateRelativeTestDataPath();

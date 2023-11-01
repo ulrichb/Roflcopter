@@ -16,7 +16,7 @@ using Roflcopter.Plugin.UnitTesting;
 namespace Roflcopter.Plugin.Tests.UnitTesting
 {
     [TestFixture]
-    [TestNetFramework46]
+    [TestNet60]
     public class UnitTestRunFileActionTest : BaseTestWithSingleProject
     {
         // IDEA: Refactor to BaseTestWithTextControl and use the real test elements
