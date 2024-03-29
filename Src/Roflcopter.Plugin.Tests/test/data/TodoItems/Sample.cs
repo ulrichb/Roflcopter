@@ -8,7 +8,7 @@
         // TODO 2 before Important after
         // TODO 3 before imPOrTaNt after
 
-        // BUG 1
-        // BUG 2
+        // BUG: 1
+        // BUG: 2
     }
 }
