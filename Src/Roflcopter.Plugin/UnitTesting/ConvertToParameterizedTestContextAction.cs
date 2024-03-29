@@ -18,7 +18,7 @@ using Roflcopter.Plugin.Utilities;
 namespace Roflcopter.Plugin.UnitTesting
 {
     [ContextAction(
-        Group = CSharpContextActions.GroupID,
+        GroupType = typeof(CSharpContextActions),
         Name = Name,
         Description = "Converts NUnit test methods to parameterized tests",
         Priority = -5)]

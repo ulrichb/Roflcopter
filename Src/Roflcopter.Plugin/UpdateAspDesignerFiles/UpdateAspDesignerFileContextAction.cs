@@ -15,7 +15,7 @@ using JetBrains.Util;
 namespace Roflcopter.Plugin.UpdateAspDesignerFiles
 {
     [ContextAction(
-        Group = AspContextActions.GroupID,
+        GroupType = typeof(AspContextActions),
         Name = UpdateAspDesignerFileService.ActionDescription,
         Description = UpdateAspDesignerFileService.ActionDescription,
         Priority = -5)]
