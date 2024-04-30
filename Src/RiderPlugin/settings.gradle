@@ -1,4 +1,4 @@
 rootProject.name = 'rider-Roflcopter'
 gradle.ext.resharperPluginProjectName = 'Roflcopter.Plugin'
-gradle.ext.productVersion = '2024.1' // https://www.jetbrains.com/intellij-repository/releases
+gradle.ext.productVersion = '2024.1.1' // https://www.jetbrains.com/intellij-repository/releases
 gradle.ext.reSharperVersionIdentifier = 'RD20241'
