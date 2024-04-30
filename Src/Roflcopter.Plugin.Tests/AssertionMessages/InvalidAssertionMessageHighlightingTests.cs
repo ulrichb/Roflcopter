@@ -1,5 +1,4 @@
 ﻿using JetBrains.ReSharper.FeaturesTestFramework.Daemon;
-using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 using Roflcopter.Plugin.AssertionMessages;
 

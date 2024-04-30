@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.ReSharper.FeaturesTestFramework.Daemon;
-using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 
 namespace Roflcopter.Plugin.Tests.MismatchedFileNames
