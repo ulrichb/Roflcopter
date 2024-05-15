@@ -1,4 +1,5 @@
 ﻿#if RESHARPER
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.TestFramework;
 using JetBrains.Util;
@@ -17,7 +18,7 @@ namespace Roflcopter.Plugin.Tests.UpdateAspDesignerFiles
         private string CodeBehindFileName => _test.TestMethodName + ".aspx.cs";
         public string DesignerFileName => _test.TestMethodName + ".aspx.designer.cs";
 
-        public string[] ExtendTestFiles(string[] testFiles) => testFiles.Concat(CodeBehindFileName, DesignerFileName).ToArray();
+        public IEnumerable<string> ExtendTestFiles(IEnumerable<string> testFiles) => testFiles.Concat(CodeBehindFileName, DesignerFileName);
     }
 }
 #endif

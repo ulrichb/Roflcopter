@@ -1,4 +1,5 @@
 ﻿#if RESHARPER
+using System.Collections.Generic;
 using JetBrains.Lifetimes;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
@@ -23,7 +24,7 @@ namespace Roflcopter.Plugin.Tests.UpdateAspDesignerFiles
 
         //
 
-        protected override string[] ModifyTestFiles(string[] testFiles) => base.ModifyTestFiles(_aspCodeBehindTestHelper.ExtendTestFiles(testFiles));
+        protected override IEnumerable<string> ModifyTestFiles(IEnumerable<string> testFiles) => base.ModifyTestFiles(_aspCodeBehindTestHelper.ExtendTestFiles(testFiles));
 
         protected override void DoTest(Lifetime lifetime, IProject testProject)
         {

@@ -1,5 +1,6 @@
 ﻿#if RESHARPER
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
 using JetBrains.ReSharper.TestFramework;
@@ -31,7 +32,7 @@ namespace Roflcopter.Plugin.Tests.UpdateAspDesignerFiles
         [ExcludeFromCodeCoverage]
         protected override string ExtraPath => throw new NotSupportedException();
 
-        protected override string[] ModifyTestFiles(string[] testFiles) => base.ModifyTestFiles(_aspCodeBehindTestHelper.ExtendTestFiles(testFiles));
+        protected override IEnumerable<string> ModifyTestFiles(IEnumerable<string> testFiles) => base.ModifyTestFiles(_aspCodeBehindTestHelper.ExtendTestFiles(testFiles));
     }
 }
 #endif
