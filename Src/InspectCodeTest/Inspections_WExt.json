@@ -1,0 +1,1505 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.6.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "ConditionIsAlwaysTrueOrFalse",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Expression is always true"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 31,
+                  "endLine": 19,
+                  "endColumn": 40,
+                  "charOffset": 686,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "18F4828713B55119F2E4C461F5217B70A750E5D314CA322E9E4CCEF8F91EA37D"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "ConditionIsAlwaysTrueOrFalse",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Expression is always true"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 31,
+                  "endLine": 59,
+                  "endColumn": 41,
+                  "charOffset": 2744,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "AD8AB4C9D2C1044A229E2370334389C4BC95AB48385653DD71332314CC028CFE"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "ConditionIsAlwaysTrueOrFalse",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Expression is always true"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 31,
+                  "endLine": 61,
+                  "endColumn": 41,
+                  "charOffset": 2832,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "EE3CFB8FA0547E18D3C0D4B783068CD784C98204F40421BFB641069A4E6F70BD"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "ConditionIsAlwaysTrueOrFalse",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Expression is always true"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 31,
+                  "endLine": 16,
+                  "endColumn": 40,
+                  "charOffset": 524,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "18F4828713B55119F2E4C461F5217B70A750E5D314CA322E9E4CCEF8F91EA37D"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "ConditionIsAlwaysTrueOrFalse",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Expression is always true"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 31,
+                  "endLine": 37,
+                  "endColumn": 41,
+                  "charOffset": 1510,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "EE3CFB8FA0547E18D3C0D4B783068CD784C98204F40421BFB641069A4E6F70BD"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "HeuristicUnreachableCode",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Code is heuristically unreachable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 13,
+                  "endLine": 68,
+                  "endColumn": 84,
+                  "charOffset": 3133,
+                  "charLength": 71
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "01FABE9971915B3F7B91F185E912E596E8C24C113CB436649885F08B8A64AE1B"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 83,
+                  "endLine": 22,
+                  "endColumn": 92,
+                  "charOffset": 794,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "9356E93F838657F043F6D034200EEEF58B0AB260E44B639658DC69045DAE98C6"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 83,
+                  "endLine": 19,
+                  "endColumn": 92,
+                  "charOffset": 632,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "9356E93F838657F043F6D034200EEEF58B0AB260E44B639658DC69045DAE98C6"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageExtensionMethodSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 75,
+                  "endLine": 12,
+                  "endColumn": 76,
+                  "charOffset": 448,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "08A7BF9E8069D8AE2C39D682E7F9D0AA48C81661D20335170F31172BB8EF146A"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c.Prop != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 102,
+                  "endLine": 25,
+                  "endColumn": 116,
+                  "charOffset": 1023,
+                  "charLength": 14
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "C35D8D846C352917F433F5AAE1D84BFB4597B39C3ADE40F6CAB0A00CF3765688"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c.Prop != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 101,
+                  "endLine": 32,
+                  "endColumn": 123,
+                  "charOffset": 1489,
+                  "charLength": 22
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "22A1810BCD0D501927153D1CC7C67703A0806B2BC1B368B2791333A70EC0C5B4"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c.Prop != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 102,
+                  "endLine": 22,
+                  "endColumn": 116,
+                  "charOffset": 861,
+                  "charLength": 14
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "C35D8D846C352917F433F5AAE1D84BFB4597B39C3ADE40F6CAB0A00CF3765688"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 'c.Prop'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageExtensionMethodSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 94,
+                  "endLine": 15,
+                  "endColumn": 100,
+                  "charOffset": 661,
+                  "charLength": 6
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "4091EB2DDA5D93AC8618D45A9BDE51E5DD95F904A81DE299BE1197F8DA39114D"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 83,
+                  "endLine": 86,
+                  "endColumn": 92,
+                  "charOffset": 4059,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "5F99374994CCCD0DD16BE9F2A5557A256182294D285FEC8593E1C7956A2DAE93"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 85,
+                  "endLine": 90,
+                  "endColumn": 94,
+                  "charOffset": 4429,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "1AF1A127DCD2792CF9D93B8FCA6A69E43E7A0BB4F86DBACD2EC330A991E49239"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's == null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 80,
+                  "endLine": 84,
+                  "endColumn": 89,
+                  "charOffset": 3875,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "D8E202CFC9B4DD5F70E6042EE91CCA2CFA36C9106C29CC1EEC7A86D9E4A47CB6"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's == null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 82,
+                  "endLine": 88,
+                  "endColumn": 91,
+                  "charOffset": 4241,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "AA81C96D1BD0301511C73DE7E3B97D2D6ABA7224316C7690B510DB657AB2490C"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's == null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 75,
+                  "endLine": 43,
+                  "endColumn": 84,
+                  "charOffset": 1705,
+                  "charLength": 9
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "41318F9E5EC3D10E0774E85ED85F176B0833D78CD7E3F73E8E0CA6AF0924CCB7"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 67,
+                  "endLine": 74,
+                  "endColumn": 68,
+                  "charOffset": 3377,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "D566044DF0AF7F429711C7D512E39A30722873AEB63426906BAB655BFC57E653"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 74,
+                  "endLine": 97,
+                  "endColumn": 75,
+                  "charOffset": 4738,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "478D6A9D8B658037064068EB167D84B29320B5953BB801045DB7AD0FC4AE748A"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 77,
+                  "endLine": 99,
+                  "endColumn": 78,
+                  "charOffset": 4910,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "287A980D8D02F8C1FC85AC7C693D84A2535059CD212CBECA732E3CDADC9CC9BA"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 68,
+                  "endLine": 101,
+                  "endColumn": 69,
+                  "charOffset": 5064,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "4625E46508E97C3B1D9FA4167841D04AFD31D8AE2527B32C6354DB9C74105CFB"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 71,
+                  "endLine": 103,
+                  "endColumn": 72,
+                  "charOffset": 5224,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "4873D3B495C74FE09337CBEE5AB9DE2DE39615FB6ECC30566FA9FDFBF1B772BF"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageExtensionMethodSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 113,
+                  "endLine": 36,
+                  "endColumn": 114,
+                  "charOffset": 1596,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "C578009D1D66658036D13407AC314319BE8FB6C8440430FC994B339B826A5DD5"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageExtensionMethodSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 112,
+                  "endLine": 42,
+                  "endColumn": 113,
+                  "charOffset": 1908,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "29D98A86A218DE61633EC656E134D498418B68164C4F6BBA26796AFC20816C9C"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 67,
+                  "endLine": 45,
+                  "endColumn": 68,
+                  "charOffset": 1857,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "CF31E00A2A3DEAA6AFAC7AB3B07122CF732AD5D7CC14BCC2947E2A276FF65525"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 61,
+                  "endLine": 47,
+                  "endColumn": 62,
+                  "charOffset": 1997,
+                  "charLength": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "D8A31EE999D79F4835345D991B3383C22DA50D35836186343F24DCC7AC750EAD"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's1 != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 58,
+                  "endLine": 58,
+                  "endColumn": 68,
+                  "charOffset": 2639,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "15D1C82C30DEDFCF6B5A19FD0C89CF27AC9B6B6CD75DF94EB87E14E6F4ECEF51"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's1 != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 61,
+                  "endLine": 34,
+                  "endColumn": 71,
+                  "charOffset": 1263,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "98BF6C23192CA44166A3C4CED1DAA10602104B8FEA72AD311D5EF3697C25BC89"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's3 != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 118,
+                  "endLine": 58,
+                  "endColumn": 128,
+                  "charOffset": 2699,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "15D1C82C30DEDFCF6B5A19FD0C89CF27AC9B6B6CD75DF94EB87E14E6F4ECEF51"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "InvalidAssertionMessage",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Assertion message is invalid. Expected 's3 != null'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 121,
+                  "endLine": 34,
+                  "endColumn": 131,
+                  "charOffset": 1323,
+                  "charLength": 10
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "98BF6C23192CA44166A3C4CED1DAA10602104B8FEA72AD311D5EF3697C25BC89"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "MismatchedFileName",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Type doesn't match file name 'ClassAndInterfacePairWithWrongName.cs'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/ClassAndInterfacePairWithWrongName.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 3
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 18,
+                  "endLine": 3,
+                  "endColumn": 53,
+                  "charOffset": 105,
+                  "charLength": 35
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "2D6F7EECFA0B264D67E7003CD5AE4355FDCCA8B64B911BAC583EF70FDE91FD29"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "MismatchedFileName",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Type doesn't match file name 'InterfaceAndClassPairWithWrongName.cs'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/InterfaceAndClassPairWithWrongName.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 53,
+                  "charOffset": 180,
+                  "charLength": 35
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "B070DCDA72AF2D42AE58A94506B11AB078D5BFAC59C1A2DE4C049F0802F68F9A"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "MismatchedFileName",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Type doesn't match file name 'PartialClass.InvalidPostfix.cs'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/PartialClass.InvalidPostfix.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 26,
+                  "endLine": 3,
+                  "endColumn": 38,
+                  "charOffset": 113,
+                  "charLength": 12
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "46F8E6DD492D2C76B818BD57C2D7E500ECCAFBB2F966B6429942DFE5DF2AF892"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "MismatchedFileName",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Type doesn't match file name 'SingleClassWithWrongCaSiNg.cs'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/SingleClassWithWrongCaSiNg.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 6
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 18,
+                  "endLine": 3,
+                  "endColumn": 44,
+                  "charOffset": 105,
+                  "charLength": 26
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "E7927AF500133B71AB3B02DF4EC262473EC990AA62EE2DB571590FED0799061E"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        },
+        {
+          "ruleId": "MismatchedFileName",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Type doesn't match file name 'SingleClassWithWrongName.cs'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/SingleClassWithWrongName.cs",
+                  "uriBaseId": "solutionDir",
+                  "index": 7
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 18,
+                  "endLine": 3,
+                  "endColumn": 43,
+                  "charOffset": 105,
+                  "charLength": 25
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "contextRegionHash/v1": "EEF40DEDB0C8536D7CF024D5F38DAB77A936EAC293D84ECE369A5135F4D4B48B"
+          },
+          "properties": {
+            "tags": ["C#",".NETFramework 4.8"]
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "InspectCode",
+          "organization": "JetBrains, Inc",
+          "fullName": "JetBrains Inspect Code 2024.2.3",
+          "semanticVersion": "242.0.20240829.213636",
+          "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
+          "rules": [
+            {
+              "id": "ConditionIsAlwaysTrueOrFalse",
+              "fullDescription": {
+                "text": "Value of a boolean expression is always the same at this point"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/ConditionIsAlwaysTrueOrFalse.html"
+              },
+              "shortDescription": {
+                "text": "Expression is always 'true' or always 'false'"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/ConditionIsAlwaysTrueOrFalse.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeRedundancy",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                },
+                {
+                  "target": {
+                    "id": "VBASIC.CodeRedundancy",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "HeuristicUnreachableCode",
+              "fullDescription": {
+                "text": "Heuristically unreachable code detected"
+              },
+              "help": {
+                "text": "https://www.jetbrains.com/help/resharper/HeuristicUnreachableCode.html"
+              },
+              "shortDescription": {
+                "text": "Heuristically unreachable code"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://www.jetbrains.com/help/resharper/HeuristicUnreachableCode.html",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeRedundancy",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "InvalidAssertionMessage",
+              "fullDescription": {
+                "text": "Assertion message is invalid (e.g. wrong/outdated null-check condition is part of the assertion message)."
+              },
+              "shortDescription": {
+                "text": "Assertion message is invalid"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeSmell",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "MismatchedFileName",
+              "fullDescription": {
+                "text": "Mismatch between type and file name"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP.CodeSmell",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            }
+          ],
+          "taxa": [
+            {
+              "id": "CSHARP",
+              "name": "C#"
+            },
+            {
+              "id": "CSHARP.CodeRedundancy",
+              "name": "Redundancies in Code",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CSHARP.CodeSmell",
+              "name": "Potential Code Quality Issues",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CSHARP",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VBASIC",
+              "name": "VB.NET"
+            },
+            {
+              "id": "VBASIC.CodeRedundancy",
+              "name": "Redundancies in Code",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "VBASIC",
+                    "toolComponent": {
+                      "name": "InspectCode"
+                    }
+                  },
+                  "kinds": [
+                    "superset"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "extensions": [
+          {
+            "guid": "1a821782-d2fa-58b9-abec-b43858b5396d",
+            "name": "ReSharper.Roflcopter",
+            "fullName": "ReSharper Roflcopter",
+            "version": "0.0.0.10242-local"
+          }
+        ]
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://github.com/ulrichb/Roflcopter",
+          "revisionId": "fe5280524646e2034fb9bff2cbb075e2982b7591",
+          "branch": "master"
+        }
+      ],
+      "originalUriBaseIds": {
+        "solutionDir": {
+          "uri": "file:///C:/Development/3rdP/Roflcopter/Src/Roflcopter.Plugin.Tests/test/data/",
+          "description": {
+            "text": "Solution Directory"
+          }
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageContractAnnotationSamples.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "79B130863DDDE6F95F7967E0EB0174FA",
+            "sha-1": "470BAB06917881CA5051EB1819287FFEAACB4B02",
+            "sha-256": "6DBFFCD74E2ED40F8EBF9E3E5E921ACE5CE1FF7634F1D7210572FE67815FF075"
+          }
+        },
+        {
+          "location": {
+            "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageLegacyAnnotationSamples.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "A052556C8790E4CEA44DBF1FD230EDFA",
+            "sha-1": "2AD4EF65C7CF022AF4757636900EE74823D77FCB",
+            "sha-256": "2F74BD65AB9B29C0F22B1D0D8EF980184CE3A5EDC2311805E0D0E3B8596BB9B9"
+          }
+        },
+        {
+          "location": {
+            "uri": "AssertionMessages/InvalidAssertionMessageHighlightingTests/AssertionMessageExtensionMethodSamples.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "2BB7C4EE7382DCD7F72879A187AF0BC5",
+            "sha-1": "C296771A45C554FC989E05F6D2180F92F743E93B",
+            "sha-256": "AE62BD12F63495804F35EABEBA8D04242E6EE1E0AA1737E2994CBC9D2764D0FE"
+          }
+        },
+        {
+          "location": {
+            "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/ClassAndInterfacePairWithWrongName.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "CB8B0DED1A7AAD62CF7846EF0508258E",
+            "sha-1": "A73E59B7EE77E6ADE0C672BA332055993A119A64",
+            "sha-256": "9507DE3F36ACC0774729AB4F5BE4584A93642C5750B7650B670B4E359E0FBD90"
+          }
+        },
+        {
+          "location": {
+            "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/InterfaceAndClassPairWithWrongName.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "F391987BF3C72FAF41F774889EFB7220",
+            "sha-1": "BC8396B184F533A5104E024E922C26268660AD7F",
+            "sha-256": "66A54871FB962E5EE14F063D0BB819581E5868F5FD056CF67B8078D80773C3ED"
+          }
+        },
+        {
+          "location": {
+            "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/PartialClass.InvalidPostfix.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "77A1487ECFF41C0A21D800F3C5C7B07E",
+            "sha-1": "57A5963AE82C271F51AA78C0BEF0DF5F528D9B4B",
+            "sha-256": "FB017DAAA530E768414DCC2354DF76A795697999D5BD3DF772D7CD436E2B51AA"
+          }
+        },
+        {
+          "location": {
+            "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/SingleClassWithWrongCaSiNg.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "7A8EC6B411C13EC0BDE31CA006C84B85",
+            "sha-1": "32C0D78B45FB677499B216BC61E953932543923E",
+            "sha-256": "AF9FDB8F1D20435AA306E7566C62E0FF801EDC96A1AF05CB639A83AC6E48C20D"
+          }
+        },
+        {
+          "location": {
+            "uri": "MismatchedFileNames/MismatchedFileNameHighlightingTests/SingleClassWithWrongName.cs",
+            "uriBaseId": "solutionDir"
+          },
+          "hashes": {
+            "md5": "3EA33B0E142468CC25EF3365C6ECE935",
+            "sha-1": "E9D417D521FE228F268F3D08D3A8C6B26EAF902B",
+            "sha-256": "B426E7F58CC3669E79ED65F170B883B24CF908C744E7CE3F2A654F4A37A30DBE"
+          }
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}
