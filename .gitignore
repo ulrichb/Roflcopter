@@ -18,3 +18,7 @@
 # custom ignores
 
 /Build/Output/
+
+.intellijPlatform
+
+/Src/InspectCodeTest/RSAT*/*
