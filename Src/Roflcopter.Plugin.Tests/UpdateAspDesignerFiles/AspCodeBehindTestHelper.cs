@@ -1,6 +1,5 @@
 ﻿#if RESHARPER
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.TestFramework;
 using JetBrains.Util;
 

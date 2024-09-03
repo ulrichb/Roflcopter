@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
-using JetBrains.Application.Settings;
 using JetBrains.Diagnostics;
 using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
