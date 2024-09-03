@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using JetBrains.Application;
+using JetBrains.Application.Parts;
 using JetBrains.Util;
 
 namespace Roflcopter.Plugin.Git
 {
-    [ShellComponent]
+    [ShellComponent(Instantiation.DemandAnyThreadSafe)]
     public class GitRepositoryProvider
     {
         [CanBeNull]
