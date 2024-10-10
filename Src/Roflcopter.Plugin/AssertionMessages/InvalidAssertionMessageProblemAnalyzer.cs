@@ -18,15 +18,11 @@ namespace Roflcopter.Plugin.AssertionMessages
         HighlightingTypes = new[] { typeof(InvalidAssertionMessageHighlighting) })]
     public class InvalidAssertionMessageProblemAnalyzer : ElementProblemAnalyzer<IInvocationExpression>
     {
-        private readonly ContractAnnotationProvider _contractAnnotationProvider;
-        private readonly AssertionMethodAnnotationProvider _assertionMethodAnnotationProvider;
-        private readonly AssertionConditionAnnotationProvider _assertionConditionAnnotationProvider;
+        private readonly CodeAnnotationsCache _annotationsCache;
 
         public InvalidAssertionMessageProblemAnalyzer(CodeAnnotationsCache annotationsCache)
         {
-            _contractAnnotationProvider = annotationsCache.GetProvider<ContractAnnotationProvider>();
-            _assertionMethodAnnotationProvider = annotationsCache.GetProvider<AssertionMethodAnnotationProvider>();
-            _assertionConditionAnnotationProvider = annotationsCache.GetProvider<AssertionConditionAnnotationProvider>();
+            _annotationsCache = annotationsCache.NotNull();
         }
 
         protected override void Run(
@@ -46,9 +42,10 @@ namespace Roflcopter.Plugin.AssertionMessages
             {
                 // Following 'FDTApplicator..ctor' and 'CSharpControlFlowGraphInspector.PatchContextByObsoleteAnnotatedMethodCall'
 
-                var functionDefinitionTable = _contractAnnotationProvider.GetInfo(method);
-
-                if (functionDefinitionTable != null || _assertionMethodAnnotationProvider.GetInfo(method))
+                var functionDefinitionTable = _annotationsCache.GetProvider<ContractAnnotationProvider>().NotNull().GetInfo(method);
+                var isAssertionMethod = _annotationsCache.GetProvider<AssertionMethodAnnotationProvider>().NotNull().GetInfo(method);
+                
+                if (functionDefinitionTable != null || isAssertionMethod)
                 {
                     if (resolveResult.Result.IsExtensionMethodInvocation())
                     {
@@ -139,7 +136,7 @@ namespace Roflcopter.Plugin.AssertionMessages
 
         private ConditionType? GetAssertionConditionAnnotationConditionType(IParameter parameter)
         {
-            var assertionConditionType = _assertionConditionAnnotationProvider.GetInfo(parameter);
+            var assertionConditionType = _annotationsCache.GetProvider<AssertionConditionAnnotationProvider>().NotNull().GetInfo(parameter);
 
             switch (assertionConditionType)
             {
