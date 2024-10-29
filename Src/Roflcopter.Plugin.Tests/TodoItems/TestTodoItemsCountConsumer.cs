@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using JetBrains.Application;
+using JetBrains.Application.Parts;
 using JetBrains.DataFlow;
 using Roflcopter.Plugin.TodoItems;
 
 namespace Roflcopter.Plugin.Tests.TodoItems
 {
-    [ShellComponent]
+    [ShellComponent(Instantiation.DemandAnyThreadSafe)]
     internal class TestTodoItemsCountConsumer : ITodoItemsCountConsumer
     {
         [CanBeNull]

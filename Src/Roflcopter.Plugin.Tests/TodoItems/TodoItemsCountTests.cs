@@ -4,6 +4,7 @@ using System.Linq;
 using JetBrains.Application.Components;
 using JetBrains.Application.Settings;
 using JetBrains.Diagnostics;
+using JetBrains.Lifetimes;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
@@ -37,7 +38,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
             Test((consumer, settings) =>
             {
                 var definitionText = "Todo\n Todo  [Important] ";
-                RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, definitionText));
+                settings.SetValue((TodoItemsCountSettings s) => s.Definitions, definitionText);
 
                 Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
@@ -52,7 +53,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         {
             Test((consumer, settings) =>
             {
-                RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nNON_MATCHING"));
+                settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nNON_MATCHING");
 
                 Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
@@ -67,7 +68,7 @@ namespace Roflcopter.Plugin.Tests.TodoItems
         {
             Test((consumer, settings) =>
             {
-                RunGuarded(() => settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nTodo"));
+                settings.SetValue((TodoItemsCountSettings s) => s.Definitions, "Todo\nTodo");
 
                 Assert.That(consumer.TodoItemsCounts.NotNull().Select(x => (x.Definition.ToString(), x.Count)), Is.EqualTo(new[]
                 {
@@ -114,23 +115,24 @@ namespace Roflcopter.Plugin.Tests.TodoItems
 
         private void Test(Action<TestTodoItemsCountConsumer, IContextBoundSettingsStore> action)
         {
-            var files = new[] { "Sample.cs", "Sample.xml" };
+            // Use an explicit short-lived lifetime for the "settings transaction" because a) it must be scoped per test,
+            // and b) the `base.TestLifetime` is destroyed within the test tear-down phase which would raise
+            // "target dispatcher [...] does not support asynchronous execution or cross-thread marshalling" errors
+            // (b/c TearDown is not `RunWithAsyncBehaviorAllowed`).
 
-            ExecuteWithinSettingsTransaction(settings =>
+            using var temporarySettingsLifetimeDefinition = Lifetime.Define("TemporarySettings");
+
+            ExecuteWithinSettingsTransactionGuarded(temporarySettingsLifetimeDefinition.Lifetime, (_, settings) =>
             {
-                WithSingleProject(
-                    files.Select(x => GetTestDataFilePath2(x).FullPath),
-                    (_, solution, _) =>
-                    {
-                        Assert.That(solution.GetComponent<TodoItemsCountProvider>, Is.Not.Null);
-                        var consumer = ShellInstance.GetComponent<TestTodoItemsCountConsumer>();
+                var projectFiles = new[] { "Sample.cs", "Sample.xml" }.Select(x => GetTestDataFilePath2(x).FullPath);
 
-                        action(consumer, settings);
-                    });
+                WithSingleProject(projectFiles, (_, solution, _) =>
+                {
+                    Assert.That(solution.GetComponent<TodoItemsCountProvider>, Is.Not.Null);
+                    var consumer = ShellInstance.GetComponent<TestTodoItemsCountConsumer>();
 
-                // Disable to solve issues with TodoItemsCountProvider-updates during termination of
-                // the "settings transaction":
-                settings.SetValue((TodoItemsCountSettings s) => s.IsEnabled, false);
+                    action(consumer, settings);
+                });
             });
         }
     }

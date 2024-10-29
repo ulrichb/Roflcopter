@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using JetBrains.Annotations;
 using JetBrains.Application;
+using JetBrains.Application.Parts;
 using JetBrains.Application.Threading;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionSystem.ActionBar;
@@ -21,7 +22,7 @@ using Roflcopter.Plugin.TodoItems.OptionsPages;
 
 namespace Roflcopter.Plugin.TodoItems.Presentation
 {
-    [ShellComponent]
+    [ShellComponent(Instantiation.DemandAnyThreadSafe)]
     [ExcludeFromCodeCoverage /* manually tested UI code */]
     public class TodoItemsCountPresenter : IActionBarPatcher, ITodoItemsCountConsumer
     {

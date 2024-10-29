@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using JetBrains.Application.Parts;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
 using JetBrains.DataFlow;
@@ -16,7 +17,7 @@ using JetBrains.Util.DataStructures;
 
 namespace Roflcopter.Plugin.TodoItems
 {
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.ContainerAsyncPrimaryThread /* req to inject `MultiplexingTodoManager` */)]
     public class TodoItemsCountProvider
     {
         private static readonly ILogger Logger = JetBrains.Util.Logging.Logger.GetLogger(typeof(TodoItemsCountProvider));

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
+using JetBrains.Application.Parts;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Settings.Extentions;
 using JetBrains.Lifetimes;
@@ -9,7 +10,7 @@ using JetBrains.ProjectModel;
 
 namespace Roflcopter.Plugin.TodoItems
 {
-    [SolutionComponent]
+    [SolutionComponent(Instantiation.DemandAnyThreadSafe)]
     public class TodoItemsCountDefinitionsCachedSettingsReader : ICachedSettingsReader<IReadOnlyCollection<TodoItemsCountDefinition>>
     {
         private readonly ISettingsStore _settingsStore;
