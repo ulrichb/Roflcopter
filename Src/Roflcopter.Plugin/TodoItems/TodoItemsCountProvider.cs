@@ -115,8 +115,8 @@ namespace Roflcopter.Plugin.TodoItems
 
         private List<ChunkHashMap<IPsiSourceFile, List<ITodoItem>>> FetchAllTodoItems()
         {
-            using (_primaryTodoManager.Lock())
             using (ReadLockCookie.Create())
+            using (_primaryTodoManager.Lock())
             {
                 return _primaryTodoManager.AllItems.ToList();
             }
