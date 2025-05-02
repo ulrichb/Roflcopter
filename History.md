@@ -1,3 +1,6 @@
+### 1.23.1 ###
+- Fixed deadlock in To-do items count (issue #4)
+
 ### 1.23.0 ###
 - ReSharper and Rider 2024.3 support
 
