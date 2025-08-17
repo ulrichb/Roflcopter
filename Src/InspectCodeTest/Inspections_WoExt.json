@@ -207,8 +207,8 @@
         "driver": {
           "name": "InspectCode",
           "organization": "JetBrains, Inc",
-          "fullName": "JetBrains Inspect Code 2024.3",
-          "semanticVersion": "243.0.20241111.161023",
+          "fullName": "JetBrains Inspect Code 2025.2",
+          "semanticVersion": "252.0.20250812.71120",
           "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
           "rules": [
             {
@@ -335,13 +335,13 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/ulrichb/Roflcopter",
-          "revisionId": "b1a5256f81942338166b4f19574598a416db941d",
-          "branch": "master"
+          "revisionId": "3db35b713871626fe20f8b15cbd4d54097522ecc",
+          "branch": "main"
         }
       ],
       "originalUriBaseIds": {
         "solutionDir": {
-          "uri": "file:///C:/Development/3rdP/Roflcopter/Src/Roflcopter.Plugin.Tests/test/data/",
+          "uri": "file:///C:/Users/Ulrich/U/Roflcopter/Src/Roflcopter.Plugin.Tests/test/data/",
           "description": {
             "text": "Solution Directory"
           }
