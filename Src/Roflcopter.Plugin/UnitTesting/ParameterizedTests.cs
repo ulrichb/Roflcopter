@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using JetBrains.Metadata.Reader.API;
+﻿using JetBrains.Metadata.Reader.API;
 using JetBrains.Metadata.Reader.Impl;
 using JetBrains.ReSharper.Psi.CSharp.Tree;
 using Roflcopter.Plugin.Utilities;
