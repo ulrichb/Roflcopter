@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Diagnostics;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Feature.Services.QuickFixes;
 using JetBrains.ReSharper.FeaturesTestFramework.Intentions;
 using JetBrains.ReSharper.TestFramework;
@@ -16,10 +16,11 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
     {
         private TestQuickFix _quickFix;
 
-        protected override IQuickFix CreateQuickFix(IProject project, ITextControl textControl, out IHighlighting highlighting)
+        protected override QuickFixInstance CreateBulbAction(IProject project, ITextControl textControl)
         {
-            _quickFix = (TestQuickFix)base.CreateQuickFix(project, textControl, out highlighting);
-            return _quickFix;
+            var quickFixInstance = base.CreateBulbAction(project, textControl).NotNull();
+            _quickFix = (TestQuickFix)quickFixInstance.QuickFix;
+            return quickFixInstance;
         }
 
         [Test]

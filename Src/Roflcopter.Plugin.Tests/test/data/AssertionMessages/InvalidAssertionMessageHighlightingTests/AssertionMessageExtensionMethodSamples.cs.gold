@@ -3,6 +3,8 @@ using JetBrains.Annotations;
 
 // ReSharper disable ArrangeTypeMemberModifiers
 // ReSharper disable UnusedMember.Local
+// ReSharper disable InvokeAsExtensionMethod
+// ReSharper disable ConvertToExtensionBlock
 
 namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightingTests
 {
@@ -30,11 +32,9 @@ namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightin
 
         //
 
-        // ReSharper disable InvokeAsExtensionMethod
         void NotNullExtensionWithStaticInvocation(string s) => AssertionExtensions.NotNullExtension(s, "s != null");
 
         void NotNullExtensionWithStaticInvocation_Invalid(string s) => AssertionExtensions.NotNullExtension(s, "|x|(2) != null");
-        // ReSharper restore InvokeAsExtensionMethod
 
         //
 
