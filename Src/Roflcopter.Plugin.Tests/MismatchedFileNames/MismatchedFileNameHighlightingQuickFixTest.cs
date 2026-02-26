@@ -16,9 +16,9 @@ namespace Roflcopter.Plugin.Tests.MismatchedFileNames
     {
         private TestQuickFix _quickFix;
 
-        protected override QuickFixInstance CreateBulbAction(IProject project, ITextControl textControl)
+        protected override QuickFixInstance CreateBulbActionOwner(IProject project, ITextControl textControl)
         {
-            var quickFixInstance = base.CreateBulbAction(project, textControl).NotNull();
+            var quickFixInstance = base.CreateBulbActionOwner(project, textControl).NotNull();
             _quickFix = (TestQuickFix)quickFixInstance.QuickFix;
             return quickFixInstance;
         }

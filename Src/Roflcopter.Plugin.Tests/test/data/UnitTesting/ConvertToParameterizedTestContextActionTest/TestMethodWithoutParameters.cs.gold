@@ -5,8 +5,8 @@ namespace Roflcopter.Sample.UnitTesting.ConvertToParameterizedTestContextActionT
     public class TestMethodWithoutParameters
     {
         [Test]
-        [TestCase(argument{caret})]
-        public void TestMethod(object parameter)
+        [TestCase({spotstart#3}argument{spotend#3}{caret})]
+        public void TestMethod({spotstart#1}object{spotend#1} {spotstart#2}parameter{spotend#2})
         {
             
         }
