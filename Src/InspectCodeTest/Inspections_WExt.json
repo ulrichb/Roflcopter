@@ -284,11 +284,11 @@
                   "index": 2
                 },
                 "region": {
-                  "startLine": 12,
+                  "startLine": 14,
                   "startColumn": 75,
-                  "endLine": 12,
+                  "endLine": 14,
                   "endColumn": 76,
-                  "charOffset": 448,
+                  "charOffset": 540,
                   "charLength": 1
                 }
               }
@@ -416,11 +416,11 @@
                   "index": 2
                 },
                 "region": {
-                  "startLine": 15,
+                  "startLine": 17,
                   "startColumn": 94,
-                  "endLine": 15,
+                  "endLine": 17,
                   "endColumn": 100,
-                  "charOffset": 661,
+                  "charOffset": 753,
                   "charLength": 6
                 }
               }
@@ -779,18 +779,18 @@
                   "index": 2
                 },
                 "region": {
-                  "startLine": 36,
+                  "startLine": 37,
                   "startColumn": 113,
-                  "endLine": 36,
+                  "endLine": 37,
                   "endColumn": 114,
-                  "charOffset": 1596,
+                  "charOffset": 1634,
                   "charLength": 1
                 }
               }
             }
           ],
           "partialFingerprints": {
-            "contextRegionHash/v1": "C578009D1D66658036D13407AC314319BE8FB6C8440430FC994B339B826A5DD5"
+            "contextRegionHash/v1": "F5D308C289BDFC25FC114F87EA096FCF453ADF0FF4C0FDE7710CFB518534FCF5"
           },
           "properties": {
             "tags": ["C#",".NETFramework 4.8"]
@@ -816,7 +816,7 @@
                   "startColumn": 112,
                   "endLine": 42,
                   "endColumn": 113,
-                  "charOffset": 1908,
+                  "charOffset": 1892,
                   "charLength": 1
                 }
               }
@@ -1197,8 +1197,8 @@
         "driver": {
           "name": "InspectCode",
           "organization": "JetBrains, Inc",
-          "fullName": "JetBrains Inspect Code 2025.2",
-          "semanticVersion": "252.0.20250812.71120",
+          "fullName": "JetBrains Inspect Code 2026.1",
+          "semanticVersion": "261.0.20260327.174026",
           "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
           "rules": [
             {
@@ -1385,7 +1385,7 @@
             "guid": "1a821782-d2fa-58b9-abec-b43858b5396d",
             "name": "ReSharper.Roflcopter",
             "fullName": "ReSharper Roflcopter",
-            "version": "0.0.0.10252-local"
+            "version": "0.0.0.10261-local"
           }
         ]
       },
@@ -1397,13 +1397,13 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/ulrichb/Roflcopter",
-          "revisionId": "3db35b713871626fe20f8b15cbd4d54097522ecc",
+          "revisionId": "70108a5d202a9a07b17b5d082c42d2e4379e35f8",
           "branch": "main"
         }
       ],
       "originalUriBaseIds": {
         "solutionDir": {
-          "uri": "file:///C:/Users/Ulrich/U/Roflcopter/Src/Roflcopter.Plugin.Tests/test/data/",
+          "uri": "file:///C:/Development/3rdP/Roflcopter/Src/Roflcopter.Plugin.Tests/test/data/",
           "description": {
             "text": "Solution Directory"
           }
@@ -1438,9 +1438,9 @@
             "uriBaseId": "solutionDir"
           },
           "hashes": {
-            "md5": "2BB7C4EE7382DCD7F72879A187AF0BC5",
-            "sha-1": "C296771A45C554FC989E05F6D2180F92F743E93B",
-            "sha-256": "AE62BD12F63495804F35EABEBA8D04242E6EE1E0AA1737E2994CBC9D2764D0FE"
+            "md5": "402FD5A5CA78DD44222BF1591BD0EA40",
+            "sha-1": "E87EDD10EC16E1EB4C6B8246A47CD3A86BEF569A",
+            "sha-256": "62F87FA3FA808FA41AD384586F412AFF2B5FB87E9E02031D8CC5678B07A96536"
           }
         },
         {
