@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2023.*" />
-    <PackageReference Include="NUnit" Version="3.*" />
+    <PackageReference Include="JetBrains.Annotations" Version="*" />
+    <PackageReference Include="NUnit" Version="4.*" />
   </ItemGroup>
 
   <ItemGroup>
