@@ -207,8 +207,8 @@
         "driver": {
           "name": "InspectCode",
           "organization": "JetBrains, Inc",
-          "fullName": "JetBrains Inspect Code 2026.1",
-          "semanticVersion": "261.0.20260327.174026",
+          "fullName": "JetBrains Inspect Code 2026.2",
+          "semanticVersion": "262.0.20260721.215807",
           "informationUri": "http://www.jetbrains.com/resharper/features/command-line.html",
           "rules": [
             {
@@ -335,7 +335,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/ulrichb/Roflcopter",
-          "revisionId": "70108a5d202a9a07b17b5d082c42d2e4379e35f8",
+          "revisionId": "3b12d6ee23c008bd39414d121b5f96847322afc7",
           "branch": "main"
         }
       ],
