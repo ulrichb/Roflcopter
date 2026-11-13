@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 
 // ReSharper disable ArrangeTypeMemberModifiers
 // ReSharper disable UnusedMember.Local
+// ReSharper disable InvocationIsCultureSensitive
 
 namespace Roflcopter.Sample.AssertionMessages.InvalidAssertionMessageHighlightingTests
 {
